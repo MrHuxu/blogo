@@ -20,6 +20,7 @@ func (pSvc *PostSvc) ShowSnippets(c *gin.Context) {
 	subTitles := pSvc.Titles[10*page : 10*(page+1)]
 	for i := range subTitles {
 		result[subTitles[i]] = pSvc.Posts[subTitles[i]]
+		result[subTitles[i]].GetPartialContent()
 	}
 	c.JSON(http.StatusOK, gin.H{
 		"titles": subTitles,

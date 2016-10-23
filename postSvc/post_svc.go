@@ -22,12 +22,7 @@ func (pSvc PostSvc) Less(i, j int) bool {
 	return pSvc.Posts[pSvc.Titles[i]].Seq > pSvc.Posts[pSvc.Titles[j]].Seq
 }
 
-func New() *PostSvc {
-	pSvc := PostSvc{
-		Titles: []string{},
-		Posts:  make(map[string]*Post),
-	}
-
+func (pSvc *PostSvc) CachePosts() {
 	var files, err = ioutil.ReadDir("./archives")
 	CheckErr(err)
 	for i := range files {
@@ -36,6 +31,14 @@ func New() *PostSvc {
 		pSvc.Titles = append(pSvc.Titles, p.Title)
 	}
 	sort.Sort(pSvc)
+}
+
+func New() *PostSvc {
+	pSvc := PostSvc{
+		Titles: []string{},
+		Posts:  make(map[string]*Post),
+	}
+	pSvc.CachePosts()
 
 	return &pSvc
 }
