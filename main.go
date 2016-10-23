@@ -9,7 +9,8 @@ func main() {
 	server := gin.Default()
 	server.LoadHTMLGlob("templates/*")
 
-	postSvc.RegisterRoutes(server)
+	ps := postSvc.New()
+	ps.RegisterRoutes(server)
 
 	const port = "13109"
 	server.Run(":" + port)

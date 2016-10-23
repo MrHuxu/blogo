@@ -5,5 +5,7 @@ import (
 )
 
 func CheckErr(err error) {
-	fmt.Println(err)
+	if err != nil {
+		fmt.Println(err)
+	}
 }

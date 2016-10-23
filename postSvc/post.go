@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-type PostSvc struct {
-}
-
 type Post struct {
 	Name    string    `json:"name"`
 	Seq     int       `json:"seq"`
