@@ -16,12 +16,18 @@ type Post struct {
 	Content string    `json:"content"`
 }
 
-func (p *Post) GetPartialContent() {
+func (p *Post) GetFileContent() string {
+	data, err := ioutil.ReadFile("./archives/" + p.Name)
+	CheckErr(err)
+	return string(data)
+}
 
+func (p *Post) GetPartialContent() {
+	p.Content = p.GetFileContent()[0:800]
 }
 
 func (p *Post) GetTotalContent() {
-
+	p.Content = p.GetFileContent()
 }
 
 func GetInfosFromName(name string) *Post {

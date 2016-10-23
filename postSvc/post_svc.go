@@ -9,8 +9,7 @@ type PostSvc struct {
 }
 
 func New() *PostSvc {
-	var pSvc PostSvc
-	pSvc.Posts = make(map[string]*Post)
+	pSvc := PostSvc{make(map[string]*Post)}
 
 	var files, err = ioutil.ReadDir("./archives")
 	CheckErr(err)
