@@ -44,22 +44,3 @@ func GetInfosFromName(name string) *Post {
 
 	return &Post{name, seq, title, date, tags, ""}
 }
-
-func GetPagedSnippets(page int) []*Post {
-	var files, err = ioutil.ReadDir("../archives")
-	CheckErr(err)
-
-	var result []*Post
-	for i := range files {
-		p := GetInfosFromName(files[i].Name())
-		p.GetPartialContent()
-		result = append(result, p)
-	}
-	return result
-}
-
-func GetSinglePost(name string) *Post {
-	p := GetInfosFromName(name)
-	p.GetTotalContent()
-	return p
-}
