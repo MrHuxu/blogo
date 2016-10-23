@@ -1,6 +1,7 @@
 package postSvc
 
 import (
+	"github.com/russross/blackfriday"
 	"io/ioutil"
 	"strconv"
 	"strings"
@@ -23,11 +24,13 @@ func (p *Post) GetFileContent() string {
 }
 
 func (p *Post) GetPartialContent() {
-	p.Content = p.GetFileContent()[0:800]
+	bytes := []byte(p.GetFileContent()[0:800])
+	p.Content = string(blackfriday.MarkdownCommon(bytes))
 }
 
 func (p *Post) GetTotalContent() {
-	p.Content = p.GetFileContent()
+	bytes := []byte(p.GetFileContent())
+	p.Content = string(blackfriday.MarkdownCommon(bytes))
 }
 
 func GetInfosFromName(name string) *Post {
