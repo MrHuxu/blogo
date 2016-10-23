@@ -1,4 +1,4 @@
-package main
+package postSvc
 
 import (
 	"io/ioutil"
@@ -6,6 +6,9 @@ import (
 	"strings"
 	"time"
 )
+
+type PostSvc struct {
+}
 
 type Post struct {
 	Name    string    `json:"name"`
