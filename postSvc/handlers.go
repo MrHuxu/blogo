@@ -8,32 +8,39 @@ import (
 )
 
 func (pSvc *PostSvc) ShowSnippets(c *gin.Context) {
-	// c.HTML(http.StatusOK, "index.tmpl", gin.H{
-	// 	"prd":   "Production" == os.Getenv("ENV"),
-	// 	"title": "Blogo",
-	// })
+	result := make(map[string]*Post)
+	var subTitles []string
+
 	param := c.Param("page")
 	page, err := strconv.Atoi(param)
 	CheckErr(err)
 
-	result := make(map[string]*Post)
-	subTitles := pSvc.Titles[10*page : 10*(page+1)]
+	if page >= pSvc.MaxPage {
+		subTitles = pSvc.Titles[10*page : len(pSvc.Titles)]
+	} else {
+		subTitles = pSvc.Titles[10*page : 10*(page+1)]
+	}
+
 	for i := range subTitles {
 		result[subTitles[i]] = pSvc.Posts[subTitles[i]]
 		result[subTitles[i]].GetPartialContent()
 	}
-	c.JSON(http.StatusOK, gin.H{
-		"titles": subTitles,
-		"posts":  result,
+
+	c.HTML(http.StatusOK, "home.tmpl", gin.H{
+		"pageTitle": "Life of xhu - Page " + param,
+		"pages":     pSvc.Pages,
+		"titles":    subTitles,
+		"posts":     result,
 	})
 }
 
 func (pSvc *PostSvc) ShowSinglePost(c *gin.Context) {
 	title := c.Param("title")
 	pSvc.Posts[title].GetTotalContent()
-	c.JSON(http.StatusOK, gin.H{
-		"title": title,
-		"post":  pSvc.Posts[title],
+	c.HTML(http.StatusOK, "post.tmpl", gin.H{
+		"pageTitle": "Life of xhu - " + title,
+		"title":     title,
+		"post":      pSvc.Posts[title],
 	})
 }
 

@@ -2,6 +2,7 @@ package postSvc
 
 import (
 	"github.com/russross/blackfriday"
+	"html/template"
 	"io/ioutil"
 	"strconv"
 	"strings"
@@ -9,12 +10,12 @@ import (
 )
 
 type Post struct {
-	Name    string    `json:"name"`
-	Seq     int       `json:"seq"`
-	Title   string    `json:"title"`
-	Date    time.Time `json:"date"`
-	Tags    []string  `json:"tags"`
-	Content string    `json:"content"`
+	Name    string        `json:"name"`
+	Seq     int           `json:"seq"`
+	Title   string        `json:"title"`
+	Date    time.Time     `json:"date"`
+	Tags    []string      `json:"tags"`
+	Content template.HTML `json:"content"`
 }
 
 func (p *Post) GetFileContent() string {
@@ -25,12 +26,12 @@ func (p *Post) GetFileContent() string {
 
 func (p *Post) GetPartialContent() {
 	bytes := []byte(p.GetFileContent()[0:800])
-	p.Content = string(blackfriday.MarkdownCommon(bytes))
+	p.Content = template.HTML(blackfriday.MarkdownCommon(bytes))
 }
 
 func (p *Post) GetTotalContent() {
 	bytes := []byte(p.GetFileContent())
-	p.Content = string(blackfriday.MarkdownCommon(bytes))
+	p.Content = template.HTML(blackfriday.MarkdownCommon(bytes))
 }
 
 func GetInfosFromName(name string) *Post {

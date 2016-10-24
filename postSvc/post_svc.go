@@ -2,12 +2,15 @@ package postSvc
 
 import (
 	"io/ioutil"
+	"math"
 	"sort"
 )
 
 type PostSvc struct {
-	Titles []string         `json:"titles"`
-	Posts  map[string]*Post `json:"posts"` // map post title to post entities
+	MaxPage int              `json:"maxPage"`
+	Pages   []int            `json:"pages"`
+	Titles  []string         `json:"titles"`
+	Posts   map[string]*Post `json:"posts"` // map post titles to post entities
 }
 
 func (pSvc PostSvc) Len() int {
@@ -20,6 +23,14 @@ func (pSvc PostSvc) Swap(i, j int) {
 
 func (pSvc PostSvc) Less(i, j int) bool {
 	return pSvc.Posts[pSvc.Titles[i]].Seq > pSvc.Posts[pSvc.Titles[j]].Seq
+}
+
+func (pSvc *PostSvc) GeneratePages() {
+	i := 0
+	for ; i < int(math.Ceil(float64(len(pSvc.Titles)/10.0))); i++ {
+		pSvc.Pages = append(pSvc.Pages, i)
+	}
+	pSvc.MaxPage = i
 }
 
 func (pSvc *PostSvc) CachePosts() {
@@ -39,6 +50,7 @@ func New() *PostSvc {
 		Posts:  make(map[string]*Post),
 	}
 	pSvc.CachePosts()
+	pSvc.GeneratePages()
 
 	return &pSvc
 }
