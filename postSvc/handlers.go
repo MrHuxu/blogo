@@ -15,6 +15,7 @@ func (pSvc *PostSvc) ShowSnippets(c *gin.Context) {
 	page, err := strconv.Atoi(param)
 	CheckErr(err)
 
+	println("===", page, pSvc.MaxPage)
 	if page >= pSvc.MaxPage {
 		subTitles = pSvc.Titles[10*page : len(pSvc.Titles)]
 	} else {

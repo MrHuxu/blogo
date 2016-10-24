@@ -27,10 +27,10 @@ func (pSvc PostSvc) Less(i, j int) bool {
 
 func (pSvc *PostSvc) GeneratePages() {
 	i := 0
-	for ; i < int(math.Ceil(float64(len(pSvc.Titles)/10.0))); i++ {
+	for ; i <= int(math.Ceil(float64(len(pSvc.Titles)/10.0))); i++ {
 		pSvc.Pages = append(pSvc.Pages, i)
 	}
-	pSvc.MaxPage = i
+	pSvc.MaxPage = i - 1
 }
 
 func (pSvc *PostSvc) CachePosts() {
