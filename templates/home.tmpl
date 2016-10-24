@@ -1,48 +1,27 @@
-<html>
-  <head>
-    <title>{{ .pageTitle }}</title>
-    <link rel="shortcut icon" type="image" href="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog/favicon.ico">
-    <link href="http://cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet">
-    <link href="http://cdn.bootcss.com/codemirror/5.18.2/codemirror.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Rambla">
-  </head>
-  <body>
-    <div id="blogo"></div>
+{{ define "content" }}
 
-    <div class="ui pagination menu">
-      {{ range $index := .pages}}
-        <a class="item" href="/page/{{$index}}">
-          {{ $index }}
-        </a>
-      {{ end }}
+  <div class="ui pagination menu">
+    {{ range $index := .pages}}
+      <a class="item" href="/page/{{$index}}">
+        {{ $index }}
+      </a>
+    {{ end }}
+  </div>
+
+  {{ range $_, $title := .titles }}
+    {{ $post := index $.posts $title }}
+    <div class="snippet-header">
+      <a href="/post/{{$title}}">{{$title}}</a>
     </div>
 
-    {{ range $_, $title := .titles }}
-      {{ $post := index $.posts $title }}
-      <div class="snippet-header">
-        <a href="/post/{{$title}}">{{$title}}</a>
-      </div>
+    <div class="snippet-content">
+      {{ $post.Content }}
+    </div>
 
-      <div class="snippet-content">
-        {{ $post.Content }}
-      </div>
+    <div class="snippet-footer">
+      {{ $post.Date }}
+      {{ $post.Tags }}
+    </div>
+  {{ end }}
 
-      <div class="snippet-footer">
-        {{ $post.Date }}
-        {{ $post.Tags }}
-      </div>
-    {{ end }}
-    
-
-    <script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
-    <script src="http://cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
-    <script src="http://cdn.bootcss.com/codemirror/5.18.2/codemirror.min.js"></script>
-    <script src="//cdn.bootcss.com/codemirror/5.18.2/mode/javascript/javascript.min.js"></script>
-
-    {{ if .prd }}
-      <script src="/bundle.js"></script>
-    {{ else }}
-      <script src='http://localhost:6789/assets/bundle.js'></script>
-    {{ end }}
-  </body>
-</html>
+{{ end }} 
