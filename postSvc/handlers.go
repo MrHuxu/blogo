@@ -26,7 +26,8 @@ func (pSvc *PostSvc) ShowSnippets(c *gin.Context) {
 		result[subTitles[i]].GetPartialContent()
 	}
 
-	c.HTML(http.StatusOK, "home.tmpl", gin.H{
+	c.HTML(http.StatusOK, "layout", gin.H{
+		"homePage":  true,
 		"pageTitle": "Life of xhu - Page " + param,
 		"pages":     pSvc.Pages,
 		"titles":    subTitles,
@@ -37,7 +38,8 @@ func (pSvc *PostSvc) ShowSnippets(c *gin.Context) {
 func (pSvc *PostSvc) ShowSinglePost(c *gin.Context) {
 	title := c.Param("title")
 	pSvc.Posts[title].GetTotalContent()
-	c.HTML(http.StatusOK, "post.tmpl", gin.H{
+	c.HTML(http.StatusOK, "layout", gin.H{
+		"postPage":  true,
 		"pageTitle": "Life of xhu - " + title,
 		"title":     title,
 		"post":      pSvc.Posts[title],
