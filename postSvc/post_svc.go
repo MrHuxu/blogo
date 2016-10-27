@@ -10,6 +10,7 @@ type PostSvc struct {
 	MaxPage int              `json:"maxPage"`
 	Pages   []int            `json:"pages"`
 	Titles  []string         `json:"titles"`
+	Tags    []string         `json:"tags"`
 	Posts   map[string]*Post `json:"posts"` // map post titles to post entities
 }
 
@@ -33,12 +34,46 @@ func (pSvc *PostSvc) GeneratePages() {
 	pSvc.MaxPage = i - 1
 }
 
+var tagExist = make(map[string]bool)
+
+func (pSvc *PostSvc) CacheTags(tags []string) {
+	for _, tag := range tags {
+		_, ok := tagExist[tag]
+		if !ok {
+			pSvc.Tags = append([]string{tag}, pSvc.Tags...)
+			tagExist[tag] = true
+		}
+	}
+}
+
+func (pSvc *PostSvc) FilterByTags(tags []string) []string {
+	var result []string
+	var flag bool
+
+	for _, selectedTag := range tags {
+		for _, title := range pSvc.Titles {
+			flag = false
+			for _, tag := range pSvc.Posts[title].Tags {
+				flag = tag == selectedTag
+				if flag {
+					break
+				}
+			}
+			if flag {
+				result = append(result, title)
+			}
+		}
+	}
+	return result
+}
+
 func (pSvc *PostSvc) CachePosts() {
 	var files, err = ioutil.ReadDir("./archives")
 	CheckErr(err)
 	for i := range files {
 		p := GetInfosFromName(files[i].Name())
 		pSvc.Posts[p.Title] = p
+		pSvc.CacheTags(p.Tags)
 		pSvc.Titles = append(pSvc.Titles, p.Title)
 	}
 	sort.Sort(pSvc)
