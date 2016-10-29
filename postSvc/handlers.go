@@ -49,5 +49,10 @@ func (pSvc *PostSvc) ShowSinglePost(c *gin.Context) {
 
 func (pSvc *PostSvc) ShowArchives(c *gin.Context) {
 	tags := strings.Split(c.Query("tags"), ",")
-	c.JSON(http.StatusOK, pSvc.FilterByTags(tags))
+	c.HTML(http.StatusOK, "layout", gin.H{
+		"archivePage": true,
+		"pageTitle":   "Life of xhu - Archive",
+		"titles":      pSvc.FilterByTags(tags),
+		"rawData":     pSvc,
+	})
 }

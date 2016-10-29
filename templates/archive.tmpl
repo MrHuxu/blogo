@@ -1,0 +1,27 @@
+{{ define "archive" }}
+
+  <div class="ui pagination menu">
+    {{ range $index := .pages}}
+      <a class="item" href="/page/{{$index}}">
+        {{ $index }}
+      </a>
+    {{ end }}
+  </div>
+
+  {{ range $_, $title := .titles }}
+    {{ $post := index $.posts $title }}
+    <div class="snippet-header">
+      <a href="/post/{{$title}}">{{$title}}</a>
+    </div>
+
+    <div class="snippet-content">
+      {{ $post.Content }}
+    </div>
+
+    <div class="snippet-footer">
+      {{ $post.Date }}
+      {{ $post.Tags }}
+    </div>
+  {{ end }}
+
+{{ end }} 

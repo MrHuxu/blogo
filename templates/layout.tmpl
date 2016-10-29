@@ -15,6 +15,10 @@
         {{ template "home" . }}
       {{ end }}
 
+      {{ if .archivePage }}
+        {{ template "archive" . }}
+      {{ end }}
+
       {{ if .postPage }}
         {{ template "post" . }}
       {{ end }}
