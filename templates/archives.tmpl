@@ -1,0 +1,15 @@
+{{ define "archives" }}
+
+  {{ range $_, $tag := .rawData.Tags }}
+    <div>
+      <a href="/archives?tag={{$tag}}">{{$tag}}</a>
+    </div>
+  {{ end }}
+
+  {{ range $_, $title := .titles }}
+    <div>
+      <a href="/post/{{$title}}">{{$title}}</a>
+    </div>
+  {{ end }}
+
+{{ end }} 

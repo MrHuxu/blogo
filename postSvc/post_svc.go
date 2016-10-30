@@ -50,16 +50,20 @@ func (pSvc *PostSvc) FilterByTag(selectedTag string) []string {
 	var result []string
 	var flag bool
 
-	for _, title := range pSvc.Titles {
-		flag = false
-		for _, tag := range pSvc.Posts[title].Tags {
-			flag = tag == selectedTag
-			if flag {
-				break
+	if selectedTag == "" {
+		result = pSvc.Titles
+	} else {
+		for _, title := range pSvc.Titles {
+			flag = false
+			for _, tag := range pSvc.Posts[title].Tags {
+				flag = tag == selectedTag
+				if flag {
+					break
+				}
 			}
-		}
-		if flag {
-			result = append(result, title)
+			if flag {
+				result = append(result, title)
+			}
 		}
 	}
 	return result

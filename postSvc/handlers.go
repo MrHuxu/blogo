@@ -48,9 +48,9 @@ func (pSvc *PostSvc) ShowSinglePost(c *gin.Context) {
 
 func (pSvc *PostSvc) ShowArchives(c *gin.Context) {
 	c.HTML(http.StatusOK, "layout", gin.H{
-		"archivePage": true,
-		"pageTitle":   "Life of xhu - Archive",
-		"titles":      pSvc.FilterByTag(c.Query("tag")),
-		"rawData":     pSvc,
+		"archivesPage": true,
+		"pageTitle":    "Life of xhu - Archive",
+		"titles":       pSvc.FilterByTag(c.Query("tag")),
+		"rawData":      pSvc,
 	})
 }
