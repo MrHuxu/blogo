@@ -46,22 +46,20 @@ func (pSvc *PostSvc) CacheTags(tags []string) {
 	}
 }
 
-func (pSvc *PostSvc) FilterByTags(tags []string) []string {
+func (pSvc *PostSvc) FilterByTag(selectedTag string) []string {
 	var result []string
 	var flag bool
 
-	for _, selectedTag := range tags {
-		for _, title := range pSvc.Titles {
-			flag = false
-			for _, tag := range pSvc.Posts[title].Tags {
-				flag = tag == selectedTag
-				if flag {
-					break
-				}
-			}
+	for _, title := range pSvc.Titles {
+		flag = false
+		for _, tag := range pSvc.Posts[title].Tags {
+			flag = tag == selectedTag
 			if flag {
-				result = append(result, title)
+				break
 			}
+		}
+		if flag {
+			result = append(result, title)
 		}
 	}
 	return result
