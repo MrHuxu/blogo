@@ -10,12 +10,13 @@ import (
 )
 
 type Post struct {
-	Name    string        `json:"name"`
-	Seq     int           `json:"seq"`
-	Title   string        `json:"title"`
-	Date    time.Time     `json:"date"`
-	Tags    []string      `json:"tags"`
-	Content template.HTML `json:"content"`
+	Name     string        `json:"name"`
+	Seq      int           `json:"seq"`
+	Title    string        `json:"title"`
+	Date     time.Time     `json:"date"`
+	ShowDate string        `json:"show_date"`
+	Tags     []string      `json:"tags"`
+	Content  template.HTML `json:"content"`
 }
 
 func (p *Post) GetFileContent() string {
@@ -40,8 +41,9 @@ func GetInfosFromName(name string) *Post {
 	CheckErr(err)
 	title := infoArr[1]
 	date, err := time.Parse("20060102", infoArr[2])
+	showDate := date.Format("Jan _2, 2006")
 	CheckErr(err)
 	tags := strings.Split(strings.Split(infoArr[3], ".")[0], "-")
 
-	return &Post{name, seq, title, date, tags, ""}
+	return &Post{name, seq, title, date, showDate, tags, ""}
 }

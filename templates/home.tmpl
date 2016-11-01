@@ -10,7 +10,7 @@
   </div>-->
   <div class="snippet-container starter">
     Programming articles
-    <i class="angle right icon"></i>
+    <i class="angle double right icon snippet-arrow"></i>
   </div>
 
   {{ range $_, $title := .titles }}
@@ -26,10 +26,15 @@
 
       <div class="snippet-footer">
         <div class="tags">
-          {{ $post.Tags }}
+          {{ range $i, $Tag := $post.Tags }}
+            {{ if $i }}
+              <div class="tag-divider"></div>
+            {{ end }}
+            <a href="/archives?tag={{$Tag}}">{{ $Tag }}</a>
+          {{ end }}
         </div>
         <div class="date">
-          {{ $post.Date }}
+          {{ $post.ShowDate }}
         </div>
       </div>
     </div>
