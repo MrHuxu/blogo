@@ -14,7 +14,7 @@ type Post struct {
 	Seq      int           `json:"seq"`
 	Title    string        `json:"title"`
 	Date     time.Time     `json:"date"`
-	ShowDate string        `json:"show_date"`
+	ShowDate string        `json:"showDate"`
 	Tags     []string      `json:"tags"`
 	Content  template.HTML `json:"content"`
 }
@@ -41,7 +41,7 @@ func GetInfosFromName(name string) *Post {
 	CheckErr(err)
 	title := infoArr[1]
 	date, err := time.Parse("20060102", infoArr[2])
-	showDate := date.Format("Jan _2, 2006")
+	showDate := date.Format("Jan 02, 2006")
 	CheckErr(err)
 	tags := strings.Split(strings.Split(infoArr[3], ".")[0], "-")
 

@@ -2,17 +2,26 @@
   <link href="/assets/stylesheets/archives.css" rel="stylesheet">
 
   <div class="tag-container">
+    <div class="tag-title"> Tags </div>
     {{ range $_, $tag := .rawData.Tags }}
       <div class="tag-link">
-        <a href="/archives?tag={{$tag}}">{{$tag}}</a>
+        {{ $times := index $.rawData.TagTimes $tag }}
+        {{ $extraSize := mul $times 0.6 }}
+        <a href="/archives?tag={{$tag}}" style="font-size:{{ add $extraSize 16 }}px;">{{$tag}}</a>
       </div>
     {{ end }}
   </div>
 
-  <div class="post-container">
+  <div class="timeline-container post-container">
     {{ range $_, $title := .titles }}
-      <div class="post-link">
-        <a href="/post/{{$title}}">{{$title}}</a>
+      {{ $post := index $.rawData.Posts $title }}
+      <div class="timeline-item post-link">
+        <span class="post-date">{{ removeYear $post.ShowDate }}</span>
+        <a class="post-title" href="/post/{{$title}}">{{$title}}</a>
+        {{ range $_, $tag := $post.Tags }}
+          <div class="archive-tag-didiver"></div>
+          <a class="followed-tag-link" href="/archives?tag={{$tag}}">{{$tag}}</a>
+        {{ end }}
       </div>
     {{ end }}
   </div>

@@ -8,6 +8,10 @@ html, body {
   padding: 0;
 }
 
+a:hover {
+  color: #3B94C0;
+}
+
 .header {
   height: 120px;
   padding: 40px 120px 0 120px;

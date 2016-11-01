@@ -3,12 +3,31 @@ package main
 import (
 	"github.com/MrHuxu/blogo/postSvc"
 	"github.com/gin-gonic/gin"
+	"html/template"
 )
+
+var funcMap = template.FuncMap{
+	"add": func(i int, j int) int {
+		return i + j
+	},
+
+	"mul": func(i int, j float32) int {
+		return int(float32(i) * j)
+	},
+
+	"removeYear": func(date string) string {
+		return date[:6]
+	},
+}
 
 func main() {
 	server := gin.Default()
+	if tmpl, err := template.New("").Funcs(funcMap).ParseGlob("templates/*.tmpl"); err == nil {
+		server.SetHTMLTemplate(tmpl)
+	} else {
+		panic(err)
+	}
 	server.Static("/assets", "./assets")
-	server.LoadHTMLGlob("templates/*")
 
 	ps := postSvc.New()
 	ps.RegisterRoutes(server)

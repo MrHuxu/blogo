@@ -7,11 +7,12 @@ import (
 )
 
 type PostSvc struct {
-	MaxPage int              `json:"maxPage"`
-	Pages   []int            `json:"pages"`
-	Titles  []string         `json:"titles"`
-	Tags    []string         `json:"tags"`
-	Posts   map[string]*Post `json:"posts"` // map post titles to post entities
+	MaxPage  int              `json:"maxPage"`
+	Pages    []int            `json:"pages"`
+	Titles   []string         `json:"titles"`
+	Tags     []string         `json:"tags"`
+	TagTimes map[string]int   `json:"tagTimes"`
+	Posts    map[string]*Post `json:"posts"` // map post titles to post entities
 }
 
 func (pSvc PostSvc) Len() int {
@@ -34,14 +35,12 @@ func (pSvc *PostSvc) GeneratePages() {
 	pSvc.MaxPage = i - 1
 }
 
-var tagExist = make(map[string]bool)
-
 func (pSvc *PostSvc) CacheTags(tags []string) {
 	for _, tag := range tags {
-		_, ok := tagExist[tag]
+		_, ok := pSvc.TagTimes[tag]
+		pSvc.TagTimes[tag] += 1
 		if !ok {
 			pSvc.Tags = append([]string{tag}, pSvc.Tags...)
-			tagExist[tag] = true
 		}
 	}
 }
@@ -83,8 +82,9 @@ func (pSvc *PostSvc) CachePosts() {
 
 func New() *PostSvc {
 	pSvc := PostSvc{
-		Titles: []string{},
-		Posts:  make(map[string]*Post),
+		Titles:   []string{},
+		TagTimes: make(map[string]int),
+		Posts:    make(map[string]*Post),
 	}
 	pSvc.CachePosts()
 	pSvc.GeneratePages()

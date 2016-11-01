@@ -1,11 +1,106 @@
-.tag-container, .post-container {
-  padding: 0 32% 20px 15%;
-  border-bottom: 3px gray solid;
+.tag-container {
+  display: inline-block;
+  vertical-align: top;
+  width: 20%;
+  margin: 0 0 0 12%;
 }
 
-.tag-container {
+.post-container {
+  display: inline-block;
+  vertical-align: top;
+  width: 40%;
+  margin: 0 0 0 5%;
+  padding: 20px 0 20px 0;
+}
+
+.tag-title {
+  color: #D3B093;
+  font-size: 30px;
+  font-family: 'Lato', sans-serif;
+  margin: 35px 5px 30px 5px;
 }
 
 .tag-link {
+  vertical-align: top;
   display: inline-block;
+  margin: 0 5px 18px 5px;
+}
+
+.tag-link a {
+  cursor: pointer;
+  color: #71AFE5;
+}
+
+.post-date {
+  font-size: 12px;
+  color: #888;
+}
+
+.post-title {
+  margin: 0 0 0 10px;
+  display: inline-block;
+  font: 15px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #5D8994;
+  cursor: pointer;
+}
+
+.timeline-title, .timeline-item {
+  position: relative;
+}
+
+.timeline-container {
+  border-left: 4px solid #EFEFEF;
+}
+
+.timeline-title {
+  padding: 15px 0 15px 18px;
+  font-size: 25px;
+  color: #888;
+  font-family: calligraffittiregular;
+  font-weight: bold;
+}
+
+.timeline-item {
+  padding: 10px 0 10px 18px;
+}
+
+.timeline-item:before {
+  left: -2px;
+  margin-left: -4px;
+  margin-top: -4px;
+  width: 8px;
+  height: 8px;
+  content: " ";
+  position: absolute;
+  top: 50%;
+  background: #ccc;
+  border-radius: 50%
+}
+
+.timeline-title:before {
+  left: -2px;
+  margin-left: -5px;
+  margin-top: -9px;
+  width: 10px;
+  height: 10px;
+  content: " ";
+  position: absolute;
+  top: 50%;
+  border-radius: 50%;
+  background: #1abc9c;
+}
+
+.archive-tag-didiver {
+  display: inline-block;
+  vertical-align: top;
+  margin: 7px 5px 0 5px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #AAA;
+}
+
+.followed-tag-link {
+  color: #AAA;
+  cursor: pointer;
 }
