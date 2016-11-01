@@ -6,10 +6,28 @@
       <link rel="shortcut icon" type="image" href="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog/favicon.ico">
       <link href="http://cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet">
       <link href="http://cdn.bootcss.com/codemirror/5.18.2/codemirror.min.css" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Rambla">
+      <link href="/assets/stylesheets/layout.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Raleway" rel="stylesheet">
     </head>
     <body>
-      <div id="blogo"></div>
+      <div class="header">
+        <div class="logo">
+          <p>XHU</p>
+        </div>
+
+        <div class="links">
+          <a href="/">Home</a>
+          <a href="/archives">Archives</a>
+          <a target="_blank" href="http://xhu.me">Aboutme</a>
+        </div>
+      </div>
+
+      <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+      <script src="http://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+      <script src="http://cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+      <script src="http://cdn.bootcss.com/codemirror/5.18.2/codemirror.min.js"></script>
+      <script src="http://cdn.bootcss.com/codemirror/5.18.2/mode/javascript/javascript.min.js"></script>
+      <script src="/assets/javascripts/layout.js"></script>
 
       {{ if .homePage }}
         {{ template "home" . }}
@@ -23,10 +41,16 @@
         {{ template "post" . }}
       {{ end }}
 
-      <script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
-      <script src="http://cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
-      <script src="http://cdn.bootcss.com/codemirror/5.18.2/codemirror.min.js"></script>
-      <script src="//cdn.bootcss.com/codemirror/5.18.2/mode/javascript/javascript.min.js"></script>
+      <div class="footer">
+        <p>
+          Copyright © 2016 -&nbsp;
+          <a href = 'mailto:hxtheone@gmail.com'>xhu</a>
+          &nbsp;- Powered by&nbsp;
+          <a target = '_blank' href = 'https://github.com/gin-gonic/gin'>Gin</a>,
+          <a target = '_blank' href = 'http://jquery.com/'>jQuery</a>,
+          <a target = '_blank' href = 'http://semantic-ui.com/'>Semantic UI</a>
+        </p>
+      </div>
 
       {{ if .prd }}
         <script src="/bundle.js"></script>

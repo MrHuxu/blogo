@@ -1,0 +1,45 @@
+.snippet-container {
+  vertical-align: top;
+  display: inline-block;
+  width: 48%;
+  height: 360px;
+  margin: 0 1% 0 0;
+  padding: 3% 5% 0 6%;
+}
+
+.starter {
+  padding: 10% 0 0 0;
+  text-align: center;
+  font-size: 38px;
+  color: #555;
+}
+
+.snippet-header {
+  color: #666;
+  font-size: 26px;
+  line-height: 30px;
+  margin: 0 0 10px 0;
+}
+
+.snippet-divider {
+  width: 20%;
+}
+
+.snippet-content {
+  margin: 0 0 25px 0;
+}
+
+.snippet-content * {
+  color: #999;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.snippet-footer > div {
+  display: inline-block;
+}
+
+.date {
+  color: #DEA3A2;
+  float: right;
+}

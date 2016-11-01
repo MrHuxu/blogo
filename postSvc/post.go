@@ -25,7 +25,7 @@ func (p *Post) GetFileContent() string {
 }
 
 func (p *Post) GetPartialContent() {
-	bytes := []byte(p.GetFileContent()[0:800])
+	bytes := []byte(p.GetFileContent()[0:200])
 	p.Content = template.HTML(blackfriday.MarkdownCommon(bytes))
 }
 

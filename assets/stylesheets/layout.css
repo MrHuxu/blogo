@@ -1,0 +1,42 @@
+html, body {
+  background-color: #ffffff;
+}
+
+* {
+  font-family: 'Lato', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  height: 120px;
+  padding: 40px 120px 0 120px;
+}
+
+.logo, .links {
+  display: inline-block;
+}
+
+.links {
+  float: right;
+}
+
+.links a {
+  font-size: 18px;
+  color: #aaa;
+  margin: 0 0 0 25px;
+}
+
+.footer {
+  background-color: #FFFEEC;
+  height: 80px;
+  padding: 2%;
+  text-align: center;
+  color: #444444;
+}
+
+.footer * {
+  opacity: 0.8;
+  font-family: 'Lato', sans-serif;
+}

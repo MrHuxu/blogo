@@ -7,6 +7,7 @@ import (
 
 func main() {
 	server := gin.Default()
+	server.Static("/assets", "./assets")
 	server.LoadHTMLGlob("templates/*")
 
 	ps := postSvc.New()
