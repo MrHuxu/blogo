@@ -1,0 +1,11 @@
+.tag-container, .post-container {
+  padding: 0 32% 20px 15%;
+  border-bottom: 3px gray solid;
+}
+
+.tag-container {
+}
+
+.tag-link {
+  display: inline-block;
+}

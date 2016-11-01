@@ -1,15 +1,20 @@
 {{ define "archives" }}
+  <link href="/assets/stylesheets/archives.css" rel="stylesheet">
 
-  {{ range $_, $tag := .rawData.Tags }}
-    <div>
-      <a href="/archives?tag={{$tag}}">{{$tag}}</a>
-    </div>
-  {{ end }}
+  <div class="tag-container">
+    {{ range $_, $tag := .rawData.Tags }}
+      <div class="tag-link">
+        <a href="/archives?tag={{$tag}}">{{$tag}}</a>
+      </div>
+    {{ end }}
+  </div>
 
-  {{ range $_, $title := .titles }}
-    <div>
-      <a href="/post/{{$title}}">{{$title}}</a>
-    </div>
-  {{ end }}
+  <div class="post-container">
+    {{ range $_, $title := .titles }}
+      <div class="post-link">
+        <a href="/post/{{$title}}">{{$title}}</a>
+      </div>
+    {{ end }}
+  </div>
 
 {{ end }} 
