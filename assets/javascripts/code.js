@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  $('pre code').each(function(i, block) {
+$(() => {
+  $('pre code').each((i, block) => {
     hljs.highlightBlock(block);
   });
 });
