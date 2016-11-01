@@ -2,12 +2,12 @@ $(() => {
   $('.snippet-container').hover(function () {
     $(this).animate({
       backgroundColor: "#EFEFEF",
-      width: '49%'
+      width: '50%'
     }, 200);
   }, function () {
     $(this).animate({
       backgroundColor: "#FFFFFF",
-      width: '48%'
+      width: '49%'
     }, 100);
   });
 });
