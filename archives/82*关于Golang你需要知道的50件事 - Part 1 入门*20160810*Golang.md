@@ -1,6 +1,3 @@
-# 关于Golang你需要知道的50件事 - Part 1 入门
-
-### Source
 - [50 Shades of Go: Traps, Gotchas, and Common Mistakes for New Golang Devs](http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/)
 
 ---

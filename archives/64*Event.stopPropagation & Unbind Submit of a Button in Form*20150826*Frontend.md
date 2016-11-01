@@ -1,5 +1,3 @@
-# Event#stopPropagation & Unbind Submit of a Button in Form
-
 Javascript里，一个元素上的事件会经理事件捕获和事件冒泡的阶段，一个元素被整体监听的情况下，在其内部的事件会被传递到被监听的元素。但是有时候我们希望内部的元素不受其父元素事件的影响，这时可以使用```stopPropagation```方法:
 
     $('#XXX').click(function(event){ e.stopPropagation(); });

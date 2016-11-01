@@ -1,5 +1,3 @@
-# 并不那么美好的Server Side Rendering
-
 玩React玩久了, 就不免遇到需要服务端渲染的情况, 本来觉得应该是挺简单个事儿, 其实真正要实现的话, 坑也是不少, 折腾了两天, 倒也是弄出一点成果了, 具体的代码已经放到了[GayHub](https://github.com/MrHuxu/server-rendering-demo)上, 目前已经完成了React和react-router在服务端渲染的任务, Redux尚在探索中, 弄好了会再写一篇的.
 
 之所以想学习服务端渲染, 最主要的原因有两个

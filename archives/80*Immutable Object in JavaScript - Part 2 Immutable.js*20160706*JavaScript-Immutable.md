@@ -1,5 +1,3 @@
-# Immutable Object in JavaScript - Immutable.js
-
 上篇文章里说到了[Immutable.js](https://facebook.github.io/immutable-js/)这个强大的第三方库, 这个库加上Redux, 基本上就是目前React圈子里的三剑客了, 基本上用了各种解决方案后都会回到这上面来, Redux做状态管理, React做组件渲染, Immutable.js则提供了简单高效的不可变对象来使React在订阅Redux状态之后对变化的响应更加快速.
 
 ### Why Immutable.js

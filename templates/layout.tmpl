@@ -8,6 +8,7 @@
       <link href="http://cdn.bootcss.com/codemirror/5.18.2/codemirror.min.css" rel="stylesheet">
       <link href="/assets/stylesheets/layout.css" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Raleway" rel="stylesheet">
+      <link href="//cdn.bootcss.com/highlight.js/9.7.0/styles/tomorrow.min.css" rel="stylesheet">
     </head>
     <body>
       <div class="header">
@@ -40,6 +41,9 @@
       {{ if .postPage }}
         {{ template "post" . }}
       {{ end }}
+
+      <script src="//cdn.bootcss.com/highlight.js/9.7.0/highlight.min.js"></script>
+      <script src="/assets/javascripts/code.js"></script>
 
       <div class="footer">
         <p>

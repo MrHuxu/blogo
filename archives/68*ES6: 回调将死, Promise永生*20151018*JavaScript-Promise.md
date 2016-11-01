@@ -1,5 +1,3 @@
-# ES6: 回调将死, Promise永生
-
 首先我必须要承认标题是有哗众取宠的嫌疑，回调这个概念在JavaScript里已经存在了很久，而且必然会长期存在下去，而```Promise```是我在认真学习Javascript之后才知道的名词，[这里](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)是MDN上关于ES6规范中关于Promise的详细介绍，首先我们看Promise的简介
 
 > The Promise object is used for deferred and asynchronous computations. A Promise represents an operation that hasn't completed yet, but is expected in the future.

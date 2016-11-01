@@ -1,5 +1,3 @@
-# Variable Scope & Closure in Javascript
-
 About Javascript closure:
 
 > 闭包可以避免全局变量的污染；有利于对变量的控制； 

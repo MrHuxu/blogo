@@ -1,5 +1,3 @@
-# webpack: path vs. publicPath
-
 在配置webpack的时候, output配置有两个很容易混淆的项```path```和```publicPath```, 这两个项对于js文件里引用资源文件的配置非常重要, 如果配置的不对, 就很容易发生页面上图片显示不出来的情况.
 
 首先看官方文档的定义:

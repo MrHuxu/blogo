@@ -1,5 +1,3 @@
-# Async Functions in ES7
-
 上次在[这篇文章](http://blog.xhu.me/post/67*ES6:%20%E5%9B%9E%E8%B0%83%E5%B0%86%E6%AD%BB,%20Promise%E6%B0%B8%E7%94%9F*20151018*JavaScript-Promise.md)里介绍了[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)的应用, 这是ES6里关于异步操作的解决方案, 但是这个方案其实有一些问题:
 
 1. 如果使用的话, 那么基本上Promise的过程会'污染'整个代码, 整个代码会被then填满

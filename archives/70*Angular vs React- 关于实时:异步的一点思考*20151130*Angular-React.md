@@ -1,5 +1,3 @@
-# Angular vs React: 关于实时/异步的一点思考
-
 之所以写这篇文章，主要是因为看了[Avalon](http://avalonjs.github.io/)的作者司徒正美的[一条微博](http://weibo.com/1896474751/CkpppycVZ?type=comment)，这条微博里所描述的前端开发的难题，正是我自己在使用Angular重写Blog时所遇到的痛点之一，在解决问题的过程中，我也有了自己的一点感想和思考，就在这里写下来吧。
 
 ---

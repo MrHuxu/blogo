@@ -1,5 +1,3 @@
-# 当Promise遇上闭包
-
 这个博客的Projects页面，数据并不是写死的，而是从GitHub抓取过来的，因为官方的Nodejs GitHub API库并不支持Promise的方式，所以我一开始是这样写的:
 
     var fetchReposPromise = new Promise((resolve, reject) => {

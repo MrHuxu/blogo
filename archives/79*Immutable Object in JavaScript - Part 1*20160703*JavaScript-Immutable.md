@@ -1,5 +1,3 @@
-# Immutable Object in JavaScript - Part 1
-
 最近因为写了不少JS代码, 并且开始学习Scala, 所以很多时候会忍不住去对比这两门语言, 说老实话, 初学函数式语言真的是有很大的难度, 不过抛开Scala语言繁杂的语法, 函数式语言的通用特性倒是很简单
 
 1. 函数是```First-class Object```, 也就是说函数是作为基本对象存在的

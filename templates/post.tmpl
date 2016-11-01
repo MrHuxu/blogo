@@ -1,17 +1,24 @@
 {{ define "post" }}
+  <link href="/assets/stylesheets/post.css" rel="stylesheet">
 
-  {{ $post := .post }}
-  <div class="post-header">
-    <a href="/post/{{ $post.Title }}">{{ $post.Title }}</a>
-  </div>
+  <div class="post-container">
+    {{ $post := .post }}
+    <div class="post-header">
+      <h1>
+        {{ $post.Title }}
+      </h1>
+      <div class="ui horizontal divider">
+        {{ $post.ShowDate }}
+      </div>
+    </div>
 
-  <div class="post-content">
-    {{ $post.Content }}
-  </div>
+    <div class="post-content">
+      {{ $post.Content }}
+    </div>
 
-  <div class="post-footer">
-    {{ $post.Date }}
-    {{ $post.Tags }}
+    <div class="post-footer">
+      {{ $post.Tags }}
+    </div>
   </div>
 
 {{ end }}

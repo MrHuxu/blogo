@@ -1,5 +1,3 @@
-# Nodejs + Redis Blog缓存实践
-
 写在前面，我们先来看一下Redis的官方介绍:
 
 > Redis is an open source (BSD licensed), in-memory data structure store, used as database, cache and message broker.

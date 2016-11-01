@@ -1,5 +1,3 @@
-# Immutable Object in JavaScript - 轻度解密 Immutable.js
-
 在我的上一篇文章里, 我已经讲解了Immutable.js的部分用法, 可以看出, 这个库在对于Map这种数据类型的操作效率是略优于原生代码的, 那么现在我们就来通过代码讲解Immutable.js是怎么做到深复制比原生的浅复制还快的.
 
 Immutable.js的代码已经在[GitHub](https://github.com/facebook/immutable-js)上开源, 而Map相关的代码都在```src/Map.js```这个文件里.
