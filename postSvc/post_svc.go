@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 	"math"
 	"sort"
+	"strconv"
 )
 
 type PostSvc struct {
@@ -62,9 +63,18 @@ func (pSvc *PostSvc) PaginatedTitles(page int) []string {
 func (pSvc *PostSvc) FilterByTag(selectedTag string) []string {
 	var result []string
 	var flag bool
+	var yearFlag string
 
 	if selectedTag == "" {
-		result = pSvc.Titles
+		for _, title := range pSvc.Titles {
+			year := strconv.Itoa(pSvc.Posts[title].Date.Year())
+			if year != yearFlag {
+				result = append(result, year)
+				yearFlag = year
+			}
+
+			result = append(result, title)
+		}
 	} else {
 		for _, title := range pSvc.Titles {
 			flag = false
@@ -75,6 +85,12 @@ func (pSvc *PostSvc) FilterByTag(selectedTag string) []string {
 				}
 			}
 			if flag {
+				year := strconv.Itoa(pSvc.Posts[title].Date.Year())
+				if year != yearFlag {
+					result = append(result, year)
+					yearFlag = year
+				}
+
 				result = append(result, title)
 			}
 		}

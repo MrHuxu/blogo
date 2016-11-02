@@ -15,15 +15,22 @@
   <div class="timeline-container post-container">
     {{ range $_, $title := .titles }}
       {{ $post := index $.rawData.Posts $title }}
-      <div class="timeline-item post-link">
-        <span class="post-date">{{ removeYear $post.ShowDate }}</span>
-        <a class="post-title" href="/post/{{$title}}">{{$title}}</a>
-        {{ range $_, $tag := $post.Tags }}
-          <div class="archive-tag-didiver"></div>
-          <a class="followed-tag-link" href="/archives?tag={{$tag}}">{{$tag}}</a>
-        {{ end }}
-      </div>
+      {{ if $post }}
+        <div class="timeline-item post-link">
+          <span class="post-date">{{ removeYear $post.ShowDate }}</span>
+          <a class="post-title" href="/post/{{$title}}">{{$title}}</a>
+          {{ range $_, $tag := $post.Tags }}
+            <div class="archive-tag-didiver"></div>
+            <a class="followed-tag-link" href="/archives?tag={{$tag}}">{{$tag}}</a>
+          {{ end }}
+        </div>
+      {{ else }}
+        <div class="timeline-title">
+          {{ $title }}
+        </div>
+      {{ end }}
     {{ end }}
   </div>
 
+  <script src="/assets/javascripts/archives.js"></script>
 {{ end }} 
