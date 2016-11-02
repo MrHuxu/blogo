@@ -11,6 +11,10 @@ var funcMap = template.FuncMap{
 		return i + j
 	},
 
+	"sub": func(i int, j int) int {
+		return i - j
+	},
+
 	"mul": func(i int, j float32) int {
 		return int(float32(i) * j)
 	},

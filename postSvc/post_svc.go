@@ -45,6 +45,20 @@ func (pSvc *PostSvc) CacheTags(tags []string) {
 	}
 }
 
+func (pSvc *PostSvc) HasPrevOrNext(page int) (bool, bool) {
+	return page > 0, page < pSvc.MaxPage
+}
+
+func (pSvc *PostSvc) PaginatedTitles(page int) []string {
+	var result []string
+	if page >= pSvc.MaxPage {
+		result = pSvc.Titles[10*page : len(pSvc.Titles)]
+	} else {
+		result = pSvc.Titles[10*page : 10*(page+1)]
+	}
+	return result
+}
+
 func (pSvc *PostSvc) FilterByTag(selectedTag string) []string {
 	var result []string
 	var flag bool

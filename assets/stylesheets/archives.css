@@ -2,7 +2,7 @@
   display: inline-block;
   vertical-align: top;
   width: 20%;
-  margin: 0 0 0 20%;
+  margin: 0 0 0 17%;
 }
 
 .post-container {
@@ -27,7 +27,6 @@
 }
 
 .tag-link a {
-  cursor: pointer;
   color: #71AFE5;
 }
 
@@ -41,7 +40,6 @@
   display: inline-block;
   font: 15px "Lucida Grande", Helvetica, Arial, sans-serif;
   color: #5D8994;
-  cursor: pointer;
 }
 
 .timeline-title, .timeline-item {
@@ -102,5 +100,4 @@
 
 .followed-tag-link {
   color: #AAA;
-  cursor: pointer;
 }

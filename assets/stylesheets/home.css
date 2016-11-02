@@ -1,4 +1,4 @@
-.snippet-container, .starter-container {
+.snippet-container, .starter-container, .paginate-container {
   vertical-align: top;
   display: inline-block;
   width: 49%;
@@ -11,6 +11,25 @@
   text-align: center;
   font-size: 38px;
   color: #555;
+}
+
+.paginate-container {
+  padding: 5% 0 0 0;
+  font-size: 38px;
+}
+
+.paginate-prev, .paginate-next {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  width: 48%;
+  height: 80%;
+  margin: 0;
+}
+
+.paginate-prev i, .paginate-next i {
+  position: absolute;
 }
 
 .snippet-header {

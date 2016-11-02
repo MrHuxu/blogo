@@ -3,35 +3,32 @@ package postSvc
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
-	_ "os"
 	"strconv"
 )
 
 func (pSvc *PostSvc) ShowSnippets(c *gin.Context) {
-	result := make(map[string]*Post)
-	var subTitles []string
-
 	param := c.Param("page")
 	page, err := strconv.Atoi(param)
 	CheckErr(err)
 
-	if page >= pSvc.MaxPage {
-		subTitles = pSvc.Titles[10*page : len(pSvc.Titles)]
-	} else {
-		subTitles = pSvc.Titles[10*page : 10*(page+1)]
-	}
+	hasPrev, hasNext := pSvc.HasPrevOrNext(page)
+	paginatedTitles := pSvc.PaginatedTitles(page)
 
-	for i := range subTitles {
-		result[subTitles[i]] = pSvc.Posts[subTitles[i]]
-		result[subTitles[i]].GetPartialContent()
+	paginatedPosts := make(map[string]*Post)
+	for i := range paginatedTitles {
+		paginatedPosts[paginatedTitles[i]] = pSvc.Posts[paginatedTitles[i]]
+		paginatedPosts[paginatedTitles[i]].GetPartialContent()
 	}
 
 	c.HTML(http.StatusOK, "layout", gin.H{
-		"homePage":  true,
-		"pageTitle": "Life of xhu - Page " + param,
-		"pages":     pSvc.Pages,
-		"titles":    subTitles,
-		"posts":     result,
+		"homePage":    true,
+		"pageTitle":   "Life of xhu - Page " + param,
+		"pages":       pSvc.Pages,
+		"currentPage": page,
+		"titles":      paginatedTitles,
+		"posts":       paginatedPosts,
+		"hasPrev":     hasPrev,
+		"hasNext":     hasNext,
 	})
 }
 

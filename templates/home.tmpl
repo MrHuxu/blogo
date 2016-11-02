@@ -39,6 +39,22 @@
       </div>
     </div>
   {{ end }}
+  <div class="paginate-container">
+    {{ if .hasPrev }}
+      <a href="/page/{{ sub .currentPage 1 }}">
+        <div class="paginate-prev">
+          <i class="chevron left icon"></i>
+        </div>
+      </a>
+    {{ end}}
+    {{ if .hasNext }}
+      <a href="/page/{{ add .currentPage 1 }}">
+        <div class="paginate-next">
+          <i class="chevron right icon"></i>
+        </div>
+      </a>
+    {{ end }}
+  </div>
 
   <script src="/assets/javascripts/home.js"></script>
 {{ end }} 
