@@ -42,6 +42,12 @@
   color: #5D8994;
 }
 
+.show-all-link {
+  vertical-align: top;
+  display: inline-block;
+  margin: 0 0 0 12px;
+}
+
 .timeline-title, .timeline-item {
   position: relative;
 }

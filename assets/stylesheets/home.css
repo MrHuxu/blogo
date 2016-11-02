@@ -14,6 +14,8 @@
 }
 
 .paginate-container {
+  margin: 0 0 0 2%;
+  width: 47%;
   padding: 5% 0 0 0;
   font-size: 38px;
 }

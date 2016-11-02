@@ -1,14 +1,10 @@
 $(() => {
   $('.snippet-container').hover(function () {
-    $(this).animate({
-      backgroundColor: "#EFEFEF",
-      width: '50%'
-    }, 200);
+    $(this).addClass('animated pulse');
+    $(this).animate({ backgroundColor: "#EFEFEF" }, 200);
   }, function () {
-    $(this).animate({
-      backgroundColor: "#FFFFFF",
-      width: '49%'
-    }, 100);
+    $(this).removeClass('animated pulse');
+    $(this).animate({ backgroundColor: "#FFFFFF" }, 100);
   });
 
   $('.paginate-container').height($('.snippet-container').last().height());
@@ -23,14 +19,10 @@ $(() => {
   });
 
   $('.paginate-prev, .paginate-next').hover(function () {
-    $(this).animate({
-      backgroundColor: "#EFEFEF",
-      width: '49%'
-    }, 200);
+    $(this).addClass('animated pulse');
+    $(this).animate({ backgroundColor: "#EFEFEF" }, 200);
   }, function () {
-    $(this).animate({
-      backgroundColor: "#FFFFFF",
-      width: '48%'
-    }, 100);
+    $(this).removeClass('animated pulse');
+    $(this).animate({ backgroundColor: "#FFFFFF" }, 100);
   });
 });

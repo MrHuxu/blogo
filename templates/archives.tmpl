@@ -2,9 +2,14 @@
   <link href="/assets/stylesheets/archives.css" rel="stylesheet">
 
   <div class="tag-container">
-    <div class="tag-title"> Tags </div>
+    <div class="tag-title">
+      Tags
+      <div class="show-all-link">
+        <a class="ui tag label" href="/archives">Show All</a>
+      </div>
+    </div>
     {{ range $_, $tag := .rawData.Tags }}
-      <div class="tag-link">
+      <div class="tag-link tag-{{ $tag }}">
         {{ $times := index $.rawData.TagTimes $tag }}
         {{ $extraSize := mul $times 0.6 }}
         <a href="/archives?tag={{$tag}}" style="font-size:{{ add $extraSize 16 }}px;">{{$tag}}</a>
