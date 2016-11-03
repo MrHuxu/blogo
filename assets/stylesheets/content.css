@@ -62,7 +62,7 @@ p code, li > code {
   margin: -1px 5px 0 5px;
 }
 
-code {
+code, code * {
   font-family: "Monaco", "MonacoRegular", "Courier New", monospace !important;
 }
 
@@ -70,18 +70,15 @@ code span {
   white-space: nowrap;
 }
 
-.CodeMirror {
+pre code {
   display: block;
   font-size: 12px;
   line-height: 20px;
   font-weight: 12px;
   letter-spacing: .5px;
   margin: 0 0 20px 0;
+  padding: 15px !important;
   background-color: #f7f7f7 !important;
-}
-
-.CodeMirror * {
-  font-family: "Monaco", "MonacoRegular", "Courier New", monospace !important;
 }
 
 pre code:text {

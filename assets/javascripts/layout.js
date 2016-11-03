@@ -1,4 +1,8 @@
 $(() => {
+  $('pre code').each((i, block) => {
+    hljs.highlightBlock(block);
+  });
+
   var $toTop = $('#back-to-top');
 
   $toTop.click(() => {
