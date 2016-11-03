@@ -27,7 +27,6 @@
       <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
       <script src="http://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
       <script src="http://cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
-      <script src="/assets/javascripts/layout.js"></script>
 
       {{ if .homePage }}
         {{ template "home" . }}
@@ -41,9 +40,6 @@
         {{ template "post" . }}
       {{ end }}
 
-      <script src="http://cdn.bootcss.com/highlight.js/9.7.0/highlight.min.js"></script>
-      <script src="/assets/javascripts/code.js"></script>
-
       <a id="back-to-top">BackToTop</a>
       <div class="footer">
         <p>
@@ -56,6 +52,10 @@
           <a target="_blank" href="http://semantic-ui.com/">Semantic UI</a>
         </p>
       </div>
+
+      <script src="http://cdn.bootcss.com/highlight.js/9.7.0/highlight.min.js"></script>
+      <script src="/assets/javascripts/layout.js"></script>
+
 <!--
       {{ if .prd }}
         <script src="/bundle.js"></script>
