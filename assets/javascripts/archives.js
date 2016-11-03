@@ -18,4 +18,10 @@ $(() => {
   } else {
     $('.show-all-link').hide();
   }
+
+  $(window).scroll(() => {
+    if ($('body').scrollTop() < 120) {
+      $('.tag-container').css({ top: 100 - $('body').scrollTop() });
+    }
+  });
 });

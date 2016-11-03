@@ -1,6 +1,6 @@
 .tag-container {
   display: inline-block;
-  vertical-align: top;
+  position: fixed;
   width: 20%;
   margin: 0 0 0 17%;
 }
@@ -9,7 +9,7 @@
   display: inline-block;
   vertical-align: top;
   width: 55%;
-  margin: 0 0 0 3%;
+  margin: 0 0 0 40%;
   padding: 20px 0 20px 0;
 }
 
