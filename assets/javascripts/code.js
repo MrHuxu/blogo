@@ -1,11 +1,12 @@
 $(() => {
   $('pre code').each((i, block) => {
-    CodeMirror(block, {
+    CodeMirror(block.parentElement, {
       lineNumbers: true,
       value: block.innerText,
       mode: 'javascript',
       tabSize: 2,
-      autofocus: true
+      readOnly: true
     });
+    block.remove();
   });
 });
