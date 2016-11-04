@@ -2,7 +2,7 @@
   display: inline-block;
   position: fixed;
   width: 20%;
-  animation: tagContainer .4s forwards;
+  animation: tagContainer .5s forwards;
 }
 
 .post-container {
@@ -10,7 +10,7 @@
   vertical-align: top;
   width: 55%;
   padding: 20px 0 20px 0;
-  animation: postContainer .8s forwards;
+  animation: postContainer 1s forwards;
 }
 
 .tag-title {
