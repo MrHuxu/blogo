@@ -1,9 +1,8 @@
 $(() => {
   $('.snippet-container').hover(function () {
-    $(this).addClass('animated pulse');
+    $(this).animateCss('pulse');
     $(this).animate({ backgroundColor: "#EFEFEF" }, 200);
   }, function () {
-    $(this).removeClass('animated pulse');
     $(this).animate({ backgroundColor: "#FFFFFF" }, 100);
   });
 
@@ -19,10 +18,9 @@ $(() => {
   });
 
   $('.paginate-prev, .paginate-next').hover(function () {
-    $(this).addClass('animated pulse');
+    $(this).animateCss('pulse');
     $(this).animate({ backgroundColor: "#EFEFEF" }, 200);
   }, function () {
-    $(this).removeClass('animated pulse');
     $(this).animate({ backgroundColor: "#FFFFFF" }, 100);
   });
 });

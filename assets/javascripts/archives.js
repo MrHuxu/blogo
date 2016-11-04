@@ -6,15 +6,13 @@ $(() => {
   }
 
   $('.tag-link').hover(function () {
-    $(this).addClass('animated tada');
-  }, function () {
-    $(this).removeClass('animated tada');
-  });
+    $(this).animateCss('tada');
+  }, () => {});
 
   var selectedTag = location.search.split('=')[1];
   if (selectedTag) {
     $(`.tag-${selectedTag} a`).css({ color: '#EC354C' });
-    $('.show-all-link').addClass('animated flipInX');
+    $('.show-all-link').animateCss('flipInX');
   } else {
     $('.show-all-link').hide();
   }
