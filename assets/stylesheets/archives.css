@@ -2,7 +2,7 @@
   display: inline-block;
   position: fixed;
   width: 20%;
-  animation: tagContainer 0.3s forwards;
+  animation: tagContainer .5s forwards;
 }
 
 .post-container {
@@ -10,7 +10,7 @@
   vertical-align: top;
   width: 55%;
   padding: 20px 0 20px 0;
-  animation: postContainer 0.8s forwards;
+  animation: postContainer 1s forwards;
 }
 
 .tag-title {
@@ -166,7 +166,7 @@
     margin: 0 0 0 38%;
     opacity: 0;
   }
-  35% {
+  50% {
     margin: 0 0 0 38%;
     opacity: 0;
   }
@@ -184,7 +184,7 @@
     margin: 0 0 0 38%;
     opacity: 0;
   }
-  35% {
+  50% {
     margin: 0 0 0 38%;
     opacity: 0;
   }
@@ -202,7 +202,7 @@
     margin: 0 0 0 38%;
     opacity: 0;
   }
-  35% {
+  50% {
     margin: 0 0 0 38%;
     opacity: 0;
   }
@@ -220,7 +220,7 @@
     margin: 0 0 0 38%;
     opacity: 0;
   }
-  35% {
+  50% {
     margin: 0 0 0 38%;
     opacity: 0;
   }
