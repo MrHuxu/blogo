@@ -18,6 +18,19 @@
   color: #A3717F;
 }
 
+#btc-container {
+  right: 1%;
+  width: 300px;
+}
+
+iframe#wangyi-player {
+  border-radius: 5px;
+  position: fixed;
+  bottom: 58px;
+  animation: player 2s forwards;
+  z-index: 999;
+}
+
 @keyframes postHeader {
   0% {
     margin: -40px 0 30px 0;
@@ -136,6 +149,76 @@
   }
   100% {
     margin: 0 0 30px 0;
+    opacity: 1;
+  }
+}
+
+
+@keyframes player {
+  0% {
+    right: 5%;
+    opacity: 0;
+  }
+  40% {
+    right: 5%;
+    opacity: 0;
+  }
+  100% {
+    right: 1%;
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes player
+/* Firefox */
+
+{
+  0% {
+    right: 6%;
+    opacity: 0;
+  }
+  40% {
+    right: 6%;
+    opacity: 0;
+  }
+  100% {
+    right: 1%;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes player
+/* Safari 和 Chrome */
+
+{
+  0% {
+    right: 6%;
+    opacity: 0;
+  }
+  40% {
+    right: 6%;
+    opacity: 0;
+  }
+  100% {
+    right: 1%;
+    opacity: 1;
+  }
+}
+
+@-o-keyframes player
+/* Opera */
+
+{
+  0% {
+    right: 6%;
+    opacity: 0;
+  }
+  40% {
+    right: 6%;
+    opacity: 0;
+  }
+  100% {
+    right: 1%;
     opacity: 1;
   }
 }

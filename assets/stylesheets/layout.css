@@ -39,16 +39,20 @@ a:hover {
   color: #666;
 }
 
+#btc-container {
+  position: fixed;
+  right: 2%;
+  bottom: 70px;
+}
+
 #back-to-top {
   display: none;
-  height: 60px;
+  cursor: pointer;
   width: 60px;
-  border-radius: 5px;
-  position: fixed;
-  bottom: 70px;
-  right: 30px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  height: 60px;
   text-indent: 100%;
+  margin: 0 0 0 -3px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   background: rgba(87, 218, 178, 0.8) url(/assets/images/cd-top-arrow.svg) no-repeat center 50%;
 }
 
