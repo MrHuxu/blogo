@@ -18,11 +18,6 @@
   color: #A3717F;
 }
 
-#btc-container {
-  right: 1%;
-  width: 300px;
-}
-
 iframe#wangyi-player {
   border-radius: 5px;
   position: fixed;
@@ -156,15 +151,15 @@ iframe#wangyi-player {
 
 @keyframes player {
   0% {
-    right: 5%;
+    right: 130px;
     opacity: 0;
   }
   40% {
-    right: 5%;
+    right: 130px;
     opacity: 0;
   }
   100% {
-    right: 1%;
+    right: 30px;
     opacity: 1;
   }
 }
@@ -174,15 +169,15 @@ iframe#wangyi-player {
 
 {
   0% {
-    right: 6%;
+    right: 130px;
     opacity: 0;
   }
   40% {
-    right: 6%;
+    right: 130px;
     opacity: 0;
   }
   100% {
-    right: 1%;
+    right: 30px;
     opacity: 1;
   }
 }
@@ -192,15 +187,15 @@ iframe#wangyi-player {
 
 {
   0% {
-    right: 6%;
+    right: 130px;
     opacity: 0;
   }
   40% {
-    right: 6%;
+    right: 130px;
     opacity: 0;
   }
   100% {
-    right: 1%;
+    right: 30px;
     opacity: 1;
   }
 }
@@ -210,15 +205,15 @@ iframe#wangyi-player {
 
 {
   0% {
-    right: 6%;
+    right: 130px;
     opacity: 0;
   }
   40% {
-    right: 6%;
+    right: 130px;
     opacity: 0;
   }
   100% {
-    right: 1%;
+    right: 30px;
     opacity: 1;
   }
 }

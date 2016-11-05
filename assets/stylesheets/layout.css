@@ -41,7 +41,7 @@ a:hover {
 
 #btc-container {
   position: fixed;
-  right: 2%;
+  right: -20px;
   bottom: 70px;
 }
 
