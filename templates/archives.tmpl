@@ -3,7 +3,7 @@
     <link href="/assets/stylesheets/archives.css" rel="stylesheet">
   {{ end }}
 
-  <div class="tag-container">
+  <div class="tag-list">
     <div class="tag-title">
       Tags
       {{ if .selected }}
@@ -21,7 +21,7 @@
     {{ end }}
   </div>
 
-  <div class="timeline-container post-container">
+  <div class="timeline-container post-list">
     {{ range $_, $title := .titles }}
       {{ $post := index $.rawData.Posts $title }}
       {{ if $post }}

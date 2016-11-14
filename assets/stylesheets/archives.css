@@ -1,11 +1,11 @@
-.tag-container {
+.tag-list {
   display: inline-block;
   position: fixed;
   width: 20%;
   animation: tagContainer .5s forwards;
 }
 
-.post-container {
+.post-list {
   display: inline-block;
   vertical-align: top;
   width: 55%;
