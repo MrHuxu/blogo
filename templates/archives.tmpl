@@ -1,5 +1,7 @@
 {{ define "archives" }}
-  <link href="/assets/stylesheets/archives.css" rel="stylesheet">
+  {{ if not .prd }}
+    <link href="/assets/stylesheets/archives.css" rel="stylesheet">
+  {{ end }}
 
   <div class="tag-container">
     <div class="tag-title">
@@ -39,5 +41,7 @@
     {{ end }}
   </div>
 
-  <script src="/assets/javascripts/archives.js"></script>
+  {{ if not .prd }}
+    <script src="/assets/javascripts/archives.js"></script>
+  {{ end }}
 {{ end }} 

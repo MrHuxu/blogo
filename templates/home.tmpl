@@ -1,13 +1,8 @@
 {{ define "home" }}
-  <link href="/assets/stylesheets/home.css" rel="stylesheet">
-<!--
-  <div class="ui pagination menu">
-    {{ range $index := .pages}}
-      <a class="item" href="/page/{{$index}}">
-        {{ $index }}
-      </a>
-    {{ end }}
-  </div>-->
+  {{ if not .prd }}
+    <link href="/assets/stylesheets/home.css" rel="stylesheet">
+  {{ end }}
+
   <div class="starter-container">
     Life of xhu
     <i class="angle double right icon snippet-arrow"></i>
@@ -56,5 +51,7 @@
     {{ end }}
   </div>
 
-  <script src="/assets/javascripts/home.js"></script>
+  {{ if not .prd }}
+    <script src="/assets/javascripts/home.js"></script>
+  {{ end }}
 {{ end }} 

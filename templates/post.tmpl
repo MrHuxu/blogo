@@ -1,5 +1,15 @@
 {{ define "post" }}
-  <link href="/assets/stylesheets/post.css" rel="stylesheet">
+  {{ if not .prd }}
+    <link href="/assets/stylesheets/post.css" rel="stylesheet">
+  {{ end }}
+
+  <style>
+    #btc-container {
+      width: 40px;
+      right: 277px;
+      overflow: hidden;
+    }
+  </style>
 
   <div class="post-container">
     {{ $post := .post }}
@@ -34,5 +44,7 @@
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
 
-  <script src="/assets/javascripts/post.js"></script>
+  {{ if not .prd }}
+    <script src="/assets/javascripts/post.js"></script>
+  {{ end }}
 {{ end }}

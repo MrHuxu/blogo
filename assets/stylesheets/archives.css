@@ -119,10 +119,7 @@
   }
 }
 
-@-moz-keyframes tagContainer
-/* Firefox */
-
-{
+@-moz-keyframes tagContainer {
   0% {
     margin: 0 0 0 15%;
     opacity: 0;
@@ -133,10 +130,7 @@
   }
 }
 
-@-webkit-keyframes tagContainer
-/* Safari 和 Chrome */
-
-{
+@-webkit-keyframes tagContainer {
   0% {
     margin: 0 0 0 15%;
     opacity: 0;
@@ -147,10 +141,7 @@
   }
 }
 
-@-o-keyframes tagContainer
-/* Opera */
-
-{
+@-o-keyframes tagContainer {
   0% {
     margin: 0 0 0 15%;
     opacity: 0;
@@ -176,10 +167,7 @@
   }
 }
 
-@-moz-keyframes postContainer
-/* Firefox */
-
-{
+@-moz-keyframes postContainer {
   0% {
     margin: 0 0 0 38%;
     opacity: 0;
@@ -194,10 +182,7 @@
   }
 }
 
-@-webkit-keyframes postContainer
-/* Safari 和 Chrome */
-
-{
+@-webkit-keyframes postContainer {
   0% {
     margin: 0 0 0 38%;
     opacity: 0;
@@ -212,10 +197,7 @@
   }
 }
 
-@-o-keyframes postContainer
-/* Opera */
-
-{
+@-o-keyframes postContainer {
   0% {
     margin: 0 0 0 38%;
     opacity: 0;

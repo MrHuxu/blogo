@@ -106,7 +106,7 @@
   }
 }
 
-@-moz-keyframes blink /* Firefox */{
+@-moz-keyframes blink {
   0% {
     opacity: 1;
   }
@@ -118,7 +118,7 @@
   }
 }
 
-@-webkit-keyframes blink /* Safari 和 Chrome */{
+@-webkit-keyframes blink {
   0% {
     opacity: 1;
   }
@@ -130,7 +130,7 @@
   }
 }
 
-@-o-keyframes blink /* Opera */{
+@-o-keyframes blink {
   0% {
     opacity: 1;
   }

@@ -3,8 +3,11 @@ package postSvc
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"os"
 	"strconv"
 )
+
+var atPrd = os.Getenv("ENV") == "Production"
 
 func (pSvc *PostSvc) ShowSnippets(c *gin.Context) {
 	param := c.Param("page")
@@ -21,6 +24,7 @@ func (pSvc *PostSvc) ShowSnippets(c *gin.Context) {
 	}
 
 	c.HTML(http.StatusOK, "layout", gin.H{
+		"prd":         atPrd,
 		"homePage":    true,
 		"pageTitle":   "Life of xhu - Page " + param,
 		"pages":       pSvc.Pages,
@@ -36,6 +40,7 @@ func (pSvc *PostSvc) ShowSinglePost(c *gin.Context) {
 	title := c.Param("title")
 	pSvc.Posts[title].GetTotalContent()
 	c.HTML(http.StatusOK, "layout", gin.H{
+		"prd":       atPrd,
 		"postPage":  true,
 		"pageTitle": "Life of xhu - " + title,
 		"title":     title,
@@ -45,6 +50,7 @@ func (pSvc *PostSvc) ShowSinglePost(c *gin.Context) {
 
 func (pSvc *PostSvc) ShowArchives(c *gin.Context) {
 	c.HTML(http.StatusOK, "layout", gin.H{
+		"prd":          atPrd,
 		"archivesPage": true,
 		"pageTitle":    "Life of xhu - Archives",
 		"selected":     c.Query("tag") != "",

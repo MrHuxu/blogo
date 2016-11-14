@@ -19,6 +19,10 @@ var funcMap = template.FuncMap{
 		return int(float32(i) * j)
 	},
 
+	"not": func(b bool) bool {
+		return !b
+	},
+
 	"removeYear": func(date string) string {
 		return date[:6]
 	},
