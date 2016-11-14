@@ -21,15 +21,21 @@ a:hover {
   padding: 40px 120px 0 120px;
 }
 
-.logo, .links {
+.logo {
   display: inline-block;
+}
+
+.logo img {
+  height: 40px;
 }
 
 .links {
   float: right;
+  margin: 10px;
 }
 
 .links a {
+  vertical-align: top;
   font-size: 18px;
   color: #aaa;
   margin: 0 0 0 25px;
