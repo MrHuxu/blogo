@@ -6,18 +6,28 @@
   <div class="tag-list">
     <div class="tag-title">
       Tags
-      {{ if .selected }}
+      {{ if not (eq .selectedTag "") }}
         <div class="show-all-link">
           <a class="ui tag label" href="/archives">Show All</a>
         </div>
       {{ end }}
     </div>
     {{ range $_, $tag := .rawData.Tags }}
-      <div class="tag-link tag-{{ $tag }}">
-        {{ $times := index $.rawData.TagTimes $tag }}
-        {{ $extraSize := mul $times 0.6 }}
-        <a href="/archives?tag={{$tag}}" style="font-size:{{ add $extraSize 16 }}px;">{{$tag}}</a>
-      </div>
+
+      {{ if eq $.selectedTag $tag }}
+        <div class="tag-link tag-selected">
+          {{ $times := index $.rawData.TagTimes $tag }}
+          {{ $extraSize := mul $times 0.6 }}
+          <a href="/archives?tag={{$tag}}" style="font-size:{{ add $extraSize 16 }}px;">{{$tag}}</a>
+        </div>
+      {{ else }}
+        <div class="tag-link">
+          {{ $times := index $.rawData.TagTimes $tag }}
+          {{ $extraSize := mul $times 0.6 }}
+          <a href="/archives?tag={{$tag}}" style="font-size:{{ add $extraSize 16 }}px;">{{$tag}}</a>
+        </div>
+      {{ end }}
+
     {{ end }}
   </div>
 

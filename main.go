@@ -19,6 +19,10 @@ var funcMap = template.FuncMap{
 		return int(float32(i) * j)
 	},
 
+	"eq": func(str1, str2 string) bool {
+		return str1 == str2
+	},
+
 	"not": func(b bool) bool {
 		return !b
 	},

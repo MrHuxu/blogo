@@ -30,6 +30,10 @@
   color: #71AFE5;
 }
 
+.tag-link.tag-selected a {
+  color: #EC354C;
+}
+
 .post-date {
   font-size: 12px;
   color: #888;

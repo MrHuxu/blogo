@@ -53,7 +53,7 @@ func (pSvc *PostSvc) ShowArchives(c *gin.Context) {
 		"prd":          atPrd,
 		"archivesPage": true,
 		"pageTitle":    "Life of xhu - Archives",
-		"selected":     c.Query("tag") != "",
+		"selectedTag":  c.Query("tag"),
 		"titles":       pSvc.FilterByTag(c.Query("tag")),
 		"rawData":      pSvc,
 	})

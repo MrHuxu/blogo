@@ -3,8 +3,11 @@ $(() => {
     hljs.highlightBlock(block);
   });
 
-  var $toTop = $('#back-to-top');
+  $('.logo').mouseenter(function () {
+    $(this).animateCss('swing');
+  });
 
+  var $toTop = $('#back-to-top');
   $toTop.click(() => {
     $('body').animate({ scrollTop: 0 });
   });
