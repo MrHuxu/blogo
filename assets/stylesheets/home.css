@@ -89,9 +89,12 @@
 
 .snippet-arrow {
   animation: blink 1.2s infinite linear;
-  -moz-animation: blink 1.2s infinite linear;	/* Firefox */
-  -webkit-animation: blink 1.2s infinite linear;	/* Safari 和 Chrome */
-  -o-animation: blink 1.2s infinite linear;	/* Opera */
+  -moz-animation: blink 1.2s infinite linear;
+  /* Firefox */
+  -webkit-animation: blink 1.2s infinite linear;
+  /* Safari 和 Chrome */
+  -o-animation: blink 1.2s infinite linear;
+  /* Opera */
 }
 
 @keyframes blink {

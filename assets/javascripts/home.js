@@ -13,7 +13,7 @@ $(() => {
   var containerWidth = $('.paginate-prev').width() || $('.paginate-next').width();
   var selfWidth = $('.paginate-prev i').width() || $('.paginate-next i').width();
   $('.paginate-prev i, .paginate-next i').css({
-    top: containerHeight / 2 - selfHeight / 2,
+    top:  containerHeight / 2 - selfHeight / 2,
     left: containerWidth / 2 - selfWidth / 2
   });
 
