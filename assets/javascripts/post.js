@@ -1,5 +1,4 @@
 const songs = {
-  562456:   '强く儚い者たち - 真喜志智子',
   27571802: '我的钢琴很简单 (钢琴曲) - 雷诺儿',
   28427271: 'My Goodbye - Brian',
   28737747: 'Lost Stars - Adam Levine',
@@ -17,7 +16,8 @@ const songs = {
   26093260: '千本桜 - まらしぃ',
   26664325: 'Main Title - Ramin Djawadi',
   190473:   '秋意浓 - 张学友',
-  3560431:  'Stay - Tonya Mitchell'
+  3560431:  'Stay - Tonya Mitchell',
+  28713832: '기억이 머물던 곳 (记忆停留的地方)'
 };
 const songIds = Object.keys(songs);
 
