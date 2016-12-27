@@ -134,8 +134,8 @@ Method | Feature
 trySubscribe() | 如果当前组件没有订阅一个store, 就判断参数里```parentSub```是否存在, 如果存在, 就把```listener```注册到父组件的监听器里, 如果不存在, 就直接订阅store. 订阅的同时获得相应的```unsubscribe```方法. 然后创建组件自己的监听器集合.
 tryUnsubscribe() | 执行```trySubscribe```获得的```unsubcribe```方法取消对store的订阅, 清空当前组件的监听器集合.
 addNestedSub(listener) | 首先将当前组件订阅到store上, 然后把参数中的```listener```添加到当前组件的监听器集合中
-notifyNestedSubs | 通知所有监听器, 触发监听器中所有的函数
-isSubscribed | 当前组件是否已经订阅store
+notifyNestedSubs() | 通知所有监听器, 触发监听器中所有的函数
+isSubscribed() | 当前组件是否已经订阅store
 
 这时我们来看看用来创建监听器集合的```createListenerCollection```方法:
 
