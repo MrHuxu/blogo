@@ -1,22 +1,14 @@
-.snippet-container, .starter-container, .paginate-container {
+.snippet-container, .paginate-container {
   vertical-align: top;
   display: inline-block;
-  width: 49%;
-  padding: 3% 5% 3% 6%;
+  width: 100%;
+  padding: .2% 30% 0 30%;
   overflow: hidden;
-}
-
-.starter-container {
-  padding: 10% 0 0 0;
-  text-align: center;
-  font-size: 38px;
-  color: #555;
 }
 
 .paginate-container {
   margin: 0 0 0 2%;
   width: 47%;
-  padding: 5% 0 0 0;
   font-size: 38px;
 }
 
@@ -35,15 +27,16 @@
 }
 
 .snippet-header {
-  color: #666;
-  font-size: 26px;
+  color: #E6EFC2;
+  font-size: 14px;
   line-height: 30px;
   margin: 0 0 10px 0;
   cursor: pointer;
 }
 
 .snippet-divider {
-  width: 20%;
+  margin: .2rem 0 .4rem 0 !important;
+  width: 40%;
 }
 
 .snippet-content {
@@ -62,7 +55,7 @@
 
 .snippet-footer * {
   font-family: 'Open Sans', sans-serif;
-  font-size: 17px;
+  font-size: 14px;
   opacity: 0.9;
 }
 

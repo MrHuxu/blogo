@@ -1,11 +1,4 @@
 $(() => {
-  $('.snippet-container').hover(function () {
-    $(this).animateCss('pulse');
-    $(this).animate({ backgroundColor: "#EFEFEF" }, 200);
-  }, function () {
-    $(this).animate({ backgroundColor: "#FFFFFF" }, 100);
-  });
-
   $('.paginate-container').height($('.snippet-container').last().height());
 
   var containerHeight = $('.paginate-prev').height() || $('.paginate-next').height();
