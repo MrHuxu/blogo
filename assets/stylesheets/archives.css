@@ -1,16 +1,12 @@
 .tag-list {
-  display: inline-block;
-  position: fixed;
-  width: 20%;
-  animation: tagContainer .5s forwards;
+  width: 100%;
+  padding: 0 27% .5% 30%;
 }
 
 .post-list {
-  display: inline-block;
   vertical-align: top;
-  width: 55%;
-  padding: 20px 0 20px 0;
-  animation: postContainer 1s forwards;
+  margin: 0 0 0 31%;
+  padding: 1% 27% 0 0;
 }
 
 .tag-title {
@@ -43,7 +39,7 @@
   margin: 0 0 0 10px;
   display: inline-block;
   font: 15px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: #5D8994;
+  color: #99D9E6;
 }
 
 .show-all-link {
@@ -52,12 +48,17 @@
   margin: 0 0 0 12px;
 }
 
+.archives-divider {
+  width: 30%;
+  margin: 0 0 0 30% !important;
+}
+
 .timeline-title, .timeline-item {
   position: relative;
 }
 
 .timeline-container {
-  border-left: 4px solid #EFEFEF;
+  border-left: 4px solid #ADB2B5;
 }
 
 .timeline-title {

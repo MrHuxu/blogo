@@ -27,7 +27,12 @@ p, li {
   position: relative;
   font-size: 15px;
   line-height: 2;
-  color: #555;
+  color: #EEEAEB;
+  font-weight:200;
+}
+
+p a, li a {
+  color: #E67AA2;
 }
 
 blockquote {
@@ -44,7 +49,7 @@ blockquote {
 h1, h2, h3, h4, h5, h6 {
   margin: 20px 0 15px;
   font-weight: 500;
-  color: #646464;
+  color: #FAF9FA;
 }
 
 

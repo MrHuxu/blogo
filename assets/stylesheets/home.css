@@ -75,65 +75,11 @@
 }
 
 .date {
-  color: #DEA3A2;
   margin: 0 0 15px 0;
+  padding: 0 5px;
   float: right;
-}
-
-.snippet-arrow {
-  animation: blink 1.2s infinite linear;
-  -moz-animation: blink 1.2s infinite linear;
-  /* Firefox */
-  -webkit-animation: blink 1.2s infinite linear;
-  /* Safari 和 Chrome */
-  -o-animation: blink 1.2s infinite linear;
-  /* Opera */
-}
-
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-moz-keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-o-keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+  font-size: 11px;
+  border-radius: 5px;
+  background-color: #2B2E31;
+  color: #ADB2B5;
 }

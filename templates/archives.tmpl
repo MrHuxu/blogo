@@ -31,6 +31,8 @@
     {{ end }}
   </div>
 
+  <div class="ui divider archives-divider"></div>
+
   <div class="timeline-container post-list">
     {{ range $_, $title := .titles }}
       {{ $post := index $.rawData.Posts $title }}

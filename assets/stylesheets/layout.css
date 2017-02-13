@@ -1,5 +1,5 @@
 html, body {
-  background-color: #5B5150;
+  background-color: #3E4850;
 }
 
 * {
@@ -75,4 +75,62 @@ a:hover {
 .footer * {
   opacity: 0.8;
   font-family: 'Lato', sans-serif;
+}
+
+.snippet-arrow {
+  animation: blink 1.2s infinite linear;
+  -moz-animation: blink 1.2s infinite linear;
+  /* Firefox */
+  -webkit-animation: blink 1.2s infinite linear;
+  /* Safari 和 Chrome */
+  -o-animation: blink 1.2s infinite linear;
+  /* Opera */
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
