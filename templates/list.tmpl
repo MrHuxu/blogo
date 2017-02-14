@@ -3,30 +3,52 @@
     <link href="/assets/stylesheets/list.css" rel="stylesheet">
   {{ end }}
 
-  {{ range $_, $title := .titles }}
-    {{ $post := index $.posts $title }}
-    {{ if $post}}
-      <div class="item-container">
-        <div class="item-title">
-          <a href="/post/{{$title}}">{{$title}}</a>
-        </div>
-
-        <div class="item-tags">
-          {{ range $i, $Tag := $post.Tags }}
-            {{ if $i }}
-              <div class="tag-divider"></div>
-            {{ end }}
-            <a href="/?tag={{$Tag}}">{{ $Tag }}</a>
-          {{ end }}
-        </div>
-
-        <div class="item-date">
-          {{ $post.ShowDate }}
-        </div>
+  {{ if .selectedTag }}
+    <div class="search-container">
+      <div class="ui inverted right labeled left icon input">
+        <i class="search icon"></i>
+        <input type="text" placeholder="Search ...">
+        <a class="ui tag olive label">
+          {{ .selectedTag }}
+        </a>
       </div>
-      <div class="ui divider item-divider"></div>
-    {{ end }}
+    </div>
+  {{ else }}
+    <div class="search-container">
+      <div class="ui inverted left icon input">
+        <i class="search icon"></i>
+        <input type="text" placeholder="Search ...">
+      </div>
+    </div>
   {{ end }}
+  
+  <div class="list-container">
+    {{ range $_, $title := .titles }}
+      {{ $post := index $.posts $title }}
+
+      {{ if $post}}
+        <div class="item-container">
+          <div class="item-title">
+            <a href="/post/{{$title}}">{{$title}}</a>
+          </div>
+
+          <div class="item-tags">
+            {{ range $i, $Tag := $post.Tags }}
+              {{ if $i }}
+                <div class="tag-divider"></div>
+              {{ end }}
+              <a href="/?tag={{$Tag}}">{{ $Tag }}</a>
+            {{ end }}
+          </div>
+
+          <div class="item-date">
+            {{ $post.ShowDate }}
+          </div>
+        </div>
+        <div class="ui divider item-divider"></div>
+      {{ end }}
+    {{ end }}
+  </div>
 
   {{ if not .prd }}
     <script src="/assets/javascripts/list.js"></script>

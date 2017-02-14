@@ -24,13 +24,14 @@ func (pSvc *PostSvc) ShowSinglePost(c *gin.Context) {
 	title := c.Param("title")
 	pSvc.Posts[title].GetTotalContent()
 	c.HTML(http.StatusOK, "layout", gin.H{
-		"prd":       atPrd,
-		"postPage":  true,
-		"pageTitle": "Life of xhu - " + title,
-		"title":     title,
-		"post":      pSvc.Posts[title],
-		"titles":    pSvc.Titles,
-		"posts":     pSvc.Posts,
-		"rawData":   pSvc,
+		"prd":         atPrd,
+		"postPage":    true,
+		"pageTitle":   "Life of xhu - " + title,
+		"title":       title,
+		"post":        pSvc.Posts[title],
+		"titles":      pSvc.Titles,
+		"selectedTag": c.Query("tag"),
+		"posts":       pSvc.Posts,
+		"rawData":     pSvc,
 	})
 }

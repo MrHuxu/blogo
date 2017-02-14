@@ -1,3 +1,18 @@
+.search-container {
+  text-align: center;
+  position: fixed;
+  width: 25%;
+  height: 80px;
+  padding: 20px 0 20px 0;
+  z-index: 999;
+  background-color: #333840;
+  border-bottom: 1px solid gray;
+}
+
+.list-container {
+  padding: 96px 0 0 0;
+}
+
 .item-container {
   position: relative;
   padding: 5px 5%;

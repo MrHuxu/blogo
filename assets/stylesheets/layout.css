@@ -30,10 +30,9 @@ a:hover {
   vertical-align: top;
   display: inline-block;
   position: fixed;
-  width: 27%;
+  width: 25%;
   height: 100%;
   margin: 0 0 0 21%;
-  padding: 20px 0 0 0;
   overflow: auto;
   background-color: #333840;
   box-shadow: -20px 0 48px -10px #181818;
@@ -42,8 +41,8 @@ a:hover {
 .content {
   vertical-align: top;
   display: inline-block;
-  width: 51%;
-  margin: 0 0 0 48%;
+  width: 53%;
+  margin: 0 0 0 46%;
   background-color: #3E4850;
 }
 
