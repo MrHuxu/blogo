@@ -1,0 +1,20 @@
+{{ define "profile" }}
+  {{ if not .prd }}
+    <link href="/assets/stylesheets/profile.css" rel="stylesheet">
+  {{ end }}
+
+  <div class="starter-container">
+    Life of xhu
+    <i class="angle double right icon profile-arrow"></i>
+  </div>
+
+  <div class="links">
+    <a href="/">Home</a>
+    <a href="/archives">Archives</a>
+    <a target="_blank" href="http://xhu.me">Aboutme</a>
+  </div>
+
+  {{ if not .prd }}
+    <script src="/assets/javascripts/profile.js"></script>
+  {{ end }}
+{{ end }} 

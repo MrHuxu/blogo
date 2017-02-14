@@ -3,45 +3,6 @@
     <link href="/assets/stylesheets/home.css" rel="stylesheet">
   {{ end }}
 
-  {{ range $_, $title := .titles }}
-    {{ $post := index $.posts $title }}
-    <div class="snippet-container">
-      <a class="snippet-header" href="/post/{{$title}}">{{$title}}</a>
-
-      <div class="ui divider snippet-divider"></div>
-
-      <div class="snippet-footer">
-        <div class="tags">
-          {{ range $i, $Tag := $post.Tags }}
-            {{ if $i }}
-              <div class="tag-divider"></div>
-            {{ end }}
-            <a href="/archives?tag={{$Tag}}">{{ $Tag }}</a>
-          {{ end }}
-        </div>
-        <div class="date">
-          {{ $post.ShowDate }}
-        </div>
-      </div>
-    </div>
-  {{ end }}
-  <div class="paginate-container">
-    {{ if .hasPrev }}
-      <a href="/page/{{ sub .currentPage 1 }}">
-        <div class="paginate-prev">
-          <i class="chevron left icon"></i>
-        </div>
-      </a>
-    {{ end}}
-    {{ if .hasNext }}
-      <a href="/page/{{ add .currentPage 1 }}">
-        <div class="paginate-next">
-          <i class="chevron right icon"></i>
-        </div>
-      </a>
-    {{ end }}
-  </div>
-
   {{ if not .prd }}
     <script src="/assets/javascripts/home.js"></script>
   {{ end }}

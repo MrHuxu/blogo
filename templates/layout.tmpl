@@ -16,17 +16,12 @@
       {{ end }}
     </head>
     <body>
-      <div class="header">
-        <div class="starter-container">
-          Life of xhu
-          <i class="angle double right icon snippet-arrow"></i>
-        </div>
+      <div class="profile">
+        {{ template "profile" . }}
+      </div>
 
-        <div class="links">
-          <a href="/">Home</a>
-          <a href="/archives">Archives</a>
-          <a target="_blank" href="http://xhu.me">Aboutme</a>
-        </div>
+      <div class="list">
+        {{ template "list" . }}
       </div>
 
       <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
@@ -36,31 +31,30 @@
         <script src="/assets/javascripts/util.js"></script>
       {{ end }}
 
-      {{ if .homePage }}
-        {{ template "home" . }}
-      {{ end }}
+      <div class="content">
+        {{ if .homePage }}
+          {{ template "home" . }}
+        {{ end }}
 
-      {{ if .archivesPage }}
-        {{ template "archives" . }}
-      {{ end }}
+        {{ if .postPage }}
+          {{ template "post" . }}
+        {{ end }}
 
-      {{ if .postPage }}
-        {{ template "post" . }}
-      {{ end }}
+        <div class="footer">
+          <p>
+            Copyright © 2016 -&nbsp;
+            <a href="mailto:hxtheone@gmail.com">xhu</a>
+            &nbsp;- Powered by&nbsp;
+            <a target="_blank" href="https://github.com/gin-gonic/gin">Gin</a>,
+            <a target="_blank" href="http://jquery.com/">jQuery</a>,
+            <a target="_blank" href="https://daneden.github.io/animate.css/">Animate.css</a>,
+            <a target="_blank" href="http://semantic-ui.com/">Semantic UI</a>
+          </p>
+        </div>
+      </div>
 
       <div id="btc-container">
         <div id="back-to-top"></div>
-      </div>
-      <div class="footer">
-        <p>
-          Copyright © 2016 -&nbsp;
-          <a href="mailto:hxtheone@gmail.com">xhu</a>
-          &nbsp;- Powered by&nbsp;
-          <a target="_blank" href="https://github.com/gin-gonic/gin">Gin</a>,
-          <a target="_blank" href="http://jquery.com/">jQuery</a>,
-          <a target="_blank" href="https://daneden.github.io/animate.css/">Animate.css</a>,
-          <a target="_blank" href="http://semantic-ui.com/">Semantic UI</a>
-        </p>
       </div>
 
       <script src="http://cdn.bootcss.com/highlight.js/9.7.0/highlight.min.js"></script>

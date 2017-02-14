@@ -5,8 +5,6 @@ import (
 )
 
 func (pSvc *PostSvc) RegisterRoutes(server *gin.Engine) {
-	server.GET("/", pSvc.ShowSnippets)
-	server.GET("/page/:page", pSvc.ShowSnippets)
-	server.GET("/archives", pSvc.ShowArchives)
+	server.GET("/", pSvc.ShowHomepage)
 	server.GET("/post/:title", pSvc.ShowSinglePost)
 }

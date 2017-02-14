@@ -1,0 +1,41 @@
+.item-container {
+  position: relative;
+  padding: 5px 5%;
+}
+
+.item-title {
+}
+
+.item-title * {
+  color: #E6EFC2;
+}
+
+.item-tags {
+  margin: 10px 0 0 0;
+}
+
+.item-tags * {
+  display: inline-block;
+  vertical-align: top;
+  color: #348EB7;
+}
+
+.tag-divider {
+  margin: 8px 0 0;
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #348EB7;
+}
+
+.item-date {
+  position: absolute;
+  right: 5%;
+  bottom: 0px;
+  padding: 0 5px;
+  font-size: 11px;
+  border-radius: 5px;
+  background-color: #2B2E31;
+  color: #ADB2B5;
+}
