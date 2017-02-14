@@ -25,7 +25,7 @@ p, li {
   background-position: center;
   background-size: 100% auto;
   position: relative;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 2;
   color: #EEEAEB;
   font-weight:200;
@@ -98,7 +98,11 @@ pre code:text {
   height: 80px;
   padding: 22px 0 0 0;
   text-align: center;
-  color: #444444;
+  color: #ADB2B5;
+}
+
+.footer a {
+  color: #F5C583;
 }
 
 .footer * {

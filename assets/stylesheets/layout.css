@@ -36,7 +36,7 @@ a:hover {
   padding: 20px 0 0 0;
   overflow: auto;
   background-color: #333840;
-  box-shadow: -8px 0 48px #181818;
+  box-shadow: -20px 0 48px -10px #181818;
 }
 
 .content {
@@ -58,7 +58,7 @@ a:hover {
   color: #666;
 }
 
-#btc-container {
+#btt-container {
   position: fixed;
   right: -20px;
   bottom: 70px;
@@ -77,17 +77,4 @@ a:hover {
 
 #back-to-top:hover {
   background: rgba(87, 218, 178, 0.6) url(/assets/images/cd-top-arrow.svg) no-repeat center 50%;
-}
-
-.footer {
-  background-color: #FFFEEC;
-  height: 80px;
-  padding: 22px 0 0 0;
-  text-align: center;
-  color: #444444;
-}
-
-.footer * {
-  opacity: 0.8;
-  font-family: 'Lato', sans-serif;
 }

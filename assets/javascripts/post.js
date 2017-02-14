@@ -26,9 +26,9 @@ $(() => {
     $(img.parentElement).css({ textAlign: 'center' });
   });
 
-  setTimeout(() => {
-    var songId = songIds[parseInt(Math.random() * 100) % songIds.length];
-    var playerDom = $(`<iframe id="wangyi-player" frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="http://music.163.com/outchain/player?type=2&id=${songId}&auto=1&height=66"></iframe>`)
-    playerDom.appendTo($('.post-container'));
-  }, 1400);
+  // setTimeout(() => {
+  //   var songId = songIds[parseInt(Math.random() * 100) % songIds.length];
+  //   var playerDom = $(`<iframe id="wangyi-player" frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="http://music.163.com/outchain/player?type=2&id=${songId}&auto=1&height=66"></iframe>`)
+  //   playerDom.appendTo($('.post-container'));
+  // }, 1400);
 });

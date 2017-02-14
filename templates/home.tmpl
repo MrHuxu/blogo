@@ -4,13 +4,28 @@
   {{ end }}
 
   <div class="tags-container">
+    {{ if $.selectedTag }}
+      <a href="/">
+        <button class="ui inverted teal button show-all-btn">
+          Show All
+        </button>
+      </a>
+    {{ end }}
     <div class="tag-list">
       {{ range $_, $tag := .rawData.Tags }}
-        <div class="tag-link">
-          {{ $times := index $.rawData.TagTimes $tag }}
-          {{ $extraSize := mul $times 0.6 }}
-          <a href="/?tag={{$tag}}" style="font-size:{{ add $extraSize 16 }}px;">{{$tag}}</a>
-        </div>
+        {{ if eq $.selectedTag $tag }}
+          <div class="tag-link tag-selected">
+            {{ $times := index $.rawData.TagTimes $tag }}
+            {{ $extraSize := mul $times 0.6 }}
+            <a href="/?tag={{$tag}}" style="font-size:{{ add $extraSize 16 }}px;">{{$tag}}</a>
+          </div>
+        {{ else }}
+          <div class="tag-link">
+            {{ $times := index $.rawData.TagTimes $tag }}
+            {{ $extraSize := mul $times 0.6 }}
+            <a href="/?tag={{$tag}}" style="font-size:{{ add $extraSize 16 }}px;">{{$tag}}</a>
+          </div>
+        {{ end }}
       {{ end }}
     </div>
   </div>

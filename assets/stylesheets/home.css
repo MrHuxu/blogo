@@ -1,14 +1,33 @@
 .tags-container {
   height: 100%;
-  padding: 25% 15% 0 15%;
+  padding: 12% 15% 80px 15%;
+}
+
+.show-all-btn {
+  margin: 5px 5px 20px 5px !important;
+}
+
+.show-all-btn * {
+  color: #D4CFD1;
 }
 
 .tag-link {
   vertical-align: top;
   display: inline-block;
-  margin: 0 5px 18px 5px;
+  margin: 5px 5px 10px 5px;
+  border-radius: 5px;
+  padding: 10px 5px;
+  background-color: #2B2E31;
 }
 
 .tag-link a {
   color: #D4CFD1;
+}
+
+.tag-selected a {
+  color: #CC5A7B;
+}
+
+.footer {
+  margin: -80px 0 0 0;
 }
