@@ -11,7 +11,7 @@ var atPrd = os.Getenv("ENV") == "Production"
 func (pSvc *PostSvc) ShowHomepage(c *gin.Context) {
 	c.HTML(http.StatusOK, "layout", gin.H{
 		"prd":         atPrd,
-		"homepage":    true,
+		"homePage":    true,
 		"pageTitle":   "Life of xhu",
 		"selectedTag": c.Query("tag"),
 		"titles":      pSvc.FilterByTag(c.Query("tag")),

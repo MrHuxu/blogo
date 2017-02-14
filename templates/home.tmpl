@@ -3,6 +3,18 @@
     <link href="/assets/stylesheets/home.css" rel="stylesheet">
   {{ end }}
 
+  <div class="tags-container">
+    <div class="tag-list">
+      {{ range $_, $tag := .rawData.Tags }}
+        <div class="tag-link">
+          {{ $times := index $.rawData.TagTimes $tag }}
+          {{ $extraSize := mul $times 0.6 }}
+          <a href="/?tag={{$tag}}" style="font-size:{{ add $extraSize 16 }}px;">{{$tag}}</a>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+
   {{ if not .prd }}
     <script src="/assets/javascripts/home.js"></script>
   {{ end }}

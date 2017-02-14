@@ -1,85 +1,14 @@
-.snippet-container, .paginate-container {
+.tags-container {
+  height: 100%;
+  padding: 25% 15% 0 15%;
+}
+
+.tag-link {
   vertical-align: top;
   display: inline-block;
-  width: 100%;
-  padding: .2% 30% 0 30%;
-  overflow: hidden;
+  margin: 0 5px 18px 5px;
 }
 
-.paginate-container {
-  margin: 0 0 0 2%;
-  width: 47%;
-  font-size: 38px;
-}
-
-.paginate-prev, .paginate-next {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-  text-align: center;
-  width: 48%;
-  height: 80%;
-  margin: 0;
-}
-
-.paginate-prev i, .paginate-next i {
-  position: absolute;
-}
-
-.snippet-header {
-  color: #E6EFC2;
-  font-size: 14px;
-  line-height: 30px;
-  margin: 0 0 10px 0;
-  cursor: pointer;
-}
-
-.snippet-divider {
-  margin: .2rem 0 .4rem 0 !important;
-  width: 40%;
-}
-
-.snippet-content {
-  margin: 10px 0 35px 0;
-}
-
-.snippet-content * {
-  color: #999;
-  font-size: 16px;
-  line-height: 30px;
-}
-
-.snippet-footer > div {
-  display: inline-block;
-}
-
-.snippet-footer * {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  opacity: 0.9;
-}
-
-.tags * {
-  color: #348EB7;
-  cursor: pointer;
-}
-
-.tag-divider {
-  vertical-align: top;
-  margin: 8px 0 0 0;
-  display: inline-block;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background-color: #348EB7;
-}
-
-.date {
-  margin: 0 0 15px 0;
-  padding: 0 5px;
-  float: right;
-  font-size: 11px;
-  border-radius: 5px;
-  background-color: #2B2E31;
-  color: #ADB2B5;
+.tag-link a {
+  color: #71AFE5;
 }
