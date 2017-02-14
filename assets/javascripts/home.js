@@ -16,4 +16,8 @@ $(() => {
   }, function () {
     $(this).animate({ backgroundColor: "#FFFFFF" }, 100);
   });
+
+  $('.tag-link').hover(function () {
+    $(this).animateCss('tada');
+  }, () => {});
 });
