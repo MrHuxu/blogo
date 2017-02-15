@@ -29,8 +29,8 @@ func (pSvc *PostSvc) ShowSinglePost(c *gin.Context) {
 		"pageTitle":   "Life of xhu - " + title,
 		"title":       title,
 		"post":        pSvc.Posts[title],
-		"titles":      pSvc.Titles,
 		"selectedTag": c.Query("tag"),
+		"titles":      pSvc.FilterByTag(c.Query("tag")),
 		"posts":       pSvc.Posts,
 		"rawData":     pSvc,
 	})

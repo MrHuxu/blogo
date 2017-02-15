@@ -29,7 +29,11 @@
       {{ if $post}}
         <div class="item-container">
           <div class="item-title">
-            <a href="/post/{{$title}}">{{$title}}</a>
+            {{ if $.selectedTag }}
+              <a href="/post/{{$title}}?tag={{$.selectedTag}}">{{$title}}</a>
+            {{ else }}
+              <a href="/post/{{$title}}">{{$title}}</a>
+            {{ end }}
           </div>
 
           <div class="item-tags">
