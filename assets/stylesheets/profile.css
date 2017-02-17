@@ -1,3 +1,7 @@
+.profile-container {
+  padding: 25% 0 0 0;
+}
+
 .starter-container {
   margin: 0 0 21px 0;
   text-align: center;
@@ -13,6 +17,73 @@
   /* Safari 和 Chrome */
   -o-animation: blink 1.2s infinite linear;
   /* Opera */
+}
+
+.profile-link-container {
+  background-color: #4F64AA;
+  margin: 0 0 10px 0;
+  padding: 20px 0 20px 0;
+}
+
+.profile-link-container a {
+  font-size: 18px;
+  color: #FAFBFC;
+  margin: 0 0 0 25px;
+}
+
+.profile-link-container a:hover {
+  color: #666;
+}
+
+.info-container {
+  margin: 0 0 10px 0;
+}
+
+.info {
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  margin: 0;
+  padding: 20px 0 20px 0;
+}
+
+.info.git {
+  background-color: #EE7836;
+  width: 49.1%;
+}
+
+.info.blog {
+  background-color: #05B2D2;
+  width: 49.1%;
+}
+
+.site-container {
+  margin: 0 0 10px 0;
+}
+
+.site {
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  width: 32%;
+  padding: 20px 0 20px 0;
+}
+
+.site i {
+  font-size: 20px;
+  color: #25242B;
+}
+
+.site.github {
+  background-color: #D2D5E8;
+}
+
+.site.weibo {
+  background-color: #BE8776;
+}
+
+.site.steam {
+  background-color: #A9A9A8;
 }
 
 @keyframes blink {

@@ -3,15 +3,37 @@
     <link href="/assets/stylesheets/profile.css" rel="stylesheet">
   {{ end }}
 
-  <div class="starter-container">
-    Life of xhu
-    <i class="angle double right icon profile-arrow"></i>
+  <div class="profile-container">
+    <div class="starter-container">
+      Life of xhu
+      <i class="angle double right icon profile-arrow"></i>
+    </div>
+
+    <div class="links">
+      <div class="profile-link-container">
+        <a href="/">Home</a>
+      </div>
+      <div class="profile-link-container">
+        <a target="_blank" href="http://xhu.me">Aboutme</a>
+      </div>
+    </div>
   </div>
 
-  <div class="links">
-    <a href="/">Home</a>
-    <a href="/archives">Archives</a>
-    <a target="_blank" href="http://xhu.me">Aboutme</a>
+  <div class="info-container">
+    <div class="info git"> 65 repos </div>
+    <div class="info blog"> 87 posts </div>
+  </div>
+
+  <div class="site-container">
+    <div class="site github">
+      <i class="github icon"></i>
+    </div>
+    <div class="site weibo">
+      <i class="weibo icon"></i>
+    </div>
+    <div class="site steam">
+      <i class="steam icon"></i>
+    </div>
   </div>
 
   {{ if not .prd }}

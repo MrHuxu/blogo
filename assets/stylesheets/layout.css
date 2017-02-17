@@ -20,9 +20,8 @@ a:hover {
   vertical-align: top;
   display: inline-block;
   position: fixed;
-  width: 21%;
+  width: 21.5%;
   height: 100%;
-  padding: 20% 0 0 0;
   background-color: #21242A;
 }
 
@@ -44,17 +43,6 @@ a:hover {
   width: 53%;
   margin: 0 0 0 46%;
   background-color: #3E4850;
-}
-
-.links a {
-  vertical-align: top;
-  font-size: 18px;
-  color: #aaa;
-  margin: 0 0 0 25px;
-}
-
-.links a:hover {
-  color: #666;
 }
 
 #btt-container {
