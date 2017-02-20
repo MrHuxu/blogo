@@ -1,7 +1,6 @@
 .profile-container {
   padding: 25% 0 0 0;
 }
-
 .starter-container {
   margin: 0 0 21px 0;
   text-align: center;
@@ -84,6 +83,10 @@
 
 .site.steam {
   background-color: #A9A9A8;
+}
+
+.blockquote {
+  background-color: #1d1d1d;
 }
 
 @keyframes blink {
