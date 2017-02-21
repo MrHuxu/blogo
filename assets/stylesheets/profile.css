@@ -85,8 +85,36 @@
   background-color: #A9A9A8;
 }
 
+.blockquote-container {
+  padding: 20px 0 0 0;
+}
+
 .blockquote {
-  background-color: #1d1d1d;
+  padding: 20px 30px;
+  background-color: #111;
+}
+
+.blockquote p {
+  margin: 0 0 12px 0 !important;
+}
+
+.blockquote .text {
+  font-family: "Arial Black";
+  font-size: 21px;
+  color: #E8E8E8;
+}
+
+.blockquote .author {
+  font-size: 14px;
+  font-style: italic;
+  color: #BEBEBE;
+}
+
+.blockquote .location {
+  font-size: 11px;
+  line-height: 13px;
+  font-style: italic;
+  color: #A4A4A4;
 }
 
 @keyframes blink {
