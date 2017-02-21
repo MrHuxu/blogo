@@ -1,6 +1,7 @@
 .profile-container {
   padding: 25% 0 0 0;
 }
+
 .starter-container {
   margin: 0 0 21px 0;
   text-align: center;
@@ -90,8 +91,20 @@
 }
 
 .blockquote {
+  position: relative;
   padding: 20px 30px;
   background-color: #111;
+}
+
+.blockquote:after {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  bottom: -18px;
+  border-width: 18px 18px 0;
+  border-style: solid;
+  border-color: #111 transparent transparent;
 }
 
 .blockquote p {
