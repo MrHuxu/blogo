@@ -22,6 +22,7 @@ a:hover {
   position: fixed;
   width: 21.5%;
   height: 100%;
+  overflow: auto;
   background-color: #21242A;
 }
 
