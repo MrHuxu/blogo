@@ -10,12 +10,16 @@
     </div>
 
     <div class="links">
-      <div class="profile-link-container">
-        <a href="/">Home</a>
-      </div>
-      <div class="profile-link-container">
-        <a target="_blank" href="http://xhu.me">Aboutme</a>
-      </div>
+      <a href="/">
+        <div class="profile-link-container">
+          Home
+        </div>
+      </a>
+      <a target="_blank" href="http://xhu.me">
+        <div class="profile-link-container">
+          Aboutme
+        </div>
+      </a>
     </div>
   </div>
 
@@ -25,15 +29,21 @@
   </div>
 
   <div class="site-container">
-    <div class="site github">
-      <i class="github icon"></i>
-    </div>
-    <div class="site weibo">
-      <i class="weibo icon"></i>
-    </div>
-    <div class="site steam">
-      <i class="steam icon"></i>
-    </div>
+    <a target="_blank" href="https://github.com/MrHuxu">
+      <div class="site github">
+        <i class="github icon"></i>
+      </div>
+    </a>
+    <a target="_blank" href="http://weibo.com/u/2058722335">
+      <div class="site weibo">
+        <i class="weibo icon"></i>
+      </div>
+    </a>
+    <a target="_blank" href="http://steamcommunity.com/profiles/76561198096059450/">
+      <div class="site steam">
+        <i class="steam icon"></i>
+      </div>
+    </a>
   </div>
 
   <div class="blockquote-container">
@@ -51,7 +61,4 @@
     </div>
   </div>
 
-  {{ if not .prd }}
-    <script src="/assets/javascripts/profile.js"></script>
-  {{ end }}
 {{ end }} 

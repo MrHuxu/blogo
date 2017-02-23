@@ -12,27 +12,16 @@
 .profile-arrow {
   animation: blink 1.2s infinite linear;
   -moz-animation: blink 1.2s infinite linear;
-  /* Firefox */
   -webkit-animation: blink 1.2s infinite linear;
-  /* Safari 和 Chrome */
   -o-animation: blink 1.2s infinite linear;
-  /* Opera */
 }
 
 .profile-link-container {
   background-color: #4F64AA;
   margin: 0 0 10px 0;
-  padding: 20px 0 20px 0;
-}
-
-.profile-link-container a {
+  padding: 20px 0 20px 20px;
   font-size: 18px;
   color: #FAFBFC;
-  margin: 0 0 0 25px;
-}
-
-.profile-link-container a:hover {
-  color: #666;
 }
 
 .info-container {
