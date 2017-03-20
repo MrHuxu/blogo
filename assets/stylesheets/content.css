@@ -71,7 +71,14 @@ p code, li > code {
 }
 
 code, code * {
-  font-family: "Monaco", "MonacoRegular", "Courier New", monospace !important;
+  width: 100%;
+  color: #222;
+
+  font-family: source-code-pro, Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
 }
 
 code span {
