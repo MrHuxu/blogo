@@ -5,6 +5,7 @@ import (
 	"math"
 	"sort"
 	"strconv"
+	"strings"
 )
 
 type PostSvc struct {
@@ -39,7 +40,7 @@ func (pSvc *PostSvc) GeneratePages() {
 func (pSvc *PostSvc) CacheTags(tags []string) {
 	for _, tag := range tags {
 		_, ok := pSvc.TagTimes[tag]
-		pSvc.TagTimes[tag] += 1
+		pSvc.TagTimes[tag]++
 		if !ok {
 			pSvc.Tags = append([]string{tag}, pSvc.Tags...)
 		}
@@ -101,11 +102,13 @@ func (pSvc *PostSvc) FilterByTag(selectedTag string) []string {
 func (pSvc *PostSvc) CachePosts() {
 	var files, err = ioutil.ReadDir("./archives")
 	CheckErr(err)
-	for i := range files {
-		p := GetInfosFromName(files[i].Name())
-		pSvc.Posts[p.Title] = p
-		pSvc.CacheTags(p.Tags)
-		pSvc.Titles = append(pSvc.Titles, p.Title)
+	for _, file := range files {
+		if !strings.HasPrefix(file.Name(), "WIP:") {
+			p := GetInfosFromName(file.Name())
+			pSvc.Posts[p.Title] = p
+			pSvc.CacheTags(p.Tags)
+			pSvc.Titles = append(pSvc.Titles, p.Title)
+		}
 	}
 	sort.Sort(pSvc)
 }
