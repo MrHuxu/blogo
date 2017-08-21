@@ -32,6 +32,21 @@
 
     console.log(obj.plus);
 
-看上去和第一段代码没有区别, 输出应该还是 `2` 吧? 这个结论正确吗?
+别急, 还有一段代码:
 
-我们在终端里用Node来跑一下这段程序就能发现, 答案并不是 `2`, 而是 `NaN`, 至于为什么会这样, 我们在代码中大断点输出之后可以发现, `get plus ()` 中, `this.base` 并没有取到值, 而是 `undefined`.
+    const base = {
+      base: 1
+    };
+
+    const obj = {
+      ...base,
+      get plus () {
+        return this.base + 1;
+      }
+    }
+
+    console.log(obj.plus);
+
+这两段代码看上去和第一段代码没有太大区别, 输出应该还是 `2` 吧? 这个结论正确吗?
+
+我们在终端里用Node来跑一下这段程序就能发现, 地一段代码的结果并不是 `2`, 而是 `NaN`, 而第二段的结果是 `2`, 至于为什么会这样, 我们在代码中打断点输出之后可以发现, `get plus ()` 中, `this.base` 并没有取到值, 而是 `undefined`.
