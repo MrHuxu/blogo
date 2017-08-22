@@ -50,3 +50,19 @@
 这两段代码看上去和第一段代码没有太大区别, 输出应该还是 `2` 吧? 这个结论正确吗?
 
 我们在终端里用Node来跑一下这段程序就能发现, 地一段代码的结果并不是 `2`, 而是 `NaN`, 而第二段的结果是 `2`, 至于为什么会这样, 我们在代码中打断点输出之后可以发现, `get plus ()` 中, `this.base` 并没有取到值, 而是 `undefined`.
+
+这样看来, 似乎我们可以得出一个观点, 那就是, Getter只有跟着对象一起定义, `this` 才是正确的对象, 否则的话, 如果使用解构嵌入的方式的话, this指向的是原始的对象.
+
+那么有没有方法, 在一个定义好的对象上加上Getter呢? 当然有了, 这时就要用到 `defineProperty` 大法了:
+
+    const obj = {
+      base: 1
+    };
+
+    Object.defineProperty(obj, 'plus', { get: function () {
+      return this.base + 1;
+    } });
+
+    console.log(obj.plus);
+
+这样一来, 我们就成功的给对象加上了一个新的Getter.
