@@ -19,3 +19,27 @@
 
 我们继续找到 `src/isomorphic/modern/class/ReactBaseClasses.js` 文件, 这个文件里可以看到 `Component` 的详细定义:
 
+    var ReactNoopUpdateQueue = require('ReactNoopUpdateQueue');
+
+    function ReactComponent(props, context, updater) {
+      this.props = props;
+      this.context = context;
+      this.refs = emptyObject;
+      this.updater = updater || ReactNoopUpdateQueue;
+    }
+
+    ReactComponent.prototype.isReactComponent = {};
+
+    ReactComponent.prototype.setState = function(partialState, callback) {
+      ...
+      this.updater.enqueueSetState(this, partialState, callback, 'setState');
+    };
+
+    ReactComponent.prototype.forceUpdate = function(callback) {
+      this.updater.enqueueForceUpdate(this, callback, 'forceUpdate');
+    };
+
+这里可以看到, 一个组件就是一个函数, 接收三个参数, 也就是我们在写React的时候最常见的 `props`, 'context', 以及一个我们一般不会用的 `updater`, 通过命名后面的代码可以看出, 这个参数作用就是一个任务队列, 当我们使用 `setState`/`forceUpdate` 的时候, 就会把更新操作放到这个队列里.
+
+正因为这里有一个队列来操作, 所以当我们调用这两个方法的时候, 并不会立即在 `this` 指针上得到修改之后的效果, 我们只能在回调里, 或者 `componentDidUpdate` 方法里来获得更新之后的值.
+
