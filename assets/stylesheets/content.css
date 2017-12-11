@@ -73,6 +73,10 @@ code span {
   white-space: nowrap;
 }
 
+code span.hljs-comment {
+  white-space: pre !important;
+}
+
 pre code {
   display: block;
   font-size: 12px;
