@@ -2,7 +2,6 @@
 
 这个问题的难点是, 最短距离的叶子结点可能并不是目标结点的子节点, 比如下面这个例子:
 
->
     Input:
     root = [1,2,3,4,null,null,null,5,null,6], k = 2
     Diagram of binary tree:
