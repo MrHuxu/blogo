@@ -16,9 +16,21 @@ a:hover {
   color: #3B94C0;
 }
 
-.header {
-  height: 120px;
+.header .bg {
+  height: 100%;
+  width: 100%;
+  background: url("http://desk.fd.zol-img.com.cn/t_s1920x1200c5/g5/M00/01/0E/ChMkJlbKwXOIcVvyAAYKncvoOCsAALGYgE5WUcABgq1866.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.header .content {
+  height: 100%;
+  width: 100%;
   padding: 40px 120px 0 120px;
+  background-color: rgba(122, 122, 122, 0.3);
 }
 
 .logo {
@@ -37,12 +49,18 @@ a:hover {
 .links a {
   vertical-align: top;
   font-size: 18px;
-  color: #aaa;
+  color: #FFF;
   margin: 0 0 0 25px;
 }
 
 .links a:hover {
   color: #666;
+}
+
+.latest-post {
+  margin: 18% 0 0 0%;
+  font-size: 38px;
+  color: #DDD;
 }
 
 #btc-container {
