@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/MrHuxu/blogo/app/service"
-	"github.com/MrHuxu/blogo/app/util"
 	"github.com/gin-gonic/gin"
 )
 
@@ -11,15 +10,21 @@ const (
 	serverPort = "13109"
 )
 
+func handleError(err error) {
+	if err != nil {
+		panic(err)
+	}
+}
+
 func main() {
 	server := gin.Default()
 	server.Static("/assets", assetDir)
 
 	service, err := service.New()
-	util.HandleError(err)
+	handleError(err)
 
 	err = service.SetTemplates(server)
-	util.HandleError(err)
+	handleError(err)
 
 	service.RegisterRoutes(server)
 

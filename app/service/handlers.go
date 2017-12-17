@@ -1,7 +1,6 @@
 package service
 
 import (
-	"github.com/MrHuxu/blogo/app/util"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"os"
@@ -13,7 +12,9 @@ var atPrd = os.Getenv("ENV") == "Production"
 func (svc *Service) homeHandler(c *gin.Context) {
 	param := c.Param("page")
 	page, err := strconv.Atoi(param)
-	util.HandleError(err)
+	if err != nil {
+		page = 0
+	}
 
 	canBeAppend := svc.postListCanBeAppend(page)
 	paginatedTitles := svc.paginatedTitles(page)
