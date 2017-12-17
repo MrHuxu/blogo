@@ -1,6 +1,7 @@
 package service
 
 import (
+	"github.com/MrHuxu/blogo/app/util"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"os"
@@ -9,20 +10,18 @@ import (
 
 var atPrd = os.Getenv("ENV") == "Production"
 
-func handleError(err error) { panic(err) }
-
 func (svc *Service) homeHandler(c *gin.Context) {
 	param := c.Param("page")
 	page, err := strconv.Atoi(param)
-	handleError(err)
+	util.HandleError(err)
 
 	canBeAppend := svc.postListCanBeAppend(page)
 	paginatedTitles := svc.paginatedTitles(page)
 
 	paginatedPosts := make(map[string]*post)
 	for i := range paginatedTitles {
-		paginatedPosts[paginatedTitles[i]] = svc.Posts[paginatedTitles[i]]
-		paginatedPosts[paginatedTitles[i]].GetPartialContent()
+		paginatedPosts[paginatedTitles[i]] = svc.posts[paginatedTitles[i]]
+		paginatedPosts[paginatedTitles[i]].getPartialContent()
 	}
 
 	c.HTML(http.StatusOK, "layout", gin.H{
@@ -38,13 +37,13 @@ func (svc *Service) homeHandler(c *gin.Context) {
 
 func (svc *Service) postHandler(c *gin.Context) {
 	title := c.Param("title")
-	svc.Posts[title].GetTotalContent()
+	svc.posts[title].getTotalContent()
 	c.HTML(http.StatusOK, "layout", gin.H{
 		"prd":       atPrd,
 		"postPage":  true,
 		"pageTitle": "Life of xhu - " + title,
 		"title":     title,
-		"post":      svc.Posts[title],
+		"post":      svc.posts[title],
 	})
 }
 

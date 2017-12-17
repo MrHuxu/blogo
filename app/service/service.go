@@ -9,22 +9,22 @@ import (
 )
 
 type Service struct {
-	MaxPage int
-	Titles  []string
-	Tags    []string
-	Posts   map[string]*post
+	maxPage int
+	titles  []string
+	tags    []string
+	posts   map[string]*post
 }
 
 func (svc *Service) postListCanBeAppend(page int) bool {
-	return page < svc.MaxPage
+	return page < svc.maxPage
 }
 
 func (svc *Service) paginatedTitles(page int) []string {
 	var result []string
-	if page >= svc.MaxPage {
-		result = svc.Titles[10*page : len(svc.Titles)]
+	if page >= svc.maxPage {
+		result = svc.titles[10*page : len(svc.titles)]
 	} else {
-		result = svc.Titles[10*page : 10*(page+1)]
+		result = svc.titles[10*page : 10*(page+1)]
 	}
 	return result
 }
@@ -35,8 +35,8 @@ func (svc *Service) filterByTag(selectedTag string) []string {
 	var yearFlag string
 
 	if selectedTag == "" {
-		for _, title := range svc.Titles {
-			year := strconv.Itoa(svc.Posts[title].Date.Year())
+		for _, title := range svc.titles {
+			year := strconv.Itoa(svc.posts[title].Date.Year())
 			if year != yearFlag {
 				result = append(result, year)
 				yearFlag = year
@@ -45,16 +45,16 @@ func (svc *Service) filterByTag(selectedTag string) []string {
 			result = append(result, title)
 		}
 	} else {
-		for _, title := range svc.Titles {
+		for _, title := range svc.titles {
 			flag = false
-			for _, tag := range svc.Posts[title].Tags {
+			for _, tag := range svc.posts[title].Tags {
 				flag = tag == selectedTag
 				if flag {
 					break
 				}
 			}
 			if flag {
-				year := strconv.Itoa(svc.Posts[title].Date.Year())
+				year := strconv.Itoa(svc.posts[title].Date.Year())
 				if year != yearFlag {
 					result = append(result, year)
 					yearFlag = year
@@ -75,25 +75,29 @@ func (svc *Service) cachePosts() error {
 
 	for _, file := range files {
 		if !strings.HasPrefix(file.Name(), "WIP:") {
-			p := GetInfosFromName(file.Name())
-			svc.Posts[p.Title] = p
-			svc.Titles = append(svc.Titles, p.Title)
+			p, err := getInfosFromName(file.Name())
+			if err != nil {
+				return err
+			}
+
+			svc.posts[p.Title] = p
+			svc.titles = append(svc.titles, p.Title)
 		}
 	}
-	sort.Slice(svc.Titles, func(i, j int) bool {
-		return svc.Posts[svc.Titles[i]].Seq > svc.Posts[svc.Titles[j]].Seq
+	sort.Slice(svc.titles, func(i, j int) bool {
+		return svc.posts[svc.titles[i]].Seq > svc.posts[svc.titles[j]].Seq
 	})
 	return nil
 }
 
 func (svc *Service) getMaxPage() {
-	svc.MaxPage = int(math.Ceil(float64(len(svc.Titles) / 10.0)))
+	svc.maxPage = int(math.Ceil(float64(len(svc.titles) / 10.0)))
 }
 
 func New() (*Service, error) {
 	service := &Service{
-		Titles: []string{},
-		Posts:  make(map[string]*post),
+		titles: []string{},
+		posts:  make(map[string]*post),
 	}
 
 	err := service.cachePosts()
