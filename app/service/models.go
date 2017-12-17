@@ -1,4 +1,4 @@
-package postSvc
+package service
 
 import (
 	"github.com/russross/blackfriday"
@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-type Post struct {
+type post struct {
 	Name     string        `json:"name"`
 	Seq      int           `json:"seq"`
 	Title    string        `json:"title"`
@@ -19,18 +19,18 @@ type Post struct {
 	Content  template.HTML `json:"content"`
 }
 
-func (p *Post) GetFileContent() string {
+func (p *post) GetFileContent() string {
 	data, err := ioutil.ReadFile("./archives/" + p.Name)
 	CheckErr(err)
 	return string(data)
 }
 
-func (p *Post) GetPartialContent() {
+func (p *post) GetPartialContent() {
 	bytes := []byte(p.GetFileContent()[0:200])
 	p.Content = template.HTML(blackfriday.MarkdownCommon(bytes))
 }
 
-func (p *Post) GetTotalContent() {
+func (p *post) GetTotalContent() {
 	bytes := []byte(p.GetFileContent())
 	p.Content = template.HTML(blackfriday.MarkdownCommon(bytes))
 }
