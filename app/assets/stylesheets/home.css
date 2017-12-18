@@ -7,7 +7,8 @@
 }
 
 .home-header > .bg-pic {
-  width: 110%;
+  width: 120%;
+  margin: -10% 0 0 0;
 }
 
 .home-header > .bg-blur {
