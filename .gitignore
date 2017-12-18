@@ -3,3 +3,4 @@ npm-debug.log
 assets/dist
 .DS_Store
 main
+gin-bin
