@@ -16,7 +16,7 @@ div.home-item-pic {
   border: 1px #DDD solid;
   height: 82%;
   width: 93%;
-  top: 18%;
+  top: 15%;
   right: -11%;
   background: url("http://img1.gamersky.com/upimg/users/2017/12/16/origin_201712161256028363.jpg") no-repeat center center;
   z-index: 900;
@@ -64,7 +64,7 @@ div.home-item-content {
 
 .snippet-header {
   color: #666;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 30px;
   margin: 0 0 10px 0;
   cursor: pointer;
@@ -79,8 +79,8 @@ div.home-item-content {
 }
 
 .snippet-content * {
-  color: #999;
-  font-size: 16px;
+  color: #888;
+  font-size: 14px;
   line-height: 30px;
 }
 
