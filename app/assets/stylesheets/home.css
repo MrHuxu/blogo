@@ -58,7 +58,7 @@ div.home-item-content {
   height: 100%;
   vertical-align: top;
   display: inline-block;
-  padding: 8% 5% 3% 6%;
+  padding: 8% 6% 3% 6%;
   overflow: hidden;
 }
 
@@ -80,7 +80,7 @@ div.home-item-content {
 
 .snippet-content * {
   color: #888;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 30px;
 }
 
@@ -90,7 +90,7 @@ div.home-item-content {
 
 .snippet-footer * {
   font-family: 'Open Sans', sans-serif;
-  font-size: 17px;
+  font-size: 15px;
   opacity: 0.9;
 }
 

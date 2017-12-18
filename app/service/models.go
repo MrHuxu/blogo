@@ -32,7 +32,7 @@ func (p *post) getPartialContent() {
 	if len([]byte(fullContent)) < 201 {
 		p.Content = template.HTML(blackfriday.MarkdownCommon([]byte{}))
 	} else {
-		p.Content = template.HTML(blackfriday.MarkdownCommon([]byte(fullContent[0:200])))
+		p.Content = template.HTML(blackfriday.MarkdownCommon([]byte(fullContent[0:200] + "...")))
 	}
 }
 
