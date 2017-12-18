@@ -6,11 +6,11 @@ import (
 )
 
 var funcMap = template.FuncMap{
-	"add": func(i int, j int) int {
+	"add": func(i, j int) int {
 		return i + j
 	},
 
-	"sub": func(i int, j int) int {
+	"sub": func(i, j int) int {
 		return i - j
 	},
 
@@ -28,6 +28,20 @@ var funcMap = template.FuncMap{
 
 	"removeYear": func(date string) string {
 		return date[:6]
+	},
+
+	"getPicPosition": func(index int) string {
+		if index%2 == 0 {
+			return "left"
+		}
+		return "right"
+	},
+
+	"getContentPosition": func(index int) string {
+		if index%2 == 0 {
+			return "right"
+		}
+		return "left"
 	},
 }
 
