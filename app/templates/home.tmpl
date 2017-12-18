@@ -3,54 +3,57 @@
     <link href="/assets/stylesheets/home.css" rel="stylesheet">
   {{ end }}
 
-  {{ range $i, $title := .titles }}
-    {{ $post := index $.posts $title }}
+  <div class="home-container">
+    {{ range $i, $title := .titles }}
+      {{ $post := index $.posts $title }}
 
-    {{ $picPos := getPicPosition $i }}
-    {{ $contentPos := getContentPosition $i }}
+      {{ $picPos := getPicPosition $i }}
+      {{ $contentPos := getContentPosition $i }}
 
-    <div class="home-item">
-      {{ if eq $picPos "left" }}
-        <div class="home-item-container-{{ $picPos }}">
-          <div class="home-item-pic"></div>
-        </div>
-      {{ end }}
+      <div class="home-item">
+        {{ if eq $picPos "left" }}
+          <div class="home-item-container-{{ $picPos }}">
+            <img class="home-item-pic" src="http://img1.gamersky.com/upimg/users/2017/12/16/origin_201712161256028363.jpg" />
+          </div>
+        {{ end }}
 
-      <div class="home-item-container-{{ $contentPos }}">
-        <div class="home-item-content">
-          <div class="snippet-container">
-            <a class="snippet-header" href="/post/{{$title}}">{{$title}}</a>
+        <div class="home-item-container-{{ $contentPos }}">
+          <div class="home-item-content">
+            <div class="snippet-container">
+              <a class="snippet-header" href="/post/{{$title}}">{{$title}}</a>
 
-            <div class="ui divider snippet-divider"></div>
+              <div class="ui divider snippet-divider"></div>
 
-            <div class="snippet-content">
-              {{ $post.Content }}
-            </div>
-
-            <div class="snippet-footer">
-              <div class="tags">
-                {{ range $j, $Tag := $post.Tags }}
-                  {{ if $j }}
-                    <div class="tag-divider"></div>
-                  {{ end }}
-                  <a href="/archives?tag={{$Tag}}">{{ $Tag }}</a>
-                {{ end }}
+              <div class="snippet-content">
+                {{ $post.Content }}
               </div>
-              <div class="date">
-                {{ $post.ShowDate }}
+
+              <div class="snippet-footer">
+                <div class="tags">
+                  {{ range $j, $Tag := $post.Tags }}
+                    {{ if $j }}
+                      <div class="tag-divider"></div>
+                    {{ end }}
+                    <a href="/archives?tag={{$Tag}}">{{ $Tag }}</a>
+                  {{ end }}
+                </div>
+                <div class="date">
+                  {{ $post.ShowDate }}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {{ if eq $picPos "right" }}
-        <div class="home-item-container-{{ $picPos }}">
-          <div class="home-item-pic"></div>
-        </div>
-      {{ end }}
-    </div>
-  {{ end }}
+        {{ if eq $picPos "right" }}
+          <div class="home-item-container-{{ $picPos }}">
+            <img class="home-item-pic" src="http://img1.gamersky.com/upimg/users/2017/12/16/origin_201712161256028363.jpg" />
+          </div>
+        {{ end }}
+      </div>
+    {{ end }}
+
+  </div>
   
   {{ if not .prd }}
     <script src="/assets/javascripts/home.js"></script>

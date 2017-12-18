@@ -1,5 +1,5 @@
 $(() => {
-  $('.snippet-container').hover(function () {
+  $('.home-item-content').hover(function () {
     $(this).animateCss('pulse');
     $(this).animate({ backgroundColor: "#EFEFEF" }, 200);
   }, function () {

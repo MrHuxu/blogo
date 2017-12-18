@@ -1,6 +1,11 @@
+.home-container {
+  padding: 0 0 0 50%;
+}
+
 .home-item {
-  width: 100%;
-  height: 72%;
+  width: 1200px;
+  height: 540px;
+  margin: 0 0 0 -600px;
 }
 
 .home-item-container-left, .home-item-container-right {
@@ -11,22 +16,11 @@
   height: 100%;
 }
 
-div.home-item-pic {
-  position: absolute;
-  border: 1px #DDD solid;
-  height: 82%;
-  width: 93%;
-  top: 15%;
-  right: -11%;
-  background: url("http://img1.gamersky.com/upimg/users/2017/12/16/origin_201712161256028363.jpg") no-repeat center center;
-  z-index: 900;
-}
-
-.home-item-container-left div.home-item-pic {
+.home-item-container-left > .home-item-pic {
   right: -11%;
 }
 
-.home-item-container-right div.home-item-pic {
+.home-item-container-right > .home-item-pic {
   left: -11%;
 }
 
@@ -34,37 +28,123 @@ div.home-item-pic {
   border-left: 1px #DDD solid;
 }
 
-div.home-item-content {
-  position: absolute;
-  border-top: 1px #DDD solid;
-  border-bottom: 1px #DDD solid;
-  height: 74%;
-  width: 70%;
-  top: 19%;
-}
-
-.home-item-container-right div.home-item-content {
+.home-item-container-right > .home-item-content {
   left: 9%;
   border-right: 1px #DDD solid;
 }
 
-.home-item-container-left div.home-item-content {
+.home-item-container-left > .home-item-content {
   right: 9%;
   border-left: 1px #DDD solid;
 }
 
+.home-item-pic {
+  position: absolute;
+  border: 1px #DDD solid;
+  width: 640px;
+  height: 440px;
+  top: 15%;
+  right: -11%;
+  z-index: 900;
+}
+
+.home-item-content {
+  position: absolute;
+  border-top: 1px #DDD solid;
+  border-bottom: 1px #DDD solid;
+  width: 500px;
+  height: 400px;
+  top: 19%;
+}
+
 .snippet-container {
   width: 100%;
-  height: 100%;
-  vertical-align: top;
-  display: inline-block;
-  padding: 8% 6% 3% 6%;
+  height: 250px;
+  margin: 75px 0 0 0;
+  padding: 0 20px 0 30px;
   overflow: hidden;
+  text-align: left;
+}
+
+@media (max-width: 1200px) {
+  .home-item {
+    width: 900px;
+    height: 400px;
+    margin: 0 0 0 -450px;
+  }
+
+  .home-item-pic {
+    width: 480px;
+    height: 310px;
+  }
+
+  .home-item-content {
+    width: 422px;
+    height: 280px;
+  }
+
+  .snippet-container {
+    height: 130px;
+  }
+}
+
+@media (max-width: 900px) {
+  .home-container {
+    padding: 0;
+  }
+
+  .home-item {
+    width: 100%;
+    height: 350px;
+    margin: 0;
+  }
+
+  .home-item-pic {
+    width: 112%;
+    height: 310px;
+  }
+
+  .home-item-content {
+    width: 94%;
+    height: 280px;
+  }
+}
+
+@media (max-width: 680px) {
+  .home-container {
+    padding: 0 0 100px 0;
+  }
+
+  .home-item {
+    width: 100%;
+    height: 279px;
+  }
+
+  .home-item-pic {
+    display: none;
+  }
+
+  .home-item-content {
+    width: 200%;
+    height: 280px;
+  }
+
+  .home-item-container-right {
+    border-left: 0px;
+  }
+
+  .home-item-container-left > .home-item-content {
+    right: -100%;
+  }
+  
+  .home-item-container-right > .home-item-content {
+    left: -100%;
+  }
 }
 
 .snippet-header {
   color: #666;
-  font-size: 18px;
+  font-size: 21px;
   line-height: 30px;
   margin: 0 0 10px 0;
   cursor: pointer;
@@ -85,7 +165,16 @@ div.home-item-content {
 }
 
 .snippet-footer > div {
-  display: inline-block;
+  position: absolute;
+  left: 30px;
+}
+
+.snippet-footer > .tags {
+  bottom: 25px;
+}
+
+.snippet-footer > .date {
+  top: 25px;
 }
 
 .snippet-footer * {
@@ -112,7 +201,6 @@ div.home-item-content {
 .date {
   color: #DEA3A2;
   margin: 0 0 15px 0;
-  float: right;
 }
 
 .snippet-arrow {
