@@ -3,32 +3,69 @@
     <link href="/assets/stylesheets/home.css" rel="stylesheet">
   {{ end }}
 
+  <div class="home-header">
+    <img class="bg-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog/94.jpg" />
+    <div class="bg-blur"></div>
+
+    <div class="title">
+      Life of xhu
+      <i class="angle double right icon snippet-arrow"></i>
+    </div>
+
+    {{ $title := index .titles 0 }}
+    {{ $post := index $.posts $title }}
+
+    <div class="latest-post">
+      <div class="latest-post-tags">
+        {{ range $j, $Tag := $post.Tags }}
+          {{ if $j }}
+            <div class="tag-divider"></div>
+          {{ end }}
+          <a href="/archives?tag={{$Tag}}">{{ $Tag }}</a>
+        {{ end }}
+      </div>
+      <div class="latest-post-date">
+        {{ $post.ShowDate }}
+      </div>
+
+      <a class="latest-post-header" href="/post/{{$title}}">{{$title}}</a>
+
+      <div class="ui divider latest-post-divider snippet-divider"></div>
+
+      <div class="latest-post-content">
+        {{ $post.Content }}
+      </div>
+
+      
+    </div>
+  </div>
+
   <div class="home-container">
     {{ range $i, $title := .titles }}
-      {{ $post := index $.posts $title }}
+      {{ if $i }}
+        {{ $post := index $.posts $title }}
 
-      {{ $picPos := getPicPosition $i }}
-      {{ $contentPos := getContentPosition $i }}
+        {{ $picPos := getPicPosition $i }}
+        {{ $contentPos := getContentPosition $i }}
 
-      <div class="home-item">
-        {{ if eq $picPos "left" }}
-          <div class="home-item-container-{{ $picPos }}">
-            <img class="home-item-pic" src="http://img1.gamersky.com/upimg/users/2017/12/16/origin_201712161256028363.jpg" />
-          </div>
-        {{ end }}
+        <div class="home-item">
+          {{ if eq $picPos "left" }}
+            <div class="home-item-container-{{ $picPos }}">
+              <img class="home-item-pic" src="http://img1.gamersky.com/upimg/users/2017/12/16/origin_201712161256028363.jpg" />
+            </div>
+          {{ end }}
 
-        <div class="home-item-container-{{ $contentPos }}">
-          <div class="home-item-content">
-            <div class="snippet-container">
-              <a class="snippet-header" href="/post/{{$title}}">{{$title}}</a>
+          <div class="home-item-container-{{ $contentPos }}">
+            <div class="home-item-content">
+              <div class="snippet-container">
+                <a class="snippet-header" href="/post/{{$title}}">{{$title}}</a>
 
-              <div class="ui divider snippet-divider"></div>
+                <div class="ui divider snippet-divider"></div>
 
-              <div class="snippet-content">
-                {{ $post.Content }}
-              </div>
+                <div class="snippet-content">
+                  {{ $post.Content }}
+                </div>
 
-              <div class="snippet-footer">
                 <div class="tags">
                   {{ range $j, $Tag := $post.Tags }}
                     {{ if $j }}
@@ -43,14 +80,14 @@
               </div>
             </div>
           </div>
-        </div>
 
-        {{ if eq $picPos "right" }}
-          <div class="home-item-container-{{ $picPos }}">
-            <img class="home-item-pic" src="http://img1.gamersky.com/upimg/users/2017/12/16/origin_201712161256028363.jpg" />
-          </div>
-        {{ end }}
-      </div>
+          {{ if eq $picPos "right" }}
+            <div class="home-item-container-{{ $picPos }}">
+              <img class="home-item-pic" src="http://img1.gamersky.com/upimg/users/2017/12/16/origin_201712161256028363.jpg" />
+            </div>
+          {{ end }}
+        </div>
+      {{ end }}
     {{ end }}
 
   </div>

@@ -16,25 +16,22 @@ a:hover {
   color: #3B94C0;
 }
 
-.header .bg {
-  height: 100%;
+.header {
   width: 100%;
-  background: url("http://desk.fd.zol-img.com.cn/t_s1920x1200c5/g5/M00/01/0E/ChMkJlbKwXOIcVvyAAYKncvoOCsAALGYgE5WUcABgq1866.jpg") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  height: 180px;
+  position: relative;
 }
 
 .header .content {
   height: 100%;
   width: 100%;
-  padding: 40px 120px 0 120px;
-  background-color: rgba(122, 122, 122, 0.3);
 }
 
 .logo {
-  display: inline-block;
+  position: absolute;
+  top: 50px;
+  left: 90px;
+  z-index: 900;
 }
 
 .logo img {
@@ -42,8 +39,10 @@ a:hover {
 }
 
 .links {
-  float: right;
-  margin: 10px;
+  position: absolute;
+  top: 65px;
+  right: 120px;
+  z-index: 900;
 }
 
 .links a {
@@ -55,12 +54,6 @@ a:hover {
 
 .links a:hover {
   color: #666;
-}
-
-.latest-post {
-  margin: 18% 0 0 0%;
-  font-size: 38px;
-  color: #DDD;
 }
 
 #btc-container {

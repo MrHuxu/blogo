@@ -31,14 +31,14 @@ var funcMap = template.FuncMap{
 	},
 
 	"getPicPosition": func(index int) string {
-		if index%2 == 0 {
+		if index%2 == 1 {
 			return "left"
 		}
 		return "right"
 	},
 
 	"getContentPosition": func(index int) string {
-		if index%2 == 0 {
+		if index%2 == 1 {
 			return "right"
 		}
 		return "left"

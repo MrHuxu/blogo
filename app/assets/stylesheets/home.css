@@ -1,3 +1,66 @@
+.home-header {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: -180px 0 0 0;
+}
+
+.home-header > .bg-pic {
+  width: 110%;
+}
+
+.home-header > .bg-blur {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -50%;
+  background-color: rgba(50, 62, 99, 0.4);
+  transform: skewX(40deg);
+}
+
+@media (max-width: 1600px) {
+  .home-header > .bg-blur {
+    width: 150%;
+    left: -55%;
+  }
+}
+
+.home-header > .title {
+  position: absolute;
+  bottom: 80px;
+  left: 90px;
+  font-size: 2.2em;
+  color: #E5FDF7;
+}
+
+.home-header > .latest-post {
+  position: absolute;
+  top: 38%;
+  left: 90px;
+}
+
+.latest-post * {
+  color: #CCC;
+}
+
+.latest-post-tags, .latest-post-date {
+  display: inline-block;
+  width: 49%;
+  vertical-align: top;
+  margin: 0 0 30px 0;
+}
+
+.latest-post-header {
+  color: #EEE;
+  font-size: 30px;
+}
+
+.latest-post-divider {
+  margin-top: 21px !important;
+}
+
 .home-container {
   padding: 0 0 0 50%;
 }
@@ -164,23 +227,23 @@
   line-height: 30px;
 }
 
-.snippet-footer > div {
+.tags *, .date * {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+.tags, .date {
   position: absolute;
   left: 30px;
 }
 
-.snippet-footer > .tags {
+.tags {
   bottom: 25px;
 }
 
-.snippet-footer > .date {
+.date {
   top: 25px;
-}
-
-.snippet-footer * {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 15px;
-  opacity: 0.9;
 }
 
 .tags * {
@@ -204,6 +267,7 @@
 }
 
 .snippet-arrow {
+  cursor: pointer;
   animation: blink 1.2s infinite linear;
   -moz-animation: blink 1.2s infinite linear;
   /* Firefox */
