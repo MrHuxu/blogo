@@ -34,7 +34,10 @@
   </style>
 
   <div class="home-header">
-    <img class="bg-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/81.JPG" />
+    {{ $title := index .titles 0 }}
+    {{ $post := index $.posts $title }}
+
+    <img class="bg-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ getPicSequence $post.Seq }}.JPG" />
     <div class="bg-blur"></div>
 
     <div class="title">
@@ -42,8 +45,6 @@
       <i class="angle double right icon snippet-arrow"></i>
     </div>
 
-    {{ $title := index .titles 0 }}
-    {{ $post := index $.posts $title }}
 
     <div class="latest-post">
       <div class="latest-post-tags">
