@@ -4,9 +4,9 @@
     <head>
       <title>{{ .pageTitle }}</title>
       <link rel="shortcut icon" type="image" href="/assets/images/x-billabong.png">
-      <link href="http://cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet">
+      <link href="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.min.css" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Raleway" rel="stylesheet">
-      <link href="http://cdn.bootcss.com/highlight.js/9.7.0/styles/tomorrow.min.css" rel="stylesheet">
+      <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
       <link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
       {{ if .prd }}
         <link href="/assets/dist/all.min.css" rel="stylesheet">
@@ -16,25 +16,23 @@
       {{ end }}
     </head>
     <body>
-      <div class="header">
-        <div class="content">
-          <div class="logo">
-            <a href="/">
-              <img src="/assets/images/xhu-billabong.png" />
-            </a>
-          </div>
+      <div class="menu">
+        <div class="logo">
+          <a href="/">
+            <img src="/assets/images/xhu-billabong.png" />
+          </a>
+        </div>
 
-          <div class="links">
-            <div><a href="/">Home</a></div>
-            <div><a href="/archives">Archives</a></div>
-            <div><a target="_blank" href="http://xhu.me">Aboutme</a></div>
-          </div>
+        <div class="links">
+          <div><a href="/">Home</a></div>
+          <div><a href="/archives">Archives</a></div>
+          <div><a target="_blank" href="http://xhu.me">Aboutme</a></div>
         </div>
       </div>
 
-      <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-      <script src="http://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
-      <script src="http://cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+      <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+      <script src="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.min.js"></script>
       {{ if not .prd }}
         <script src="/assets/javascripts/util.js"></script>
       {{ end }}
@@ -66,7 +64,7 @@
         </p>
       </div>
 
-      <script src="http://cdn.bootcss.com/highlight.js/9.7.0/highlight.min.js"></script>
+      <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
       {{ if .prd }}
         <script src="/assets/dist/all.min.js"></script>
