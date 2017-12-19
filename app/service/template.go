@@ -30,23 +30,23 @@ var funcMap = template.FuncMap{
 		return date[:6]
 	},
 
-	"getPicSequence": func(seq int) int {
-		result := seq - 13
+	"getPicSequence": func(seq, maxPostSeq int) int {
+		result := seq - 13 // 13 is used here because the pics is 13 less than the posts
 		if result < 0 {
-			result = 81 + result
+			result = maxPostSeq - 13 + result
 		}
 		return result
 	},
 
-	"getPicPosition": func(index int) string {
-		if index%2 == 1 {
+	"getPicPosition": func(seq, maxPostSeq int) string {
+		if (maxPostSeq-seq)%2 == 1 {
 			return "left"
 		}
 		return "right"
 	},
 
-	"getContentPosition": func(index int) string {
-		if index%2 == 1 {
+	"getContentPosition": func(seq, maxPostSeq int) string {
+		if (maxPostSeq-seq)%2 == 1 {
 			return "right"
 		}
 		return "left"

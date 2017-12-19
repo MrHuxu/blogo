@@ -10,10 +10,29 @@ import (
 var atPrd = os.Getenv("ENV") == "Production"
 
 func (svc *Service) homeHandler(c *gin.Context) {
+	paginatedTitles := svc.paginatedTitles(0)
+
+	paginatedPosts := make(map[string]*post)
+	for i := range paginatedTitles {
+		paginatedPosts[paginatedTitles[i]] = svc.posts[paginatedTitles[i]]
+		paginatedPosts[paginatedTitles[i]].getPartialContent()
+	}
+
+	c.HTML(http.StatusOK, "layout", gin.H{
+		"prd":        atPrd,
+		"homePage":   true,
+		"pageTitle":  "Life of xhu - Home",
+		"maxPostSeq": svc.posts[svc.titles[0]].Seq,
+		"titles":     paginatedTitles,
+		"posts":      paginatedPosts,
+	})
+}
+
+func (svc *Service) pageHandler(c *gin.Context) {
 	param := c.Param("page")
 	page, err := strconv.Atoi(param)
 	if err != nil {
-		page = 0
+		page = 1
 	}
 
 	canBeAppend := svc.postListCanBeAppend(page)
@@ -25,10 +44,7 @@ func (svc *Service) homeHandler(c *gin.Context) {
 		paginatedPosts[paginatedTitles[i]].getPartialContent()
 	}
 
-	c.HTML(http.StatusOK, "layout", gin.H{
-		"prd":         atPrd,
-		"homePage":    true,
-		"pageTitle":   "Life of xhu - Home",
+	c.JSON(http.StatusOK, gin.H{
 		"currentPage": page,
 		"canBeAppend": canBeAppend,
 		"titles":      paginatedTitles,

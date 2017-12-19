@@ -37,7 +37,7 @@
     {{ $title := index .titles 0 }}
     {{ $post := index $.posts $title }}
 
-    <img class="bg-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ getPicSequence $post.Seq }}.JPG" />
+    <img class="bg-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ getPicSequence $post.Seq $.maxPostSeq }}.JPG" />
     <div class="bg-blur"></div>
 
     <div class="title">
@@ -76,9 +76,9 @@
       {{ if $i }}
         {{ $post := index $.posts $title }}
 
-        {{ $picPos := getPicPosition $i }}
-        {{ $picSeq := getPicSequence $post.Seq }}
-        {{ $contentPos := getContentPosition $i }}
+        {{ $picPos := getPicPosition $post.Seq $.maxPostSeq }}
+        {{ $picSeq := getPicSequence $post.Seq $.maxPostSeq }}
+        {{ $contentPos := getContentPosition $post.Seq $.maxPostSeq }}
 
         <div class="home-item">
           {{ if eq $picPos "left" }}
@@ -90,7 +90,7 @@
           <div class="home-item-container-{{ $contentPos }}">
             <div class="home-item-content">
               <div class="snippet-container">
-                <a class="snippet-header" href="/post/{{$title}}">{{$title}}</a>
+                <a class="snippet-header" href="/post/{{ $title }}">{{ $title }}</a>
 
                 <div class="ui divider snippet-divider"></div>
 
@@ -103,7 +103,7 @@
                     {{ if $j }}
                       <div class="tag-divider"></div>
                     {{ end }}
-                    <a href="/archives?tag={{$Tag}}">{{ $Tag }}</a>
+                    <a href="/archives?tag={{ $Tag }}">{{ $Tag }}</a>
                   {{ end }}
                 </div>
                 <div class="date">
@@ -132,6 +132,10 @@
     </div>
   </div>
   
+  <script>
+    $maxPostSeq = {{ .maxPostSeq }};
+  </script>
+
   {{ if not .prd }}
     <script src="/assets/javascripts/home.js"></script>
   {{ end }}

@@ -1,0 +1,32 @@
+{
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "rules": {
+    "yoda": [2, "always", {
+      "onlyEquality": true
+    }],
+    "no-return-assign": 0,
+    "indent": [2, 2],
+    "semi": [2, "always"],
+    "max-len": [1, 500, 2],
+    "object-curly-spacing": [1, "always"],
+    "key-spacing": [2, {
+      "singleLine": {
+        "beforeColon": false,
+        "afterColon": true
+      },
+      "multiLine": {
+        "align": "colon",
+        "beforeColon": true,
+        "afterColon": true
+      }
+    }],
+    "no-multi-spaces": [2, {
+      "exceptions": {
+        "VariableDeclarator": true
+      }
+    }]
+  }
+}

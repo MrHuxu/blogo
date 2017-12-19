@@ -6,7 +6,7 @@ import (
 
 func (svc *Service) RegisterRoutes(server *gin.Engine) {
 	server.GET("/", svc.homeHandler)
-	server.GET("/page/:page", svc.homeHandler)
+	server.GET("/page/:page", svc.pageHandler)
 	server.GET("/post/:title", svc.postHandler)
 	server.GET("/archives", svc.archivesHandler)
 }
