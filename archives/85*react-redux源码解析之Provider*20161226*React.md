@@ -6,7 +6,7 @@
 1. [Provider store](https://github.com/reactjs/react-redux/blob/master/docs/api.md#provider-store)
 2. [connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options)
 
-这次我们先探索一下```Provider```.
+这次我们先探索一下`Provider`.
 
 ---
 
@@ -21,7 +21,7 @@
       rootEl
     );
 
-也就是说, 在真正使用的时候, 我们应该用```Provider```这个组件把我们的应用包起来, 这个组件暴露一个props也就是我们使用Redux生成的store.
+也就是说, 在真正使用的时候, 我们应该用`Provider`这个组件把我们的应用包起来, 这个组件暴露一个props也就是我们使用Redux生成的store.
 
 看上去应该不是很简单, 那么我们直接上源码吧.
 
@@ -32,7 +32,7 @@
     git clone https://github.com/reactjs/react-redux.git && cd react-redux
     git checkout ac01d706dd0b0542a0befd9cd5869c96cd2314dc
     
-打开```src/index.js```就可以看到```Provider```的来源了:
+打开`src/index.js`就可以看到`Provider`的来源了:
 
     import Provider from './components/Provider'
     import connectAdvanced from './components/connectAdvanced'
@@ -40,7 +40,7 @@
 
     export { Provider, connectAdvanced, connect }
 
-那么继续打开```./components/Provider.js```这个文件, 找到默认的导出对象:
+那么继续打开`./components/Provider.js`这个文件, 找到默认的导出对象:
 
 
     export default class Provider extends Component {
@@ -58,7 +58,7 @@
       }
     }
     
-可以看到Provider就是一个React组件, 使用```only```函数保证只渲染一个子组件, 给子组件的context里加上了```store```和```storeSubsciption```两个字段, 而前者就是通过props传进来的store.
+可以看到Provider就是一个React组件, 使用`only`函数保证只渲染一个子组件, 给子组件的context里加上了`store`和`storeSubsciption`两个字段, 而前者就是通过props传进来的store.
 
 接下来是定义好contexts和propTypes里的数据类型:
 
@@ -71,7 +71,7 @@
       storeSubscription: PropTypes.instanceOf(Subscription)
     }
     
-```children```字段就是React元素这个好说, 而两个```store```字段都是通过一个引入的```storeShape```来定义的, 我们可以在```src/utils/storeShape.js```里找到:
+`children`字段就是React元素这个好说, 而两个`store`字段都是通过一个引入的`storeShape`来定义的, 我们可以在`src/utils/storeShape.js`里找到:
 
     export default PropTypes.shape({
       subscribe: PropTypes.func.isRequired,
@@ -81,7 +81,7 @@
 
 通过之前对Redux源码的学习, 我们可以看出, 其实这个shape定义的就是一个Redux生成的store对象.
 
-而context里的另一个字段```storeSubscription```, 应该是```Subscription```这个类的实例, 我们可以在```src/utils/Subscription.js```里找到定义:
+而context里的另一个字段`storeSubscription`, 应该是`Subscription`这个类的实例, 我们可以在`src/utils/Subscription.js`里找到定义:
 
 
     export default class Subscription {
@@ -131,13 +131,13 @@
 
 Method | Feature
 ---|---
-trySubscribe() | 如果当前组件没有订阅一个store, 就判断参数里```parentSub```是否存在, 如果存在, 就把```listener```注册到父组件的监听器里, 如果不存在, 就直接订阅store. 订阅的同时获得相应的```unsubscribe```方法. 然后创建组件自己的监听器集合.
-tryUnsubscribe() | 执行```trySubscribe```获得的```unsubcribe```方法取消对store的订阅, 清空当前组件的监听器集合.
-addNestedSub(listener) | 首先将当前组件订阅到store上, 然后把参数中的```listener```添加到当前组件的监听器集合中
+trySubscribe() | 如果当前组件没有订阅一个store, 就判断参数里`parentSub`是否存在, 如果存在, 就把`listener`注册到父组件的监听器里, 如果不存在, 就直接订阅store. 订阅的同时获得相应的`unsubscribe`方法. 然后创建组件自己的监听器集合.
+tryUnsubscribe() | 执行`trySubscribe`获得的`unsubcribe`方法取消对store的订阅, 清空当前组件的监听器集合.
+addNestedSub(listener) | 首先将当前组件订阅到store上, 然后把参数中的`listener`添加到当前组件的监听器集合中
 notifyNestedSubs() | 通知所有监听器, 触发监听器中所有的函数
 isSubscribed() | 当前组件是否已经订阅store
 
-这时我们来看看用来创建监听器集合的```createListenerCollection```方法:
+这时我们来看看用来创建监听器集合的`createListenerCollection`方法:
 
     const CLEARED = null
     const nullListeners = { notify() {} }
@@ -184,13 +184,13 @@ Method | Feature
 ---|---
 clear() | 清空当前的监听器集合
 notify() | 通知所有的监听器, 触发相应函数
-subscribe(listener) | 将```listener```放到监听器集合里, 注意这里的给集合添加元素的是一个immutable操作, 同时返回相应的```unsubscribe```方法.
+subscribe(listener) | 将`listener`放到监听器集合里, 注意这里的给集合添加元素的是一个immutable操作, 同时返回相应的`unsubscribe`方法.
 
 ---
 
 到这里, 我们就完成了react-redux源码中Provider的部分, 这个API的作用简单来说就是如下两点:
 
 1. 把Redux store绑定到组件的context里
-2. 同时给组件的context里添加```Subscription```类的实例, 而这个实例里就包含了对store的订阅操作.
+2. 同时给组件的context里添加`Subscription`类的实例, 而这个实例里就包含了对store的订阅操作.
 
-文章到这里就该结束了, 扯个题外话, React的[官方文档](https://facebook.github.io/react/docs/context.html)里明确说明, 如果熟悉Redux的话, 最好使用Redux作为全局的数据管理而不是通过context传递, 但是react-redux作为官方binding库, 为了实现Redux和React的结合又用到了context. 换句话说, 官方叫你用Redux别用context, 但是用Redux又必须先用context, 这不得不说是```毅种循环```.
+文章到这里就该结束了, 扯个题外话, React的[官方文档](https://facebook.github.io/react/docs/context.html)里明确说明, 如果熟悉Redux的话, 最好使用Redux作为全局的数据管理而不是通过context传递, 但是react-redux作为官方binding库, 为了实现Redux和React的结合又用到了context. 换句话说, 官方叫你用Redux别用context, 但是用Redux又必须先用context, 这不得不说是`毅种循环`.

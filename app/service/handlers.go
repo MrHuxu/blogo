@@ -55,6 +55,6 @@ func (svc *Service) archivesHandler(c *gin.Context) {
 		"pageTitle":    "Life of xhu - Archives",
 		"selectedTag":  c.Query("tag"),
 		"titles":       svc.filterByTag(c.Query("tag")),
-		"rawData":      svc,
+		"posts":        svc.posts,
 	})
 }

@@ -12,7 +12,7 @@
     
 2. 包管理器入门
 
-    既然选择了CentOS，就必须要适应一些RedHat系的系统工具，在命令行模式下首当其冲的就是包管理工具了，CentOS上使用的```yum```，和Debian系的```apt-get```以及OS X上的```homebrew```类似，这个工具也提供了软件包的安装卸载以及依赖管理，下面是一些常用命令：
+    既然选择了CentOS，就必须要适应一些RedHat系的系统工具，在命令行模式下首当其冲的就是包管理工具了，CentOS上使用的`yum`，和Debian系的`apt-get`以及OS X上的`homebrew`类似，这个工具也提供了软件包的安装卸载以及依赖管理，下面是一些常用命令：
 
         yum check-update   # == brew update
         yum update   # == brew upgrade
@@ -20,7 +20,7 @@
         yum install   # == brew install
         yum erase   # == brew uninstall
         
-    详细的命令可以查看这篇[博客][1]，另外，yum缺省的安装路径为```/usr/bin```
+    详细的命令可以查看这篇[博客][1]，另外，yum缺省的安装路径为`/usr/bin`
     
         yum install mongodb
         /usr/bin/mongo
@@ -42,7 +42,7 @@
             ssh root@45.32.254.138
             cat /root/xxx_dir/id_rsa.pub > ~/.ssh/authorized_keys
     
-    - 多台电脑登录的话，也可以通过```scp```和```cat```把多个公钥内容添加到```authorized_keys```文件里来登录
+    - 多台电脑登录的话，也可以通过`scp`和`cat`把多个公钥内容添加到`authorized_keys`文件里来登录
     - 编辑一下ssh的config文件，给vps设置一个别名，就不用每次都输IP了
 
             # ~/.ssh/config
@@ -67,7 +67,7 @@
     
 但是这样安装的nginx缺点不少，首先是版本可能会比较旧，其次就是不支持一些常用模块，所以一般还是会手动安装：
 
-使用```wget```下载```pcre```，这个正则支持很多nginx模块都需要
+使用`wget`下载`pcre`，这个正则支持很多nginx模块都需要
 
     wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.37.tar.gz ~/workspace/
     cd ~/workspace && tar -zxvf pcre-8.37.tar.gz
@@ -83,9 +83,9 @@ configure, make一气呵成：
     make
     make install
 
-这样安装的nginx在```/usr/local/nginx```目录，可以通过```/usr/local/nginx/sbin/nginx -v```来查看版本
+这样安装的nginx在`/usr/local/nginx`目录，可以通过`/usr/local/nginx/sbin/nginx -v`来查看版本
 
-当然这样的nginx只是一个应用，我们可以通过[这个脚本][4]把它注册为一个服务，把这个脚本命名为```nginx```并放在```/etc/init.d```目录下，就可以通过```service```命令来控制nginx了：
+当然这样的nginx只是一个应用，我们可以通过[这个脚本][4]把它注册为一个服务，把这个脚本命名为`nginx`并放在`/etc/init.d`目录下，就可以通过`service`命令来控制nginx了：
 
     service nginx start
     service nginx stop

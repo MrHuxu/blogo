@@ -12,4 +12,4 @@ Blog in Go
 
         go run main.go
 
-3. Open ```http://localhost:13109/``` in your browser and enjoy!
+3. Open `http://localhost:13109/` in your browser and enjoy!

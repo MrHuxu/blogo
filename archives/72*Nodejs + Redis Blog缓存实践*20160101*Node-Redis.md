@@ -18,7 +18,7 @@ Redis是一个运行在内存中的数据库，支持一些常用的数据结构
 Node的第三方Redis库主要有
 
 1. [node_redis](https://github.com/NodeRedis/node_redis), 曾经的官方Redis库，但是作者已经基本不更新了，而且对Redis的特性也支持的不是很完善，操作基本上都是基于回调，需要借助bluebird等来实现Promise。
-2. [ioredis](https://github.com/luin/ioredis), 当前的官方推荐Redis库，对```Sentinel```和```Cluster```等功能支持良好，更新速度快，并且原生支持Promise。
+2. [ioredis](https://github.com/luin/ioredis), 当前的官方推荐Redis库，对`Sentinel`和`Cluster`等功能支持良好，更新速度快，并且原生支持Promise。
 
 支持Promise还有一个好处，就是需要执行多个查询操作的时候，回调的方式很容易陷入回调地狱，但是用Promise的话，就可以避免这个问题(参考[这篇文章](http://blog.xhu.me/#/archives/67*ES6: 回调将死, Promise永生*20151018*JavaScript-Promise.md?_k=mhw2ck))。
 
@@ -39,9 +39,9 @@ Redis的基本操作可以看这个页面 [Redis: Commands](http://redis.io/comm
     });
     // => 'PONG', connected to the redis client successfully
     
-在这段代码中，我们先使用Redis初始化了一个redis对象，然后调用了```ping```这个方法，这个方法对应Redis里的[PING](http://redis.io/commands/ping)命令，这个命令在Redis中被用来检测客户端是否成功连接，然后对返回的promise调用then方法，打印出结果```PONG```。
+在这段代码中，我们先使用Redis初始化了一个redis对象，然后调用了`ping`这个方法，这个方法对应Redis里的[PING](http://redis.io/commands/ping)命令，这个命令在Redis中被用来检测客户端是否成功连接，然后对返回的promise调用then方法，打印出结果`PONG`。
 
-当我们在上面的代码中初始化redis对象的时候，其实可以看作是在终端中执行```redis-cli```命令，输入命令并且获得输出，所以当操作完成的时候，需要手动调用```end```方法来结束这个进程，否则程序将会hang住。
+当我们在上面的代码中初始化redis对象的时候，其实可以看作是在终端中执行`redis-cli`命令，输入命令并且获得输出，所以当操作完成的时候，需要手动调用`end`方法来结束这个进程，否则程序将会hang住。
 
 ---
 
@@ -72,14 +72,14 @@ Redis的基本操作可以看这个页面 [Redis: Commands](http://redis.io/comm
 
 ### 取 Read
 
-取数据话使用[HGETALL](http://redis.io/commands/hgetall)指令就可以一次性获得一个散列中的所有字段，并且redis的```hgetall```方法直接返回的就是一个JS对象了:
+取数据话使用[HGETALL](http://redis.io/commands/hgetall)指令就可以一次性获得一个散列中的所有字段，并且redis的`hgetall`方法直接返回的就是一个JS对象了:
 
     redis.hgetall('repo:blog').then((result) => {
       redis.end();
       console.log(result);   // => an object contains all infos of a repo
     });
     
-并且由于ioredis返回的都是promise，所以在一次性从cache中获得多个repo的信息的时候，可以用ES6的```Promise#all```很优雅的完成这个任务。
+并且由于ioredis返回的都是promise，所以在一次性从cache中获得多个repo的信息的时候，可以用ES6的`Promise#all`很优雅的完成这个任务。
 
     var promiseSet = repoNames.map(name => redis.hgetall(`repo:${name}`));
     
@@ -91,14 +91,14 @@ Redis的基本操作可以看这个页面 [Redis: Commands](http://redis.io/comm
 
 ### 过期时间 Expiration
 
-在文章开头提到的两个使用缓存的场景，第一个生成缓存后就不需要改变了，但是对于从GitHub上获取的repo信息，是需要更新的，所以我们需要对缓存做过期时间设置，在这里我并不是对每个repo的信息都做过期设置，而是存储一个名为```repo:count```的键并让它兼职作为过期标志:
+在文章开头提到的两个使用缓存的场景，第一个生成缓存后就不需要改变了，但是对于从GitHub上获取的repo信息，是需要更新的，所以我们需要对缓存做过期时间设置，在这里我并不是对每个repo的信息都做过期设置，而是存储一个名为`repo:count`的键并让它兼职作为过期标志:
 
     redis.set('repo:count', repoNames.length).then((flag) => {
       if ('OK' === flag)
         return redis.expire('repo:count', 1800);
     });
     
-[EXPIRE](http://redis.io/commands/expire)命令的第一个参数是键名，第二个参数是过期时间，单位是秒，这段代码就是给```repo:count```这个键设为半个小时之后过期，半个小时候这个键就会被删除。
+[EXPIRE](http://redis.io/commands/expire)命令的第一个参数是键名，第二个参数是过期时间，单位是秒，这段代码就是给`repo:count`这个键设为半个小时之后过期，半个小时候这个键就会被删除。
 
 这时从缓存中取数据的地方也要有所改动，也就是加一个判断这个标志键是否存在的过程:
 

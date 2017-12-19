@@ -14,7 +14,7 @@
 
   <div class="timeline-container post-list">
     {{ range $_, $title := .titles }}
-      {{ $post := index $.rawData.Posts $title }}
+      {{ $post := index $.posts $title }}
       {{ if $post }}
         <div class="timeline-item post-link">
           <span class="post-date">{{ removeYear $post.ShowDate }}</span>

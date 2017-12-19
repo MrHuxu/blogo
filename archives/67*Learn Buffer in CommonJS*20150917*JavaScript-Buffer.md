@@ -1,4 +1,4 @@
-A code snippet used to understand ```Buffer``` in CommonJS:
+A code snippet used to understand `Buffer` in CommonJS:
 
     var fs = require('fs');
 

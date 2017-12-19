@@ -10,7 +10,7 @@ Why Javascript use closure:
 
 ---
 
-In Javascript, a immediately-execute function is not a property of the object ```window```, we can charge that it as a property of an extra environment which named ```env```, and when we use a variable in Javascript, the sequence to find the variable is as follow:
+In Javascript, a immediately-execute function is not a property of the object `window`, we can charge that it as a property of an extra environment which named `env`, and when we use a variable in Javascript, the sequence to find the variable is as follow:
 
     local -> env -> window
         

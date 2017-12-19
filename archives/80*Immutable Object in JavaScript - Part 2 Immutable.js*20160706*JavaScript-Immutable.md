@@ -42,7 +42,7 @@
 
 ### Immutable.js - fromJS(), toJS(), is()
 
-一般当我们使用AJAX的方式从后段获取数据的时候, 获得的都是JSON, 然后parse成JSON对象, 但是我们需要将其转换成Immutable对象供Redux和React使用, 这时我们就可以使用```fromJS```这个方法将JS对象转换成Immutable.js对象:
+一般当我们使用AJAX的方式从后段获取数据的时候, 获得的都是JSON, 然后parse成JSON对象, 但是我们需要将其转换成Immutable对象供Redux和React使用, 这时我们就可以使用`fromJS`这个方法将JS对象转换成Immutable.js对象:
 
     > var i = require('immutable')
     undefined
@@ -51,7 +51,7 @@
     
 我们可以看到, 这个方法的行为是深转换, 不仅最外层被转换成了一个Immutable Map, 内部的数组也被转换成了Immutable List.
 
-当然, 如果要把前端的Immutable.js数据转成JS对象传给后段, 也有一个对应的```toJS```方法:
+当然, 如果要把前端的Immutable.js数据转成JS对象传给后段, 也有一个对应的`toJS`方法:
 
     > var i = require('immutable')
     undefined
@@ -64,7 +64,7 @@
     
 这个转换同样是深转换, 对内部的Immutable.js对象仍然有效.
 
-有趣的是, 和JS中原生的```Object#is```方法类似, Immutable.js还提供了一个```is```方法, 不过行为却和原生的方法相反, 是把两个Immutable.js对象进行Mutable的比较:
+有趣的是, 和JS中原生的`Object#is`方法类似, Immutable.js还提供了一个`is`方法, 不过行为却和原生的方法相反, 是把两个Immutable.js对象进行Mutable的比较:
 
     > var i = require('immutable')
     undefined
@@ -77,11 +77,11 @@
     > i.is(i.List.of(1, 2), i.List.of(1, 2))
     true
 
-我们可以看到, 原生JS对对象和数组的操作是Mutable的, 但是```Object#is```操作符的比较却是Immutable的, 而Immutable.js中对Map和List的操作是Immutable的, 但是```Immutable#is```操作符却是Mutable的.
+我们可以看到, 原生JS对对象和数组的操作是Mutable的, 但是`Object#is`操作符的比较却是Immutable的, 而Immutable.js中对Map和List的操作是Immutable的, 但是`Immutable#is`操作符却是Mutable的.
 
 ### Immutable.js - List
 
-```List```对应的是JS原生的```Array```, 原生的数组操作都可以在List对象中找到对应的方法, 我们可以通过如下的方式初始化一个List:
+`List`对应的是JS原生的`Array`, 原生的数组操作都可以在List对象中找到对应的方法, 我们可以通过如下的方式初始化一个List:
 
     var i = require('immutable')
 
@@ -89,7 +89,7 @@
     var list2 = i.List([1, 2, 3])
     var list3 = i.List.of(...[1, 2, 3])
 
-上面分别用```of```方法, List构造函数, 以及ES6生成数组iterator的方式够早了```List [ 1, 2, 3 ]```, 这就是一个基本的List对象了.
+上面分别用`of`方法, List构造函数, 以及ES6生成数组iterator的方式够早了`List [ 1, 2, 3 ]`, 这就是一个基本的List对象了.
 
 对于这个对象, 我们可以做一些和普通数组一样的操作:
 
@@ -106,7 +106,7 @@
 
 从上面的例子我们可以看出, 每次在list上执行方法的时候, 返回的都是一个新的List对象, 而且初始的对象并没有被改变.
 
-而且List对象还有一些以```In```结尾的方法, 这些方法可以对List对象里面做深层次的修改
+而且List对象还有一些以`In`结尾的方法, 这些方法可以对List对象里面做深层次的修改
 
     > list = i.fromJS([[1, 2, 3], [4, 5]])
     List [ List [ 1, 2, 3 ], List [ 4, 5 ] ]
@@ -124,14 +124,14 @@
 
 ### Immutable.js - Map
 
-```Map```对应原生JS里的```Object```类型, 也就是键值对, 不过和原生JS不同的是, Map对键的要求比原生宽泛很多, 比如:
+`Map`对应原生JS里的`Object`类型, 也就是键值对, 不过和原生JS不同的是, Map对键的要求比原生宽泛很多, 比如:
 
     > a = i.Map({})
     Map {}
     > a.set([1], 1)
     Map { [1]: 1 }
 
-根据官方的说法, 认识只要是```值```的对象都可以作为Map里的键, 数组当然也是一种值了, 但是这种写法还是不推荐的.
+根据官方的说法, 认识只要是`值`的对象都可以作为Map里的键, 数组当然也是一种值了, 但是这种写法还是不推荐的.
 
 首先是初始化Map, 这里的方法就比较单一了, 就是使用Map对象的构造方法, 但是这里一个有趣的点是, 在传入成对出现的数组时, 会将pair自动转成键值对:
 
@@ -151,7 +151,7 @@
     map.clear()                       // Map {}
 
 
-当然也缺不了用```In```结尾的方法:
+当然也缺不了用`In`结尾的方法:
 
     > var map = i.Map({a: i.Map({b: 1, c: 2}), d: i.Map({e: 3})})
     undefined
@@ -173,7 +173,7 @@
     > map.setIn(['d', 'e'], 4).deleteIn(['a', 'b'], 2).updateIn(['a', 'c'], i => --i)
     Map { "a": Map { "c": 1 }, "d": Map { "e": 4 } }
 
-当然, 如果真要在项目中使用Immutable.js的话, 还需要进行PropTypes验证, 这时我们可以使用```react-immutable-proptypes```这个库:
+当然, 如果真要在项目中使用Immutable.js的话, 还需要进行PropTypes验证, 这时我们可以使用`react-immutable-proptypes`这个库:
 
     import ImmutablePropTypes from 'react-immutable-proptypes';
 
@@ -203,7 +203,7 @@
       ...
     }
 
-到这儿关于```Immutable.js```这个库的讲解就算完成了, 当然这里的内容还是很浅的, 如果想更进一步的了解这个强大的库, 我推荐在看完这篇文章之后, 继续深入学习[官方文档](https://facebook.github.io/immutable-js/docs/#/).
+到这儿关于`Immutable.js`这个库的讲解就算完成了, 当然这里的内容还是很浅的, 如果想更进一步的了解这个强大的库, 我推荐在看完这篇文章之后, 继续深入学习[官方文档](https://facebook.github.io/immutable-js/docs/#/).
 
 
 
