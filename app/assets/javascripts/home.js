@@ -9,7 +9,25 @@ $(() => {
   };
   enableHomeItemHoverAnimation();
 
-  $('.snippet-arrow').click(() => {
+  const homeHeader = $('.home-header');
+  const homeHeaderBgPic = $('.home-header > .bg-pic');
+  const { innerWidth, innerHeight } = window;
+  let pageX, pageY;
+  const moveHomeHeaderBgPic = (() => {
+    let timer;
+    return (pageX, pageY) => {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => {
+        homeHeaderBgPic.animate({
+          margin : `-${pageX / innerWidth * 8}% 0 0 -${pageY / innerHeight * 8}%`
+        });
+      }, 30);
+    };
+  })();
+  homeHeader.on('mousemove', ({ pageX, pageY }) => moveHomeHeaderBgPic(pageX, pageY));
+
+  const snippetArrow = $('.snippet-arrow');
+  snippetArrow.click(() => {
     $('body').animate({ scrollTop: window.innerHeight });
   });
 
@@ -74,7 +92,7 @@ $(() => {
 
         if (canBeAppend) {
           loadMore.on('click', loadNextPage);
-          loadMore.text('More ...');
+          loadMore.text('More');
         } else {
           loadMore.text('All Loaded');
           loadMore.unbind('click');

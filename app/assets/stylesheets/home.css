@@ -8,10 +8,9 @@
 
 .home-header > .bg-pic {
   width: auto;
-  min-width: 120%;
+  min-width: 108%;
   height: auto;
-  min-height: 120%;
-  margin: -10% 0 0 -6%;
+  min-height: 108%;
 }
 
 .home-header > .bg-blur {
