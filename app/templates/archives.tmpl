@@ -3,6 +3,12 @@
     <link href="/assets/stylesheets/archives.css" rel="stylesheet">
   {{ end }}
 
+  <style>
+    .links a {
+      color: rgba(136, 136, 136, 1);
+    }
+  </style>
+
   <div class="archives-container">
     <div class="timeline-container post-list">
       {{ range $_, $title := .titles }}

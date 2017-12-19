@@ -54,7 +54,7 @@ a:hover {
 .links a {
   vertical-align: top;
   font-size: 18px;
-  color: #888;
+  color: rgba(136, 136, 136, 0);
 }
 
 .links a:hover {
