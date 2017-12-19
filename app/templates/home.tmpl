@@ -3,6 +3,27 @@
     <link href="/assets/stylesheets/home.css" rel="stylesheet">
   {{ end }}
 
+  <style>
+    .logo, .links {
+      position: absolute;
+    }
+    .links {
+      top: 40px;
+      right: 120px;
+      z-index: 900;
+    }
+    .links > div {
+      display: inline;
+      float: right;
+    }
+    .links a {
+      vertical-align: top;
+      font-size: 18px;
+      color: #FFF;
+      margin: 0 0 0 25px;
+    }
+  </style>
+
   <div class="home-header">
     <img class="bg-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog/94.jpg" />
     <div class="bg-blur"></div>

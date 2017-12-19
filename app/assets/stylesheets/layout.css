@@ -27,8 +27,11 @@ a:hover {
   width: 100%;
 }
 
+.logo, .links {
+  position: fixed;
+}
+
 .logo {
-  position: absolute;
   top: 50px;
   left: 5%;
   z-index: 900;
@@ -39,17 +42,19 @@ a:hover {
 }
 
 .links {
-  position: absolute;
-  top: 65px;
-  right: 120px;
-  z-index: 900;
+  top: 117px;
+  left: 4.4%;
+}
+
+.links > div {
+  text-align: center;
+  margin: 25px 0 0 0;
 }
 
 .links a {
   vertical-align: top;
   font-size: 18px;
-  color: #FFF;
-  margin: 0 0 0 25px;
+  color: #888;
 }
 
 .links a:hover {
