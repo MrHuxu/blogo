@@ -12,18 +12,9 @@ $(() => {
   const homeHeader = $('.home-header');
   const homeHeaderBgPic = $('.home-header > .bg-pic');
   const { innerWidth, innerHeight } = window;
-  const moveHomeHeaderBgPic = (() => {
-    let timer;
-    return (pageX, pageY) => {
-      if (timer) clearTimeout(timer);
-      timer = setTimeout(() => {
-        homeHeaderBgPic.animate({
-          margin : `-${pageY / innerHeight * 8}% 0 0 -${pageX / innerWidth * 8}%`
-        });
-      }, 30);
-    };
-  })();
-  homeHeader.on('mousemove', ({ pageX, pageY }) => moveHomeHeaderBgPic(pageX, pageY));
+  homeHeader.on('mousemove', ({ pageX, pageY }) => {
+    homeHeader.css('background-position', `${pageX / innerWidth * 50}% ${pageY / innerHeight * 15}%`);
+  });
 
   const snippetArrow = $('.snippet-arrow');
   snippetArrow.click(() => {
