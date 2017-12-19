@@ -35,7 +35,7 @@
 
   {{ $firstTitle := index .titles 0 }}
   {{ $firstPost := index $.posts $firstTitle }}
-  <div class="home-header" style="background: url(https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ getPicSequence $firstPost.Seq $.maxPostSeq }}.JPG) no-repeat; background-size: 110% auto;">
+  <div class="home-header" style="background: url(https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ getPicSequence $firstPost.Seq $.maxPostSeq }}.jpg) no-repeat; background-size: 110% auto;">
 
     <div class="bg-blur"></div>
 
@@ -82,7 +82,7 @@
         <div class="home-item">
           {{ if eq $picPos "left" }}
             <div class="home-item-container-{{ $picPos }}">
-              <img class="home-item-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ $picSeq }}.JPG" />
+              <img class="home-item-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ $picSeq }}.jpg" />
             </div>
           {{ end }}
 
@@ -114,7 +114,7 @@
 
           {{ if eq $picPos "right" }}
             <div class="home-item-container-{{ $picPos }}">
-              <img class="home-item-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ $picSeq }}.JPG" />
+              <img class="home-item-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ $picSeq }}.jpg" />
             </div>
           {{ end }}
         </div>
@@ -125,7 +125,7 @@
       <div class="home-item">
         <div class="home-item-container-left"></div>
         <div class="home-item-container-right">
-          <div class="load-more"> More ... </div>
+          <div class="load-more"> More </div>
         </div>
       </div>
     </div>

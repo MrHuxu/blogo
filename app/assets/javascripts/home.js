@@ -28,7 +28,7 @@ $(() => {
 
   const convertPostToElement = post => {
     const img = `
-      <img class="home-item-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/${post.seq - 13 < 0 ? (($maxPostSeq - 13) + (post.seq - 13)) : (post.seq - 13)}.JPG" />
+      <img class="home-item-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/${post.seq < 13 ? ($maxPostSeq - post.seq) : post.seq}.jpg" />
     `;
     const tags = post.tags.map(tag => (
       `<a href="/archives?tag=${tag}">${tag}</a>`

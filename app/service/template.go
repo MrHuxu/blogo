@@ -31,11 +31,10 @@ var funcMap = template.FuncMap{
 	},
 
 	"getPicSequence": func(seq, maxPostSeq int) int {
-		result := seq - 13 // 13 is used here because the pics is 13 less than the posts
-		if result < 0 {
-			result = maxPostSeq - 13 + result
+		if seq < 13 {
+			return maxPostSeq - seq
 		}
-		return result
+		return seq
 	},
 
 	"getPicPosition": func(seq, maxPostSeq int) string {
