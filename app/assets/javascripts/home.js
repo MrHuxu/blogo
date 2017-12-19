@@ -12,14 +12,13 @@ $(() => {
   const homeHeader = $('.home-header');
   const homeHeaderBgPic = $('.home-header > .bg-pic');
   const { innerWidth, innerHeight } = window;
-  let pageX, pageY;
   const moveHomeHeaderBgPic = (() => {
     let timer;
     return (pageX, pageY) => {
       if (timer) clearTimeout(timer);
       timer = setTimeout(() => {
         homeHeaderBgPic.animate({
-          margin : `-${pageX / innerWidth * 8}% 0 0 -${pageY / innerHeight * 8}%`
+          margin : `-${pageY / innerHeight * 8}% 0 0 -${pageX / innerWidth * 8}%`
         });
       }, 30);
     };
