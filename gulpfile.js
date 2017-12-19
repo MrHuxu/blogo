@@ -7,28 +7,28 @@ const gulp = require('gulp'),
       rename = require('gulp-rename');
 
 const jsFiles = [
-  './assets/javascripts/util.js',
-  './assets/javascripts/layout.js',
-  './assets/javascripts/*.js'
+  './app/assets/javascripts/util.js',
+  './app/assets/javascripts/layout.js',
+  './app/assets/javascripts/*.js'
 ];
 
 gulp.task('js', function () {
   gulp.src(jsFiles)
     .pipe(concat('all.min.js'))
-    .pipe(gulp.dest('./assets/dist'))
+    .pipe(gulp.dest('./app/assets/dist'))
     .pipe(babel({ presets: ['es2015'] }))
     .pipe(uglify())
-    .pipe(gulp.dest('./assets/dist'));
+    .pipe(gulp.dest('./app/assets/dist'));
 });
 
 gulp.task('css', function () {
   gulp.src([
-      './assets/stylesheets/layout.css',
-      './assets/stylesheets/*.css'
+      './app/assets/stylesheets/layout.css',
+      './app/assets/stylesheets/*.css'
     ])
     .pipe(concatCss('all.min.css'))
     .pipe(minifyCss({compatibility: 'ie8'}))
-    .pipe(gulp.dest('./assets/dist'));
+    .pipe(gulp.dest('./app/assets/dist'));
 });
 
 gulp.task('compress', ['js', 'css']);
