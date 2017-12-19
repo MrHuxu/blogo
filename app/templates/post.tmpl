@@ -10,6 +10,7 @@
     }
     .links {
       top: 54px;
+      right: 90px;
     }
     .links a {
       color: #888 !important;
@@ -22,15 +23,16 @@
       <h1>
         {{ $post.Title }}
       </h1>
-      <div class="ui horizontal divider">
-        {{ $post.ShowDate }}
-        {{ range $_, $tag := $post.Tags }}
-          &nbsp;|&nbsp;
-          <span class="tag-in-divider">
-            <a href="/archives?tag={{ $tag }}">{{ $tag }}</a>
-          </span>
-        {{ end }}
-      </div>
+    </div>
+
+    <div class="ui horizontal divider">
+      {{ $post.ShowDate }}
+      {{ range $_, $tag := $post.Tags }}
+        &nbsp;|&nbsp;
+        <span class="tag-in-divider">
+          <a href="/archives?tag={{ $tag }}">{{ $tag }}</a>
+        </span>
+      {{ end }}
     </div>
 
     <div class="post-content">

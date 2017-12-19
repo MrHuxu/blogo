@@ -1,9 +1,13 @@
 .post-container {
-  padding: 0 22% 30px 22%;
+  width: 85%;
+  margin: -120px 0 0 14%;
+  border-left: 4px solid #EFEFEF;
 }
 
 .post-header {
-  text-align: center;
+  height: 93px;
+  padding: 50px 0 0 30px;
+  text-align: left;
   font-family: "Lato", sans-serif;
   font-size: 30px;
   animation: postHeader .7s forwards;
@@ -11,11 +15,16 @@
 }
 
 .post-content {
+  padding: 18px 100px 18px 33px;
   animation: postContent 1.3s forwards;
 }
 
 .tag-in-divider a {
   color: #A3717F;
+}
+
+#disqus_thread {
+  padding: 18px 100px 54px 33px;
 }
 
 table {
