@@ -28,7 +28,7 @@ func (svc *Service) homeHandler(c *gin.Context) {
 	c.HTML(http.StatusOK, "layout", gin.H{
 		"prd":         atPrd,
 		"homePage":    true,
-		"pageTitle":   "Life of xhu - Page " + param,
+		"pageTitle":   "Life of xhu - Home",
 		"currentPage": page,
 		"canBeAppend": canBeAppend,
 		"titles":      paginatedTitles,

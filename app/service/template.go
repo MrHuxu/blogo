@@ -30,6 +30,14 @@ var funcMap = template.FuncMap{
 		return date[:6]
 	},
 
+	"getPicSequence": func(seq int) int {
+		result := seq - 13
+		if result < 0 {
+			result = 81 + result
+		}
+		return result
+	},
+
 	"getPicPosition": func(index int) string {
 		if index%2 == 1 {
 			return "left"

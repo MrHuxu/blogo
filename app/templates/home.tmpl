@@ -46,12 +46,13 @@
         {{ $post := index $.posts $title }}
 
         {{ $picPos := getPicPosition $i }}
+        {{ $picSeq := getPicSequence $post.Seq }}
         {{ $contentPos := getContentPosition $i }}
 
         <div class="home-item">
           {{ if eq $picPos "left" }}
             <div class="home-item-container-{{ $picPos }}">
-              <img class="home-item-pic" src="http://img1.gamersky.com/upimg/users/2017/12/16/origin_201712161256028363.jpg" />
+              <img class="home-item-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ $picSeq }}.JPG" />
             </div>
           {{ end }}
 
@@ -83,7 +84,7 @@
 
           {{ if eq $picPos "right" }}
             <div class="home-item-container-{{ $picPos }}">
-              <img class="home-item-pic" src="http://img1.gamersky.com/upimg/users/2017/12/16/origin_201712161256028363.jpg" />
+              <img class="home-item-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ $picSeq }}.JPG" />
             </div>
           {{ end }}
         </div>

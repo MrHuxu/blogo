@@ -1,8 +1,12 @@
+.archives-container {
+  margin: -120px 0 0 0;
+}
+
 .post-list {
   display: inline-block;
   vertical-align: top;
   width: 55%;
-  padding: 20px 0 20px 0;
+  padding: 98px 0 20px 0;
   animation: postContainer 1s forwards;
 }
 

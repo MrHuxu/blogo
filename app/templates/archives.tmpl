@@ -5,31 +5,37 @@
 
   <style>
     .logo {
+      top: 40px;
       position: fixed;
+    }
+    .links {
+      top: 54px;
     }
     .links a {
       color: #888 !important;
     }
   </style>
 
-  <div class="timeline-container post-list">
-    {{ range $_, $title := .titles }}
-      {{ $post := index $.posts $title }}
-      {{ if $post }}
-        <div class="timeline-item post-link">
-          <span class="post-date">{{ removeYear $post.ShowDate }}</span>
-          <a class="post-title" href="/post/{{$title}}">{{$title}}</a>
-          {{ range $_, $tag := $post.Tags }}
-            <div class="archive-tag-didiver"></div>
-            <a class="followed-tag-link" href="/archives?tag={{$tag}}">{{$tag}}</a>
-          {{ end }}
-        </div>
-      {{ else }}
-        <div class="timeline-title">
-          {{ $title }}
-        </div>
+  <div class="archives-container">
+    <div class="timeline-container post-list">
+      {{ range $_, $title := .titles }}
+        {{ $post := index $.posts $title }}
+        {{ if $post }}
+          <div class="timeline-item post-link">
+            <span class="post-date">{{ removeYear $post.ShowDate }}</span>
+            <a class="post-title" href="/post/{{$title}}">{{$title}}</a>
+            {{ range $_, $tag := $post.Tags }}
+              <div class="archive-tag-didiver"></div>
+              <a class="followed-tag-link" href="/archives?tag={{$tag}}">{{$tag}}</a>
+            {{ end }}
+          </div>
+        {{ else }}
+          <div class="timeline-title">
+            {{ $title }}
+          </div>
+        {{ end }}
       {{ end }}
-    {{ end }}
+    </div>
   </div>
 
   {{ if not .prd }}
