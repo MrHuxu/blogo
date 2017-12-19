@@ -33,11 +33,10 @@
     }
   </style>
 
-  <div class="home-header">
-    {{ $title := index .titles 0 }}
-    {{ $post := index $.posts $title }}
+  {{ $firstTitle := index .titles 0 }}
+  {{ $firstPost := index $.posts $firstTitle }}
+  <div class="home-header" style="background: url(https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ getPicSequence $firstPost.Seq $.maxPostSeq }}.JPG) no-repeat; background-size: 110% auto;">
 
-    <img class="bg-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ getPicSequence $post.Seq $.maxPostSeq }}.JPG" />
     <div class="bg-blur"></div>
 
     <div class="title">
@@ -48,23 +47,23 @@
 
     <div class="latest-post">
       <div class="latest-post-tags">
-        {{ range $j, $Tag := $post.Tags }}
+        {{ range $j, $tag := $firstPost.Tags }}
           {{ if $j }}
             <div class="tag-divider"></div>
           {{ end }}
-          <a href="/archives?tag={{$Tag}}">{{ $Tag }}</a>
+          <a href="/archives?tag={{ $tag }}">{{ $tag }}</a>
         {{ end }}
       </div>
       <div class="latest-post-date">
-        {{ $post.ShowDate }}
+        {{ $firstPost.ShowDate }}
       </div>
 
-      <a class="latest-post-header" href="/post/{{$title}}">{{$title}}</a>
+      <a class="latest-post-header" href="/post/{{$firstTitle}}">{{$firstTitle}}</a>
 
       <div class="ui divider latest-post-divider snippet-divider"></div>
 
       <div class="latest-post-content">
-        {{ $post.Content }}
+        {{ $firstPost.Content }}
       </div>
 
       
