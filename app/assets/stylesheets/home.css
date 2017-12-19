@@ -267,6 +267,27 @@
   margin: 0 0 15px 0;
 }
 
+.home-append > .home-item {
+  height: 140px;
+}
+
+.home-append .load-more {
+  text-align: center;
+  width: 160px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #666;
+  border: 1px solid #DADADA;
+  background: #FFF;
+  margin: 40px 0 0 -80px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.home-append .load-more:hover {
+  background: #EEE;
+}
+
 .snippet-arrow {
   cursor: pointer;
   animation: blink 1.2s infinite linear;
