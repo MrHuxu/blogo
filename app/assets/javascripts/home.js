@@ -13,7 +13,7 @@ $(() => {
   const homeHeaderBgPic = $('.home-header > .bg-pic');
   const { innerWidth, innerHeight } = window;
   homeHeader.on('mousemove', ({ pageX, pageY }) => {
-    homeHeader.css('background-position', `${pageX / innerWidth * 50}% ${pageY / innerHeight * 15}%`);
+    homeHeader.css('background-position', `${pageX / innerWidth * 14}% ${pageY / innerHeight * 8}%`);
   });
 
   const snippetArrow = $('.snippet-arrow');

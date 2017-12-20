@@ -35,7 +35,7 @@
 
   {{ $firstTitle := index .titles 0 }}
   {{ $firstPost := index $.posts $firstTitle }}
-  <div class="home-header" style="background: url(https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ getPicSequence $firstPost.Seq $.maxPostSeq }}.jpg) no-repeat; background-size: 110% auto;">
+  <div class="home-header" style="background: url(https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ getPicSequence $firstPost.Seq $.maxPostSeq }}.jpg) no-repeat; background-size: cover auto;">
 
     <div class="bg-blur"></div>
 
