@@ -12,8 +12,11 @@ $(() => {
   const homeHeader = $('.home-header');
   const homeHeaderBgPic = $('.home-header > .bg-pic');
   const { innerWidth, innerHeight } = window;
+  const bgImg = $('.bg-pic > img');
+  const imgW = bgImg.width(), imgH = bgImg.height();
+  const subW = imgW - innerWidth, subH = imgH - innerHeight;
   homeHeader.on('mousemove', ({ pageX, pageY }) => {
-    homeHeader.css('background-position', `${pageX / innerWidth * 14}% ${pageY / innerHeight * 8}%`);
+    bgImg.css('transform', `translate3d(-${pageX / innerWidth * subW}px, -${pageY / innerHeight * subH}px, 0px)`);
   });
 
   const snippetArrow = $('.snippet-arrow');

@@ -6,7 +6,19 @@
   margin: -120px 0 0 0;
 }
 
-.home-header > .bg-blur {
+.bg-pic {
+  width: 100%;
+  height: 100%;
+}
+
+.bg-pic > img {
+  width: auto;
+  min-width: 109%;
+  height: auto;
+  min-height: 105%;
+}
+
+.bg-blur {
   position: absolute;
   width: 100%;
   height: 100%;
