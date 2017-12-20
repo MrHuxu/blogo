@@ -14,7 +14,7 @@ $(() => {
   const { innerWidth, innerHeight } = window;
   const bgImg = $('.bg-pic > img');
   const imgW = bgImg.width(), imgH = bgImg.height();
-  const subW = imgW - innerWidth, subH = imgH - innerHeight;
+  const subW = Math.min(imgW - innerWidth, innerHeight / 18), subH = Math.min(imgH - innerHeight, innerHeight / 18);
   homeHeader.on('mousemove', ({ pageX, pageY }) => {
     bgImg.css('transform', `translate3d(-${pageX / innerWidth * subW}px, -${pageY / innerHeight * subH}px, 0px)`);
   });
