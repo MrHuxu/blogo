@@ -4,3 +4,4 @@ app/assets/dist
 .DS_Store
 main
 gin-bin
+package-lock.json
