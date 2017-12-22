@@ -21,7 +21,7 @@
     "build-back-end": "go build main.go",
     "build": "npm run build-front-end && npm run build-back-end",
 
-    "dev": "gin --excludeDir archives --excludeDir node_modules --excludeDir app/assets --all --port 8283 --appPort 13109 run main.go",
+    "dev": "gin --excludeDir archives --excludeDir node_modules --excludeDir app/assets --all --port 8283 --appPort 13109",
     "prd": "npm run build && ENV=Production ./main",
     "deploy": "npm run build && sudo supervisorctl reload"
   },
