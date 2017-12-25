@@ -14,6 +14,7 @@
 .bg-pic > img {
   width: auto;
   max-width: 109%;
+  min-width: 105%;
   height: auto;
   min-height: 105%;
 }
