@@ -29,9 +29,11 @@ const getTitle = post => new Promise(res => {
   });
 });
 
+const formatMonthDate = num => num >= 10 ? num : ('0' + num);
+
 const getDate = post => new Promise(res => {
   const date = new Date();
-  const nowDate = `${date.getUTCFullYear()}${date.getUTCMonth() + 1}${date.getUTCDate()}`;
+  const nowDate = `${date.getUTCFullYear()}${formatMonthDate(date.getUTCMonth() + 1)}${formatMonthDate(date.getUTCDate())}`;
   const validateDate = str => (
     8 === str.length &&
     parseInt(str.slice(0, 4)) &&
