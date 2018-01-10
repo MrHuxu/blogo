@@ -9,18 +9,16 @@
     "gulp-babel": "^7.0.0",
     "gulp-clean-css": "^3.9.0",
     "gulp-concat": "^2.6.1",
-    "gulp-concat-css": "^2.3.0",
+    "gulp-concat-css": "^3.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^3.0.0"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "scripts": {
     "create-post": "node scripts/create-post",
     "build-front-end": "./node_modules/gulp/bin/gulp.js compress",
     "build-back-end": "go build main.go",
     "build": "npm run build-front-end && npm run build-back-end",
-
     "dev": "gin --excludeDir archives --excludeDir node_modules --excludeDir app/assets --all --port 8283 --appPort 13109",
     "prd": "npm run build && ENV=Production ./main",
     "deploy": "npm run build && sudo supervisorctl reload"
