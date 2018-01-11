@@ -94,6 +94,8 @@
     console.log(pq.dequeue()); // 3
     console.log(pq.dequeue()); // 1
 
+[完整代码 on GitHub Gist](https://gist.github.com/MrHuxu/06a673b093dd02c621d1d36f38bc825b)
+
 ### refs:
 
 - [《算法(第四版)》](https://book.douban.com/subject/19952400/)
