@@ -36,7 +36,7 @@
       return 0 === this.data.length;
     };
 
-    // 对比队列中优先级大小
+    // 对比队列中元素优先级大小
     PriorityQueue.prototype.less = function(i, j) {
       return this.data[i] < this.data[j];
     };
