@@ -1,3 +1,5 @@
+[完整代码 on GitHub Gist](https://gist.github.com/MrHuxu/06a673b093dd02c621d1d36f38bc825b)
+
 今天看了《算法(第四版)》的优先队列一章, 原文是用 Java 编写的, 我们现在来用 JavaScript 实现一下, 也顺便复习一下这章节的内容.
 
 首先我们看一下维基上对于优先队列的定义:
@@ -93,8 +95,6 @@
     console.log(pq.dequeue()); // 3
     console.log(pq.dequeue()); // 3
     console.log(pq.dequeue()); // 1
-
-[完整代码 on GitHub Gist](https://gist.github.com/MrHuxu/06a673b093dd02c621d1d36f38bc825b)
 
 ### refs:
 
