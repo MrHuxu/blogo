@@ -1,3 +1,5 @@
+[完整代码 on GitHub Gist](https://gist.github.com/MrHuxu/06a673b093dd02c621d1d36f38bc825b)
+
 今天看了《算法(第四版)》的优先队列一章, 原文是用 Java 编写的, 我们现在来用 JavaScript 实现一下, 也顺便复习一下这章节的内容.
 
 首先我们看一下维基上对于优先队列的定义:
@@ -12,7 +14,7 @@
       this.data = [];
     };
 
-    PriorityQueue.prototype.enqueue = function (ele){};
+    PriorityQueue.prototype.enqueue = function (...ele){};
     PriorityQueue.prototype.dequeue = function (){};
 
 接下来就是重点的入队和出队方法.
@@ -22,15 +24,26 @@
 那么我们换个思路, 我们并不是每次都需要队列整体有序, 只需要队列最前面的元素是最大的元素即可, 这正好就是堆的特性, 不论是入队还是出队, 我们都可以给数组建一次堆, 让最大元素始终处在最前的位置, 时间复杂度对比如下:
 
 | 数据结构 | 入队 | 出队 |
-|--|--|--|
-| 有序数组 | O(N) | 1 |
-| 无序数组 | 1 | O(N) |
-| 堆 | O(logN) | O(logN) |
+| ------- | --- | --- |
+| 有序数组 | O(N)    | 1       |
+| 无序数组 | 1       | O(N)    |
+| 堆      | O(logN) | O(logN) |
 
 可以看出, 当 N 足够大的时候, 使用堆的综合效率是要远高于前两者的.
 
-我们先实现建堆时用来交换元素的 `swap` 方法:
+首先我们来实现几个基础方法:
 
+    // 判断队列是否为空
+    PriorityQueue.prototype.isEmpty = function() {
+      return 0 === this.data.length;
+    };
+
+    // 比较队列中元素优先级大小
+    PriorityQueue.prototype.less = function(i, j) {
+      return this.data[i] < this.data[j];
+    };
+
+    // 交换队列中元素位置
     PriorityQueue.prototype.swap = function (i, j) {
       let tmp = this.data[i];
       this.data[i] = this.data[j];
@@ -39,12 +52,12 @@
 
 那么首先来完成 `enqueue` 方法, 照旧, 选择最简单的二叉堆来使用, 假设我们把内部数组看做一个二叉树的话, 那么在每次在树的最后插入元素后, 我们需要 `由下至上` 的将新加入的元素根据优先级提升到本应该在的位置:
 
-    PriorityQueue.prototype.enqueue = function (ele) {
-      this.data.push(ele);
+    PriorityQueue.prototype.enqueue = function (...ele) {
+      this.data.push(...ele);
       this.data.unshift(null); // 加入头元素, 方便从1开始遍历二叉堆
       for (let i = parseInt((this.data.length - 1) / 2); i >= 1; i--) {
-        if (this.data[i] < this.data[i * 2]) this.swap(i, i * 2);
-        if (this.data[i * 2 + 1] && this.data[i] < this.data[i * 2 + 1]) this.swap(i, i * 2 + 1);
+        if (this.less(i, i * 2)) this.swap(i, i * 2);
+        if (this.data[i * 2 + 1] !== undefined && this.less(i, i * 2 + 1)) this.swap(i, i * 2 + 1);
       }
       this.data.shift();
     };
@@ -54,18 +67,18 @@
 在最大元素出队之后, 如果我们从第二个元素开始建堆, 那么整个二叉树的形状都发生改变了, 可能实际的交换次数会很多, 那么我们换一个方式, 把整个队列的最后一个元素放到二叉堆根的位置, 再 `由上至下` 地将父元素和子元素对比, 如果比子元素优先级小, 则下沉父元素, 再用同样方式处理替换过的子元素, 直到堆根下沉到应该在的位置, 代码如下:
 
     PriorityQueue.prototype.dequeue = function () {
-      const result = this.data.shift();
+      if (this.isEmpty()) return undefined;
 
+      const result = this.data.shift();
       this.data = [null, this.data[this.data.length - 1], ...this.data.slice(0, this.data.length - 1)];
       for (let i = 1; i <= parseInt((this.data.length - 1) / 2);) {
         let j = 2 * i;
-        if (j < this.data.length - 1 && this.data[j] < this.data[j + 1]) j++;
-        if (this.data[i] >= this.data[j]) break;
+        if (j < this.data.length - 1 && this.less(j, j + 1)) j++;
+        if (!this.less(i, j)) break;
         this.swap(i, j);
         i = j;
       }
       this.data.shift();
-
       return result;
     };
 
@@ -73,11 +86,8 @@
 测试代码:
 
     const pq = new PriorityQueue();
-    pq.enqueue(1);
-    pq.enqueue(13);
-    pq.enqueue(3);
-    pq.enqueue(31);
-    pq.enqueue(3);
+    pq.enqueue(1, 13, 3);
+    pq.enqueue(31, 3);
     pq.enqueue(22);
     console.log(pq.dequeue()); // 31
     console.log(pq.dequeue()); // 22
