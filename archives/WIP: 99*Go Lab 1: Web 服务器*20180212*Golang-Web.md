@@ -92,3 +92,32 @@
       e.storeRoute(getPatterns(path), "POST", handler)
     }
 
+然后我们需要使用一种方法, 使接收到的网络请求能够被我们的 trie 树引导, 这样我们就需要用到 `http.ListenAndServe` 方法的第二个参数, 这个参数需要实现如下这个接口:
+
+    type Handler interface {
+      ServeHTTP(ResponseWriter, *Request)
+    }
+
+这样一来, 所有的请求都会通过 `ServeHTTP` 这个方法分发下去, 那么接下来就好说了, 我们直接在 `Engine` 上实现这个方法就好了, 具体的做法就是将请求路径分隔出来, 再在 trie 树上找到对应的 hanler 即可:
+
+    func (e *Engine) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+      patterns := getPatterns(r.URL.Path)
+      router := e.router.children["/"]
+      for _, pattern := range patterns {
+        if _, ok := router.children[pattern]; !ok {
+          w.Write([]byte(routeUndefined))
+          return
+        }
+        router = router.children[pattern]
+      }
+
+      if _, ok := router.handlers[r.Method]; !ok {
+        w.Write([]byte(routeUndefined))
+        return
+      }
+      router.handlers[r.Method](w, r)
+    }
+
+[完整的实现代码](https://github.com/MrHuxu/x-go-lab/tree/master/web/engine)
+
+---
