@@ -30,6 +30,23 @@ var funcMap = template.FuncMap{
 		return date[:6]
 	},
 
+	"initYears": func() []string {
+		return []string{}
+	},
+
+	"checkYearToRender": func(existingYears []string, year string) (newYears []string, needToRender bool) {
+		for _, existingYear := range existingYears {
+			if existingYear == year {
+				newYears = existingYears
+				needToRender = false
+				return
+			}
+		}
+		newYears = append(existingYears, year)
+		needToRender = true
+		return
+	},
+
 	"getPicSequence": func(seq, maxPostSeq int) int {
 		if seq < 13 {
 			return maxPostSeq - seq
