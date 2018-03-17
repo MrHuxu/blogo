@@ -29,6 +29,10 @@ $(() => {
   const loadMore = $('.load-more');
   let $currentPage = 0;
 
+  const years = $('.year').toArray().reduce((pre, curr) => {
+    pre[curr.id] = true;
+    return pre;
+  }, {});
   const convertPostToElement = post => {
     const img = `
       <img class="home-item-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/${post.seq < 13 ? ($maxPostSeq - post.seq) : post.seq}.jpg" />
@@ -36,11 +40,16 @@ $(() => {
     const tags = post.tags.map(tag => (
       `<a href="/archives?tag=${tag}">${tag}</a>`
     )).join('&nbsp;<div class="tag-divider"></div>&nbsp;');
+    const year = post.showDate.slice(8);
+    const showYear = !years[year];
+    if (showYear) years[year] = true;
     return `
       <div class="home-item">
+        ${showYear ? `<div class="year" id="${year}"> /* ${year} */ </div>` : ''}
+
         <div class="home-item-content">
           <div class="date">
-          ${post.showDate}
+            ${post.showDate.slice(0, 6)}
           </div>
           <a class="link" href="/post/${post.title}">${post.title}</a>
         </div>

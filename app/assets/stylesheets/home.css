@@ -1,3 +1,9 @@
+
+.home-item > .year {
+  color: #BBB;
+  margin: 10px 0 20px 17px;
+}
+
 .home-item-content {
   padding: 10px 0 10px 0;
   height: 50px;
@@ -9,18 +15,18 @@
 }
 
 .home-item-content > .date {
-  color: #999;
+  color: #888;
 }
 
 .home-item-content > .link {
   margin: 0 0 0 20px;
   color: #666;
-  font-size: 20px;
+  font-size: 18px;
   text-decoration: underline;
 }
 
 .home-append {
-  margin: 5px 0 18px -2px;
+  margin: 60px 0 30px -2px;
 }
 
 .home-append .load-more {

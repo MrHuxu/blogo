@@ -7,14 +7,23 @@
   {{ $firstPost := index $.posts $firstTitle }}
 
   <div class="home-container">
+    {{ $years := initYears }}
+
     {{ range $i, $title := .titles }}
       {{ if $i }}
         {{ $post := index $.posts $title }}
 
         <div class="home-item">
+          {{ $renderYear := shouldRenderYear $years $post.ShowDate }}
+
+          {{ if $renderYear }}
+            {{ $year := getYear $post.ShowDate }}
+            <div class="year" id="{{ $year }}"> /* {{ $year }} */ </div>
+          {{ end }}
+
           <div class="home-item-content">
             <div class="date">
-              {{ $post.ShowDate }}
+              {{ removeYear $post.ShowDate }}
             </div>
             <a class="link" href="/post/{{ $title }}">{{ $title }}</a>
           </div>

@@ -54,10 +54,10 @@ a:hover {
 }
 
 #container {
-  width: 800px;
+  width: 900px;
   padding: 20px 0 0 0;
-  margin-left: calc((100% - 800px) / 2);
-  min-height: calc(100% - 80px);
+  margin-left: calc((100% - 900px) / 2);
+  min-height: calc(100% - 100px);
 }
 
 #btc-container {
@@ -95,7 +95,7 @@ a:hover {
 }
 
 .title {
-  margin: 0 0 20px 0;
+  margin: 0 0 60px 0;
   font-size: 18px;
 }
 
