@@ -5,6 +5,10 @@ import (
 	"html/template"
 )
 
+var getYear = func(date string) string {
+	return date[8:]
+}
+
 var funcMap = template.FuncMap{
 	"add": func(i, j int) int {
 		return i + j
@@ -26,46 +30,25 @@ var funcMap = template.FuncMap{
 		return !b
 	},
 
+	"getYear": getYear,
+
 	"removeYear": func(date string) string {
 		return date[:6]
 	},
 
-	"initYears": func() []string {
-		return []string{}
+	"initYears": func() *[]string {
+		return &([]string{})
 	},
 
-	"checkYearToRender": func(existingYears []string, year string) (newYears []string, needToRender bool) {
-		for _, existingYear := range existingYears {
+	"shouldRenderYear": func(existingYears *[]string, date string) bool {
+		year := getYear(date)
+		for _, existingYear := range *existingYears {
 			if existingYear == year {
-				newYears = existingYears
-				needToRender = false
-				return
+				return false
 			}
 		}
-		newYears = append(existingYears, year)
-		needToRender = true
-		return
-	},
-
-	"getPicSequence": func(seq, maxPostSeq int) int {
-		if seq < 13 {
-			return maxPostSeq - seq
-		}
-		return seq
-	},
-
-	"getPicPosition": func(seq, maxPostSeq int) string {
-		if (maxPostSeq-seq)%2 == 1 {
-			return "left"
-		}
-		return "right"
-	},
-
-	"getContentPosition": func(seq, maxPostSeq int) string {
-		if (maxPostSeq-seq)%2 == 1 {
-			return "right"
-		}
-		return "left"
+		*existingYears = append(*existingYears, year)
+		return true
 	},
 }
 
