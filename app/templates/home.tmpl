@@ -3,122 +3,30 @@
     <link href="/assets/stylesheets/home.css" rel="stylesheet">
   {{ end }}
 
-  <style>
-    .menu {
-      position: relative;
-      width: 100%;
-      height: 120px;
-    }
-    .logo, .links {
-      position: absolute;
-    }
-    .logo {
-      top: 72px;
-      left: 5%;
-    }
-    .links {
-      top: 40px;
-      right: 5.4%;
-      z-index: 900;
-    }
-    .links > div {
-      display: inline;
-    }
-    .links a {
-      vertical-align: top;
-      font-size: 18px;
-      color: #FFF;
-      margin: 0 0 0 25px;
-    }
-  </style>
-
   {{ $firstTitle := index .titles 0 }}
   {{ $firstPost := index $.posts $firstTitle }}
-  <div class="home-header">
-
-    <div class="bg-pic">
-      <img src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ getPicSequence $firstPost.Seq $.maxPostSeq }}.jpg" />
-    </div>
-    <div class="bg-blur"></div>
-
-    <div class="title">
-      Life of xhu
-      <i class="angle double right icon snippet-arrow"></i>
-    </div>
-
-
-    <div class="latest-post">
-      <div class="latest-post-tags">
-        {{ range $j, $tag := $firstPost.Tags }}
-          {{ if $j }}
-            <div class="tag-divider"></div>
-          {{ end }}
-          <a href="/archives?tag={{ $tag }}">{{ $tag }}</a>
-        {{ end }}
-      </div>
-      <div class="latest-post-date">
-        {{ $firstPost.ShowDate }}
-      </div>
-
-      <a class="latest-post-header" href="/post/{{$firstTitle}}">{{$firstTitle}}</a>
-
-      <div class="ui divider latest-post-divider snippet-divider"></div>
-
-      <div class="latest-post-content">
-        {{ $firstPost.Content }}
-      </div>
-
-      
-    </div>
-  </div>
 
   <div class="home-container">
+    {{ $years := initYears }}
+
     {{ range $i, $title := .titles }}
       {{ if $i }}
         {{ $post := index $.posts $title }}
 
-        {{ $picPos := getPicPosition $post.Seq $.maxPostSeq }}
-        {{ $picSeq := getPicSequence $post.Seq $.maxPostSeq }}
-        {{ $contentPos := getContentPosition $post.Seq $.maxPostSeq }}
-
         <div class="home-item">
-          {{ if eq $picPos "left" }}
-            <div class="home-item-container-{{ $picPos }}">
-              <img class="home-item-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ $picSeq }}.jpg" />
-            </div>
+          {{ $renderYear := shouldRenderYear $years $post.ShowDate }}
+
+          {{ if $renderYear }}
+            {{ $year := getYear $post.ShowDate }}
+            <div class="year" id="{{ $year }}"> /* {{ $year }} */ </div>
           {{ end }}
 
-          <div class="home-item-container-{{ $contentPos }}">
-            <div class="home-item-content">
-              <div class="snippet-container">
-                <a class="snippet-header" href="/post/{{ $title }}">{{ $title }}</a>
-
-                <div class="ui divider snippet-divider"></div>
-
-                <div class="snippet-content">
-                  {{ $post.Content }}
-                </div>
-
-                <div class="tags">
-                  {{ range $j, $Tag := $post.Tags }}
-                    {{ if $j }}
-                      <div class="tag-divider"></div>
-                    {{ end }}
-                    <a href="/archives?tag={{ $Tag }}">{{ $Tag }}</a>
-                  {{ end }}
-                </div>
-                <div class="date">
-                  {{ $post.ShowDate }}
-                </div>
-              </div>
+          <div class="home-item-content">
+            <div class="date">
+              {{ removeYear $post.ShowDate }}
             </div>
+            <a class="link" href="/post/{{ $title }}">{{ $title }}</a>
           </div>
-
-          {{ if eq $picPos "right" }}
-            <div class="home-item-container-{{ $picPos }}">
-              <img class="home-item-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/{{ $picSeq }}.jpg" />
-            </div>
-          {{ end }}
         </div>
       {{ end }}
     {{ end }}

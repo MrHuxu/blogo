@@ -53,6 +53,13 @@ a:hover {
   color: #666;
 }
 
+#container {
+  width: 900px;
+  padding: 20px 0 0 0;
+  margin-left: calc((100% - 900px) / 2);
+  min-height: calc(100% - 100px);
+}
+
 #btc-container {
   position: fixed;
   right: -20px;
@@ -85,4 +92,65 @@ a:hover {
 .footer * {
   opacity: 0.8;
   font-family: 'Lato', sans-serif;
+}
+
+.title {
+  margin: 0 0 60px 0;
+  font-size: 18px;
+}
+
+.snippet-arrow {
+  cursor: pointer;
+  animation: blink 1.2s infinite linear;
+  -moz-animation: blink 1.2s infinite linear;
+  -webkit-animation: blink 1.2s infinite linear;
+  -o-animation: blink 1.2s infinite linear;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

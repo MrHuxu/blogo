@@ -5,6 +5,10 @@ import (
 	"html/template"
 )
 
+var getYear = func(date string) string {
+	return date[8:]
+}
+
 var funcMap = template.FuncMap{
 	"add": func(i, j int) int {
 		return i + j
@@ -26,29 +30,25 @@ var funcMap = template.FuncMap{
 		return !b
 	},
 
+	"getYear": getYear,
+
 	"removeYear": func(date string) string {
 		return date[:6]
 	},
 
-	"getPicSequence": func(seq, maxPostSeq int) int {
-		if seq < 13 {
-			return maxPostSeq - seq
-		}
-		return seq
+	"initYears": func() *[]string {
+		return &([]string{})
 	},
 
-	"getPicPosition": func(seq, maxPostSeq int) string {
-		if (maxPostSeq-seq)%2 == 1 {
-			return "left"
+	"shouldRenderYear": func(existingYears *[]string, date string) bool {
+		year := getYear(date)
+		for _, existingYear := range *existingYears {
+			if existingYear == year {
+				return false
+			}
 		}
-		return "right"
-	},
-
-	"getContentPosition": func(seq, maxPostSeq int) string {
-		if (maxPostSeq-seq)%2 == 1 {
-			return "right"
-		}
-		return "left"
+		*existingYears = append(*existingYears, year)
+		return true
 	},
 }
 

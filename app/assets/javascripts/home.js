@@ -29,6 +29,10 @@ $(() => {
   const loadMore = $('.load-more');
   let $currentPage = 0;
 
+  const years = $('.year').toArray().reduce((pre, curr) => {
+    pre[curr.id] = true;
+    return pre;
+  }, {});
   const convertPostToElement = post => {
     const img = `
       <img class="home-item-pic" src="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog-title/${post.seq < 13 ? ($maxPostSeq - post.seq) : post.seq}.jpg" />
@@ -36,34 +40,18 @@ $(() => {
     const tags = post.tags.map(tag => (
       `<a href="/archives?tag=${tag}">${tag}</a>`
     )).join('&nbsp;<div class="tag-divider"></div>&nbsp;');
-    const content = `
-      <div class="home-item-content" style="background-color: rgb(255, 255, 255);">
-        <div class="snippet-container">
-          <a class="snippet-header" href="/post/${post.title}"> ${post.title} </a>
-
-          <div class="ui divider snippet-divider"></div>
-
-          <div class="snippet-content">
-            ${post.content}
-          </div>
-
-          <div class="tags">
-            ${tags}
-          </div>
-          <div class="date">
-            Dec 26, 2016
-            ${post.showDate}
-          </div>
-        </div>
-      </div>
-    `;
+    const year = post.showDate.slice(8);
+    const showYear = !years[year];
+    if (showYear) years[year] = true;
     return `
       <div class="home-item">
-        <div class="home-item-container-left">
-          ${($maxPostSeq - post.seq) % 2 ? img : content}
-        </div>
-        <div class="home-item-container-right">
-          ${($maxPostSeq - post.seq) % 2 ? content : img}
+        ${showYear ? `<div class="year" id="${year}"> /* ${year} */ </div>` : ''}
+
+        <div class="home-item-content">
+          <div class="date">
+            ${post.showDate.slice(0, 6)}
+          </div>
+          <a class="link" href="/post/${post.title}">${post.title}</a>
         </div>
       </div>
     `;

@@ -16,20 +16,6 @@
       {{ end }}
     </head>
     <body>
-      <div class="menu">
-        <div class="logo">
-          <a href="/">
-            <img src="/assets/images/xhu-billabong.png" />
-          </a>
-        </div>
-
-        <div class="links">
-          <div><a href="/">Home</a></div>
-          <div><a href="/archives">Archives</a></div>
-          <div><a target="_blank" href="http://xhu.me">Aboutme</a></div>
-        </div>
-      </div>
-
       <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
       <script src="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.min.js"></script>
@@ -37,17 +23,20 @@
         <script src="/assets/javascripts/util.js"></script>
       {{ end }}
 
-      {{ if .homePage }}
-        {{ template "home" . }}
-      {{ end }}
+      <div id="container">
+        <div class="title">
+          Life of xhu
+          <a href="/"><i class="angle double right icon snippet-arrow"></i></a>
+        </div>
 
-      {{ if .archivesPage }}
-        {{ template "archives" . }}
-      {{ end }}
+        {{ if .homePage }}
+          {{ template "home" . }}
+        {{ end }}
 
-      {{ if .postPage }}
-        {{ template "post" . }}
-      {{ end }}
+        {{ if .postPage }}
+          {{ template "post" . }}
+        {{ end }}
+      </div>
 
       <div id="btc-container">
         <div id="back-to-top"></div>
