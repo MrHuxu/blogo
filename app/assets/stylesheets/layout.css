@@ -55,9 +55,9 @@ a:hover {
 
 #container {
   width: 900px;
-  padding: 20px 0 0 0;
+  padding: 60px 0 0 0;
   margin-left: calc((100% - 900px) / 2);
-  min-height: calc(100% - 100px);
+  min-height: calc(100% - 110px);
 }
 
 #btc-container {
