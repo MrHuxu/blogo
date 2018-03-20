@@ -1,7 +1,7 @@
 
 .home-item > .year {
   color: #BBB;
-  margin: 10px 0 20px 17px;
+  margin: 10px 0 20px 0;
 }
 
 .home-item-content {
@@ -19,9 +19,11 @@
 }
 
 .home-item-content > .link {
+  top: 7px;
   left: 60px;
   color: #666;
   font-size: 18px;
+  line-height: 24px;
   text-decoration: underline;
 }
 
