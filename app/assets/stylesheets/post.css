@@ -1,7 +1,11 @@
-.post-header {
-  height: 53px;
+#post-header {
+  margin: 40px 0;
   text-align: center;
   font-family: "Lato", sans-serif;
+}
+
+#post-divider {
+  margin: 20px 0 40px 0;
 }
 
 .tag-in-divider a {

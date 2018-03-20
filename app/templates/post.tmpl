@@ -9,15 +9,15 @@
     }
   </style>
 
-  <div class="post-container">
+  <div id="post-container">
     {{ $post := .post }}
-    <div class="post-header">
+    <div id="post-header">
       <h1>
         {{ $post.Title }}
       </h1>
     </div>
 
-    <div class="ui horizontal divider">
+    <div class="ui horizontal divider" id="post-divider">
       {{ $post.ShowDate }}
       {{ range $_, $tag := $post.Tags }}
         &nbsp;|&nbsp;
