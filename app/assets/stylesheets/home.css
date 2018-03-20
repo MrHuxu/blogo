@@ -5,13 +5,13 @@
 }
 
 .home-item-content {
+  position: relative;
   padding: 10px 0 10px 0;
   height: 50px;
 }
 
 .home-item-content > .date, .home-item-content > .link {
-  vertical-align: top;
-  display: inline-block;
+  position: absolute;
 }
 
 .home-item-content > .date {
@@ -19,7 +19,7 @@
 }
 
 .home-item-content > .link {
-  margin: 0 0 0 20px;
+  left: 60px;
   color: #666;
   font-size: 18px;
   text-decoration: underline;
