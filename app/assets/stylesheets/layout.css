@@ -54,9 +54,9 @@ a:hover {
 }
 
 #container {
-  width: 900px;
+  width: 720px;
   padding: 60px 0 0 0;
-  margin-left: calc((100% - 900px) / 2);
+  margin-left: calc((100% - 720px) / 2);
   min-height: calc(100% - 110px);
 }
 
