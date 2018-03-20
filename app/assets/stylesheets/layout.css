@@ -81,7 +81,7 @@ a:hover {
   background: rgba(87, 218, 178, 0.6) url(/assets/images/cd-top-arrow.svg) no-repeat center 50%;
 }
 
-.footer {
+#footer {
   background-color: #FFFEEC;
   height: 80px;
   padding: 22px 0 0 0;
@@ -89,7 +89,7 @@ a:hover {
   color: #444444;
 }
 
-.footer * {
+#footer * {
   opacity: 0.8;
   font-family: 'Lato', sans-serif;
 }
@@ -152,5 +152,18 @@ a:hover {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  #container {
+    width: 100%;
+    margin: 0;
+    padding: 60px 15px 0 15px;
+  }
+
+  #footer {
+    height: 102px;
+    padding: 22px 0 22px 0;
   }
 }
