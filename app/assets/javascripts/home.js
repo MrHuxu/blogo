@@ -19,11 +19,6 @@ $(() => {
     bgImg.css('transform', `translate3d(-${pageX / innerWidth * subW}px, -${pageY / innerHeight * subH}px, 0px)`);
   });
 
-  const snippetArrow = $('.snippet-arrow');
-  snippetArrow.click(() => {
-    $('body').animate({ scrollTop: window.innerHeight });
-  });
-
   const homeContainer = $('.home-container');
   const homeAppend = $('.home-append');
   const loadMore = $('.load-more');
