@@ -16,6 +16,9 @@ type conf struct {
 		TemplatesPath string `json:"templates_path,omitempty"`
 		PerPage       int    `json:"per_page,omitempty"`
 	} `json:"web,omitempty"`
+	Post struct {
+		ArchivesPath string `json:"archives_path,omitempty"`
+	} `json:"post,omitempty"`
 }
 
 func init() {

@@ -1,7 +1,13 @@
 package handlers
 
 import (
+	"os"
+	"path/filepath"
+	"strings"
+
 	"github.com/gin-gonic/gin"
+
+	"github.com/MrHuxu/blogo/server/conf"
 )
 
 var DefaultTagHandler TagHandler
@@ -11,7 +17,7 @@ type TagHandler interface {
 }
 
 func initTagHandler() {
-	handler := &tagHandler{}
+	handler := &tagHandler{[]tag{}, make(map[tag]int)}
 	handler.cacheTags()
 
 	DefaultTagHandler = handler
@@ -25,7 +31,21 @@ type tagHandler struct {
 type tag string
 
 func (h *tagHandler) cacheTags() {
-
+	filepath.Walk(conf.Conf.Post.ArchivesPath, func(path string, _ os.FileInfo, _ error) error {
+		tmp := strings.Split(path, "/")
+		if len(tmp) > 1 && !strings.HasPrefix(tmp[1], "WIP") {
+			for _, str := range strings.Split(strings.Split(strings.Split(tmp[1], "*")[3], ".")[0], "-") {
+				t := tag(str)
+				if _, ok := h.times[t]; ok {
+					h.times[t]++
+				} else {
+					h.tags = append(h.tags, t)
+					h.times[t] = 1
+				}
+			}
+		}
+		return nil
+	})
 }
 
 func (h *tagHandler) AllTags(*gin.Context) {}
