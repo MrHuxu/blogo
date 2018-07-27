@@ -10,8 +10,10 @@ import (
 	"github.com/MrHuxu/blogo/server/middlewares"
 )
 
+// DefaultServer exports an instance of interface Server
 var DefaultServer Server
 
+// Server defines the interface that server needs to implement
 type Server interface {
 	Run()
 }
@@ -31,7 +33,7 @@ func init() {
 	s := &server{
 		Engine: gin.Default(),
 	}
-	s.Use(middlewares.RenderHTMLString())
+	s.Use(middlewares.RenderReactData())
 
 	s.LoadHTMLGlob(conf.Conf.Web.TemplatesPath)
 	s.registerRoutes()

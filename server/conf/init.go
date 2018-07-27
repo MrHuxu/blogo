@@ -7,6 +7,7 @@ import (
 	"os"
 )
 
+// Conf exports an instance of conf
 var Conf conf
 
 type conf struct {

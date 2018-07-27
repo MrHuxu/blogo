@@ -15,7 +15,6 @@ const Home = ({ data }) => {
 
   return (
     <HomeContainer>
-      <p> Life of xhu >> </p>
       { titles.map(title => (
         <div>
           <p> { title } </p>
