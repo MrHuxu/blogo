@@ -14,6 +14,7 @@ type conf struct {
 	Web struct {
 		Port          int    `json:"port,omitempty"`
 		TemplatesPath string `json:"templates_path,omitempty"`
+		PerPage       int    `json:"per_page,omitempty"`
 	} `json:"web,omitempty"`
 }
 

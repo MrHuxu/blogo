@@ -1,6 +1,8 @@
 {
   "web": {
     "port": 13109,
-    "templates_path": "server/templates/*"
+    "templates_path": "server/templates/*",
+
+    "per_page": 10
   }
 }
