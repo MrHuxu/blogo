@@ -16,6 +16,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "better-console": "^1.0.1",
     "css-loader": "^1.0.0",
     "file-loader": "^1.1.11",
     "prop-types": "^15.6.1",
@@ -49,6 +50,7 @@
   },
   "scripts": {
     "test": "npm test",
+    "create-post": "node scripts/create-post",
     "webpack": "./node_modules/webpack/bin/webpack.js --config config/webpack.config.js --watch --progress",
     "lint": "./node_modules/eslint-watch/bin/esw . --fix --ignore-path .gitignore --ext .jsx --ext .js -w",
     "dev-server": "gin --port 8283 --appPort 13109 --all -i",
