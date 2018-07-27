@@ -228,7 +228,10 @@ context 包在 1.7 版本就被加入 Go 标准库, 源码在 `go/src/context/co
 
 `cancel` 函数的操作, 就是在我们 cancel 一个 context 的时候, 首先将其自身的 `done` 给关掉, 然后将 `children` 的 context 给 cancel 掉, 然后根据 `removeFromParent` 参数决定是否需要从 parent 的 children 中移除当前 context.
 
-当我们手动去 cancel 一个 context 的时候, 是需要将其从 parent 的 children 中移除的, 因为重复 close 一个 channel 会导致 panic, 而这个 context 的 children 就不用移除了, 因为一个 context 是无法被重复 cancel 的, 这样也避免了多余的内存操作.
+所以当我们手动去 cancel 一个 context 的时候, 会有一些额外的逻辑需要解释一下:
+
+1. 需要将其从 parent 的 children 中移除的, 因为 cancel 掉 parent 的时候会再次递归的 cancel 这个 context, 重复 close 一个 channel 会导致 panic;
+2. 当前 context 的 children 不用移除, 已经 cancel 的 context 就算保留着 children 也没问题, 反正是无法再次被 cancel, 这样也避免了多余的内存操作.
 
 进行上述操作的时候, 也别忘了加锁以避免并发冲突.
 
@@ -246,4 +249,4 @@ context 包在 1.7 版本就被加入 Go 标准库, 源码在 `go/src/context/co
 		return c.Context.Value(key)
 	}
 
-并不是我想的会有一个 `map[string]interface{}`, 而也是通过一层层嵌套来构建, 在取值的时候用递归来查询, 不得不说这个包真的是把嵌套/递归这种数据组合和操作方式玩出了花儿.
+并不是我想的会有一个 `map[string]interface{}`, 而也是通过一层层嵌套来构建, 在取值的时候用递归来查询, 不得不说这个包真的是把嵌套/递归这种数据组合和操作方式玩出花儿了.
