@@ -1,0 +1,24 @@
+required = ["github.com/codegangsta/gin"]
+
+[[constraint]]
+  name = "github.com/dop251/goja"
+  branch = "master"
+
+[[override]]
+  name = "golang.org/x/text"
+  branch = "master"
+  source = "github.com/golang/text"
+
+
+[[override]]
+  name = "golang.org/x/sys"
+  branch = "master"
+  source = "github.com/golang/sys"
+
+[[constraint]]
+  name = "github.com/gin-gonic/gin"
+  version = "1.2.0"
+
+[prune]
+  go-tests = true
+  unused-packages = true
