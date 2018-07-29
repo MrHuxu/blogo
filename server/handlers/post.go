@@ -2,6 +2,8 @@ package handlers
 
 import (
 	"fmt"
+	"io/ioutil"
+	"log"
 	"math"
 	"net/http"
 	"net/url"
@@ -36,14 +38,6 @@ type postHandler struct {
 	infos   map[string]*post
 }
 
-type post struct {
-	Filename string    `json:"filename,omitempty"`
-	Seq      int       `json:"seq,omitempty"`
-	Title    string    `json:"title,omitempty"`
-	Time     time.Time `json:"time,omitempty"`
-	Tags     []tag     `json:"tags,omitempty"`
-}
-
 func (h *postHandler) cachePosts() {
 	filepath.Walk(conf.Conf.Post.ArchivesPath, func(path string, _ os.FileInfo, _ error) error {
 		tmp := strings.Split(path, "/")
@@ -73,7 +67,6 @@ func (h *postHandler) SinglePage(ctx *gin.Context) {
 	} else {
 		pagedTitles = h.titles[conf.Conf.Web.PerPage*page : conf.Conf.Web.PerPage*(page+1)-1]
 	}
-
 	res["data"] = map[string]interface{}{
 		"page": map[string]interface{}{
 			"titles": pagedTitles,
@@ -83,7 +76,44 @@ func (h *postHandler) SinglePage(ctx *gin.Context) {
 
 	ctx.Set("res", res)
 }
-func (h *postHandler) SinglePost(*gin.Context) {}
+func (h *postHandler) SinglePost(ctx *gin.Context) {
+	title := url.QueryEscape(ctx.Param("title"))
+	post, ok := h.infos[title]
+
+	if !ok {
+		ctx.Status(http.StatusNotFound)
+		return
+	}
+
+	post.getContent()
+	ctx.Set("res", map[string]interface{}{
+		"meta":   "Life of xhu - tags",
+		"titles": "Life of xhu - tags",
+		"data":   map[string]interface{}{"post": post},
+	})
+}
+
+type post struct {
+	Filename string    `json:"filename,omitempty"`
+	Seq      int       `json:"seq,omitempty"`
+	Title    string    `json:"title,omitempty"`
+	Time     time.Time `json:"time,omitempty"`
+	Tags     []tag     `json:"tags,omitempty"`
+	Content  string    `json:"content,omitempty"`
+}
+
+func (p *post) getContent() {
+	filename, _ := url.QueryUnescape(p.Filename)
+	file, err := os.Open(fmt.Sprintf("%s/%s", conf.Conf.Post.ArchivesPath, filename))
+	if err != nil {
+		log.Fatal(err)
+	}
+	bytes, err := ioutil.ReadAll(file)
+	if err != nil {
+		log.Fatal(err)
+	}
+	p.Content = url.QueryEscape(string(bytes))
+}
 
 func convFilenameToPost(filename string) *post {
 	p := &post{Filename: url.QueryEscape(filename), Tags: []tag{}}

@@ -19,7 +19,7 @@ const Home = ({ data }) => {
       <a href="/tags"> to tags </a>
       { titles.map(title => (
         <div>
-          <p> { decodeURI(title) } </p>
+          <a href={ '/post/' + decodeURI(title) }> { decodeURI(title) } </a>
           <p> { infos[title].seq } </p>
           <p> { infos[title].time } </p>
           { infos[title].tags.map(tag => (

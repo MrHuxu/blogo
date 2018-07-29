@@ -40,6 +40,7 @@ func Render(url string, data interface{}) string {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println(string(bytes))
 	dataVal, err := VM.RunString(fmt.Sprintf("'%s'", string(bytes)))
 	if err != nil {
 		log.Fatal(err)
