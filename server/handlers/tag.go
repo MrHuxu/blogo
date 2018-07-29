@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -48,4 +49,15 @@ func (h *tagHandler) cacheTags() {
 	})
 }
 
-func (h *tagHandler) AllTags(*gin.Context) {}
+func (h *tagHandler) AllTags(ctx *gin.Context) {
+	res := make(map[string]interface{})
+	res["meta"] = fmt.Sprintf("Life of xhu - Tags")
+	res["title"] = fmt.Sprintf("Life of xhu - Tags")
+	res["data"] = map[string]interface{}{
+		"tags": map[string]interface{}{
+			"tags":  h.tags,
+			"times": h.times,
+		},
+	}
+	ctx.Set("res", res)
+}

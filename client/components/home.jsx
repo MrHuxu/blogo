@@ -7,6 +7,7 @@ const HomeContainer = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
+  overflow: auto;
   background: linear-gradient(20deg, rgb(219, 112, 147), #daa357);
 `;
 
@@ -15,11 +16,15 @@ const Home = ({ data }) => {
 
   return (
     <HomeContainer>
+      <a href="/tags"> to tags </a>
       { titles.map(title => (
         <div>
-          <p> { title } </p>
-          <p> { infos[title] } </p>
-          <a href="/test"> to test </a>
+          <p> { decodeURI(title) } </p>
+          <p> { infos[title].seq } </p>
+          <p> { infos[title].time } </p>
+          { infos[title].tags.map(tag => (
+            <p> { tag }</p>
+          )) }
         </div>
       )) }
     </HomeContainer>
@@ -33,6 +38,6 @@ Home.propTypes = {
   })
 };
 
-const mapStateToProps = ({ home }) => ({ data: home });
+const mapStateToProps = ({ page }) => ({ data: page });
 
 export default connect(mapStateToProps)(Home);
