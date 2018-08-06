@@ -1,3 +1,3 @@
 export const createStaticStore = data => ({
-  getState : data ? () => JSON.parse(data) : {}
+  getState : () => (data || {})
 });

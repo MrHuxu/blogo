@@ -12,14 +12,14 @@ const PostContainer = styled.div`
 `;
 
 const Post = ({ data }) => {
-  const { title, time, content } = data;
+  const { Title, Time, Content } = data;
 
   return (
     <PostContainer>
       <a href="/"> back to home </a>
-      <p> { title }</p>
-      <p> { time } </p>
-      <p> { decodeURI(content) } </p>
+      <p> { Title }</p>
+      <p> { Time.toString() } </p>
+      <p> { Content } </p>
     </PostContainer>
   );
 };

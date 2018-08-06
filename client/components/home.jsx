@@ -19,11 +19,11 @@ const Home = ({ data }) => {
       <a href="/tags"> to tags </a>
       { titles.map(title => (
         <div>
-          <a href={ '/post/' + decodeURI(title) }> { decodeURI(title) } </a>
-          <p> { infos[title].seq } </p>
-          <p> { infos[title].time } </p>
-          { infos[title].tags.map(tag => (
-            <p> { tag }</p>
+          <a href={ '/post/' + title }> { title } </a>
+          <p> { infos[title].Seq } </p>
+          <p> { infos[title].Time.toString() } </p>
+          { infos[title].Tags.map(tag => (
+            <p> { tag.toString() } </p>
           )) }
         </div>
       )) }
