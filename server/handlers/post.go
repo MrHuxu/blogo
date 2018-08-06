@@ -6,7 +6,6 @@ import (
 	"log"
 	"math"
 	"net/http"
-	"net/url"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -77,7 +76,7 @@ func (h *postHandler) SinglePage(ctx *gin.Context) {
 	ctx.Set("res", res)
 }
 func (h *postHandler) SinglePost(ctx *gin.Context) {
-	title := url.QueryEscape(ctx.Param("title"))
+	title := ctx.Param("title")
 	post, ok := h.infos[title]
 
 	if !ok {
@@ -103,7 +102,7 @@ type post struct {
 }
 
 func (p *post) getContent() {
-	filename, _ := url.QueryUnescape(p.Filename)
+	filename := p.Filename
 	file, err := os.Open(fmt.Sprintf("%s/%s", conf.Conf.Post.ArchivesPath, filename))
 	if err != nil {
 		log.Fatal(err)
@@ -112,17 +111,17 @@ func (p *post) getContent() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	p.Content = url.QueryEscape(string(bytes))
+	p.Content = string(bytes)
 }
 
 func convFilenameToPost(filename string) *post {
-	p := &post{Filename: url.QueryEscape(filename), Tags: []tag{}}
+	p := &post{Filename: filename, Tags: []tag{}}
 
 	arr := strings.Split(filename, "*")
 	if i, err := strconv.Atoi(strings.Trim(arr[0], "0")); err == nil {
 		p.Seq = i
 	}
-	p.Title = url.QueryEscape(arr[1])
+	p.Title = arr[1]
 	if t, err := time.Parse("20060102", arr[2]); err == nil {
 		p.Time = t
 	}
