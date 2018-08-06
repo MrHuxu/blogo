@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
-	"strings"
 
 	"github.com/dop251/goja"
 )
@@ -41,7 +40,12 @@ func Render(url string, data interface{}) string {
 	if err != nil {
 		log.Fatal(err)
 	}
-	dataVal, err := VM.RunString(fmt.Sprintf("'%s'", strings.Replace(string(bytes), `\`, `\\`, -1)))
+	dataVal, err := VM.RunString(fmt.Sprintf("'%s'", escape(
+		string(bytes),
+		escapeDoubleQuotes,
+		escapeSingleQuotes,
+		escapeBreakLine,
+	)))
 	if err != nil {
 		log.Fatal(err)
 	}
