@@ -19,7 +19,7 @@ const Tags = ({ data }) => {
       <a href="/"> back to home </a>
       { tags.map(item => (
         <p style={ { fontSize: 16 + times[item] * 10 } }>
-          { item.toString() }
+          { item }
         </p>
       )) }
     </TagsContainer>

@@ -1,6 +1,7 @@
 package react
 
 import (
+	"encoding/json"
 	"io/ioutil"
 	"log"
 	"os"
@@ -29,5 +30,8 @@ func initRenderer() {
 
 // Render renders the react data to html string
 func Render(url string, data interface{}) string {
-	return jsRender(goja.FunctionCall{Arguments: []goja.Value{VM.ToValue(url), VM.ToValue(data)}}).String()
+	var m map[string]interface{}
+	bytes, _ := json.Marshal(data)
+	json.Unmarshal(bytes, &m)
+	return jsRender(goja.FunctionCall{Arguments: []goja.Value{VM.ToValue(url), VM.ToValue(m)}}).String()
 }

@@ -20,10 +20,10 @@ const Home = ({ data }) => {
       { titles.map(title => (
         <div>
           <a href={ '/post/' + title }> { title } </a>
-          <p> { infos[title].Seq } </p>
-          <p> { infos[title].Time.toString() } </p>
-          { infos[title].Tags.map(tag => (
-            <p> { tag.toString() } </p>
+          <p> { infos[title].seq } </p>
+          <p> { infos[title].time } </p>
+          { infos[title].tags.map(tag => (
+            <p> { tag } </p>
           )) }
         </div>
       )) }
