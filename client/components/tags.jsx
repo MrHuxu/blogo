@@ -18,9 +18,9 @@ const Tags = ({ data }) => {
     <TagsContainer>
       <a href="/"> back to home </a>
       { tags.map(item => (
-        <p style={ { fontSize: 16 + times[item] * 10 } }>
+        <span style={ { fontSize: 16 + times[item] * 10 } }>
           { item }
-        </p>
+        </span>
       )) }
     </TagsContainer>
   );

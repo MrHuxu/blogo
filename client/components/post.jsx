@@ -1,6 +1,7 @@
 import React from 'react';
 import { shape, string } from 'prop-types';
 import { connect } from 'react-redux';
+import { parse } from 'marked';
 import styled from 'styled-components';
 
 const PostContainer = styled.div`
@@ -8,7 +9,6 @@ const PostContainer = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;
-  background: linear-gradient(20deg, rgb(219, 112, 147), #daa357);
 `;
 
 const Post = ({ data }) => {
@@ -19,7 +19,7 @@ const Post = ({ data }) => {
       <a href="/"> back to home </a>
       <p> { title }</p>
       <p> { time } </p>
-      <p> { content } </p>
+      <div dangerouslySetInnerHTML={ { __html: parse(content) } } />
     </PostContainer>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shape, arrayOf, string, objectOf, number } from 'prop-types';
+import { shape, arrayOf, string, objectOf, number, object } from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
@@ -8,14 +8,14 @@ const HomeContainer = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;
-  background: linear-gradient(20deg, rgb(219, 112, 147), #daa357);
 `;
 
-const Home = ({ data }) => {
+const Home = ({ data, match }) => {
   const { titles, infos } = data;
 
   return (
     <HomeContainer>
+      <p> { match.params.page } </p>
       <a href="/tags"> to tags </a>
       { titles.map(title => (
         <div>
@@ -35,7 +35,8 @@ Home.propTypes = {
   data : shape({
     list  : arrayOf(string),
     infos : objectOf(number)
-  })
+  }),
+  match : object
 };
 
 const mapStateToProps = ({ page }) => ({ data: page });

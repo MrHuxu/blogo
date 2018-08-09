@@ -27,11 +27,11 @@ func RenderReactData() gin.HandlerFunc {
 
 func getPageInfo(ctx *gin.Context) map[string]interface{} {
 	status := ctx.Writer.Status()
-	if status != 200 {
+	if status != http.StatusOK {
 		return map[string]interface{}{
 			"meta":  fmt.Sprintf("%d Error", status),
 			"title": "Error Happened!",
-			"body":  template.HTML(react.Render(ctx.Request.URL.String(), nil)),
+			"body":  template.HTML(react.Render(fmt.Sprintf("/%d", status), nil)),
 		}
 	}
 

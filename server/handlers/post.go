@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -48,6 +49,7 @@ func (h *postHandler) cachePosts() {
 		h.maxPage = int(math.Ceil(float64(len(h.titles)) / float64(conf.Conf.Web.PerPage)))
 		return nil
 	})
+	sort.Slice(h.titles, func(i, j int) bool { return h.infos[h.titles[i]].Seq > h.infos[h.titles[j]].Seq })
 }
 
 func (h *postHandler) SinglePage(ctx *gin.Context) {
@@ -57,24 +59,33 @@ func (h *postHandler) SinglePage(ctx *gin.Context) {
 		return
 	}
 
+	if page >= h.maxPage {
+		ctx.Status(http.StatusNotFound)
+		return
+	}
+
 	res := make(map[string]interface{})
 	res["meta"] = fmt.Sprintf("Life of xhu - Page %d", page)
 	res["title"] = fmt.Sprintf("Life of xhu - Page %d", page)
+	res["data"] = map[string]interface{}{
+		"page": map[string]interface{}{
+			"titles": h.getPagedTitles(page),
+			"infos":  h.infos,
+		},
+	}
+	ctx.Set("res", res)
+}
+
+func (h *postHandler) getPagedTitles(page int) []string {
 	var pagedTitles []string
-	if page == h.maxPage {
+	if page == h.maxPage-1 {
 		pagedTitles = h.titles[conf.Conf.Web.PerPage*page:]
 	} else {
 		pagedTitles = h.titles[conf.Conf.Web.PerPage*page : conf.Conf.Web.PerPage*(page+1)-1]
 	}
-	res["data"] = map[string]interface{}{
-		"page": map[string]interface{}{
-			"titles": pagedTitles,
-			"infos":  h.infos,
-		},
-	}
-
-	ctx.Set("res", res)
+	return pagedTitles
 }
+
 func (h *postHandler) SinglePost(ctx *gin.Context) {
 	title := ctx.Param("title")
 	post, ok := h.infos[title]
@@ -118,7 +129,7 @@ func convFilenameToPost(filename string) *post {
 	p := &post{Filename: filename, Tags: []tag{}}
 
 	arr := strings.Split(filename, "*")
-	if i, err := strconv.Atoi(strings.Trim(arr[0], "0")); err == nil {
+	if i, err := strconv.Atoi(strings.TrimLeft(arr[0], "0")); err == nil {
 		p.Seq = i
 	}
 	p.Title = arr[1]
