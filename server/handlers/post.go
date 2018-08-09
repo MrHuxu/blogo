@@ -59,7 +59,7 @@ func (h *postHandler) SinglePage(ctx *gin.Context) {
 		return
 	}
 
-	if page >= h.maxPage {
+	if page >= h.maxPage || page < 0 {
 		ctx.Status(http.StatusNotFound)
 		return
 	}
@@ -69,8 +69,9 @@ func (h *postHandler) SinglePage(ctx *gin.Context) {
 	res["title"] = fmt.Sprintf("Life of xhu - Page %d", page)
 	res["data"] = map[string]interface{}{
 		"page": map[string]interface{}{
-			"titles": h.getPagedTitles(page),
-			"infos":  h.infos,
+			"titles":  h.getPagedTitles(page),
+			"infos":   h.infos,
+			"maxPage": h.maxPage,
 		},
 	}
 	ctx.Set("res", res)

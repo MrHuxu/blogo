@@ -3,15 +3,15 @@ import React from 'react';
 import { Switch, Route } from 'react-router';
 import routes from '../routes';
 
-import { Container, App as AppContainer, Footer } from './layout/elements';
+import { Container, App as AppContainer, Title, TitleArrow, Footer } from './layout/elements';
 
 const App = () => (
   <Container>
     <AppContainer>
-      <div className="title">
+      <Title>
           Life of xhu
-        <a href="/"><i className="angle double right icon snippet-arrow" /></a>
-      </div>
+        <TitleArrow href="/"><i className="angle double right icon link" /></TitleArrow>
+      </Title>
 
       <Switch>
         { routes.map(route => (

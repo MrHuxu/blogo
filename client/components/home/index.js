@@ -2,47 +2,58 @@ import React from 'react';
 import { shape, arrayOf, string, objectOf, number, object } from 'prop-types';
 import { connect } from 'react-redux';
 
-import { Container, Year, Item, ItemDate, ItemLink } from './elements';
+import { Container, Year, Item, ItemDate, ItemLink, PrevNext } from './elements';
 
-let monthNames = [
+const monthNames = [
   'January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'
 ];
 
 const Home = ({ data, match }) => {
-  const { titles, infos } = data;
-
-  let year = infos[titles[0]].time.slice(0, 4);
+  const { titles, infos, maxPage } = data;
+  const page = parseInt(match.params.page);
 
   return (
     <Container>
-      <a href="/tags"> to tags </a>
-      <Year> /* { year } */ </Year>
-      { titles.map(title => {
-        let eles = [
+      { titles.reduce((pre, title) => {
+        if (infos[title].time.slice(0, 4) !== pre.year) {
+          pre.year = infos[title].time.slice(0, 4);
+          pre.eles.push(<Year> /* { pre.year } */ </Year>);
+        }
+
+        pre.eles.push(
           <Item>
             <ItemDate> {
-              `${monthNames[parseInt(infos[title].time.slice(6))].slice(0, 3)} ${infos[title].time.slice(5, 7)}`
+              `${monthNames[parseInt(infos[title].time.slice(5, 7)) - 1].slice(0, 3)} ${infos[title].time.slice(8, 10)}`
             } </ItemDate>
             <ItemLink href={ `/post/${title}` }>{ title }</ItemLink>
           </Item>
-        ];
+        );
 
-        if (infos[title].time.slice(0, 4) !== year) {
-          year = infos[title].time.slice(0, 4);
-          eles.unshift(<Year> /* { year } */ </Year>);
-        }
+        return pre;
+      }, { year: null, eles: [] }).eles }
 
-        return eles;
-      }) }
+      { page > 0 ? (
+        <a href={ `/page/${page - 1}` }>
+          <PrevNext > Prev </PrevNext>
+        </a>
+      ) : null }
+
+      { page < maxPage - 1 ? (
+        <a href={ `/page/${page + 1}` }>
+          <PrevNext> Next </PrevNext>
+        </a>
+      ) : null }
+
     </Container>
   );
 };
 
 Home.propTypes = {
   data : shape({
-    list  : arrayOf(string),
-    infos : objectOf(number)
+    list    : arrayOf(string),
+    infos   : objectOf(number),
+    maxPage : number
   }),
   match : object
 };
