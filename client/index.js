@@ -4,8 +4,8 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { createStaticStore } from './store';
 
-import { Switch, Route, StaticRouter } from 'react-router';
-import routes from './routes';
+import { StaticRouter } from 'react-router';
+import App from './components/app';
 
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 const sheet = new ServerStyleSheet();
@@ -15,11 +15,7 @@ export const renderHtmlString = (url, data) => {
     <StyleSheetManager sheet={ sheet.instance }>
       <Provider store={ createStaticStore(data) }>
         <StaticRouter location={ url }>
-          <Switch>
-            { routes.map(route => (
-              <Route { ...route } />
-            )) }
-          </Switch>
+          <App />
         </StaticRouter>
       </Provider>
     </StyleSheetManager>

@@ -2,25 +2,19 @@ import React from 'react';
 import { shape, string } from 'prop-types';
 import { connect } from 'react-redux';
 import { parse } from 'marked';
-import styled from 'styled-components';
 
-const PostContainer = styled.div`
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-`;
+import { Container } from './elements';
 
 const Post = ({ data }) => {
   const { title, time, content } = data;
 
   return (
-    <PostContainer>
+    <Container>
       <a href="/"> back to home </a>
       <p> { title }</p>
       <p> { time } </p>
       <div dangerouslySetInnerHTML={ { __html: parse(content) } } />
-    </PostContainer>
+    </Container>
   );
 };
 

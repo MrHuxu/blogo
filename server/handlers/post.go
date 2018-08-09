@@ -81,7 +81,7 @@ func (h *postHandler) getPagedTitles(page int) []string {
 	if page == h.maxPage-1 {
 		pagedTitles = h.titles[conf.Conf.Web.PerPage*page:]
 	} else {
-		pagedTitles = h.titles[conf.Conf.Web.PerPage*page : conf.Conf.Web.PerPage*(page+1)-1]
+		pagedTitles = h.titles[conf.Conf.Web.PerPage*page : conf.Conf.Web.PerPage*(page+1)]
 	}
 	return pagedTitles
 }
