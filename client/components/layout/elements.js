@@ -57,3 +57,24 @@ export const Footer = styled.div`
     padding: 10px 0 18px 0;
   }
 `;
+
+export const BackToTopContainer = styled.div`
+  position: fixed;
+  right: -20px;
+  bottom: 70px;
+`;
+
+export const BackToTop = styled.div`
+  display: none;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  text-indent: 100%;
+  margin: 0 0 0 -3px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  background: rgba(87, 218, 178, 0.8) url(/assets/images/cd-top-arrow.svg) no-repeat center 50%;
+
+  &:hover {
+    background: rgba(87, 218, 178, 0.6) url(/assets/images/cd-top-arrow.svg) no-repeat center 50%;
+  }
+`;

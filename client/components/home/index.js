@@ -4,10 +4,7 @@ import { connect } from 'react-redux';
 
 import { Container, Year, Item, ItemDate, ItemLink, PrevNext } from './elements';
 
-const monthNames = [
-  'January', 'February', 'March', 'April', 'May', 'June',
-  'July', 'August', 'September', 'October', 'November', 'December'
-];
+import { monthNames } from '../layout/constants';
 
 const Home = ({ data, match }) => {
   const { titles, infos, maxPage } = data;

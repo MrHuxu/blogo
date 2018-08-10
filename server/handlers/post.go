@@ -98,9 +98,9 @@ func (h *postHandler) SinglePost(ctx *gin.Context) {
 
 	post.getContent()
 	ctx.Set("res", map[string]interface{}{
-		"meta":   "Life of xhu - tags",
-		"titles": "Life of xhu - tags",
-		"data":   map[string]interface{}{"post": post},
+		"meta":  fmt.Sprintf("Life of xhu - %s", post.Title),
+		"title": fmt.Sprintf("Life of xhu - %s", post.Title),
+		"data":  map[string]interface{}{"post": post},
 	})
 }
 

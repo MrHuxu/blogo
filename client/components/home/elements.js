@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   height: 100%;
@@ -10,27 +10,12 @@ export const Year = styled.p`
   margin: 10px 0 20px 0;
 `;
 
-const pulse = keyframes`
-  0% {
-    width: 720px;
-    height: 50px;
-  }
-  50% {
-    width: 750px;
-    height: 80px;
-  }
-  100% {
-    width: 720px;
-    height: 50px;
-  }
-`;
-
 export const Item = styled.div`
   position: relative;
   padding: 10px 0 10px 0;
   width: calc(100% - 10px);
   height: 50px;
-  transition: transform 0.8s;
+  transition: transform 0.6s;
 
   &:hover {
     background-color: #EEE;

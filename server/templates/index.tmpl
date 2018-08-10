@@ -4,7 +4,8 @@
 <head>
 	<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
 	<meta name="description" content="{{ .meta }}">
-	<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/atom-one-light.min.css" rel="stylesheet">
+	<link rel="shortcut icon" type="image" href="/assets/images/x-billabong.png">
+	<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
   <link href="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Raleway" rel="stylesheet">
 	<title> {{ .title }} </title>
@@ -16,10 +17,24 @@
 	font-family: Raleway,sans-serif;
 }
 
+code, code * {
+    font-family: Monaco, MonacoRegular, "Courier New", monospace !important;
+}
+
 </style>
 
 <body style="margin: 0; height: 100%">
 	{{ .body }}
+
+	<script>
+		(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = '//xhu.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+		})();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 	<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
