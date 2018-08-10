@@ -4,7 +4,7 @@
 <head>
 	<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
 	<meta name="description" content="{{ .meta }}">
-	<link rel="shortcut icon" type="image" href="/assets/images/x-billabong.png">
+	<link rel="shortcut icon" type="image" href="https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog/x-billabong.png">
 	<link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
   <link href="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Raleway" rel="stylesheet">
@@ -25,6 +25,22 @@ code, code * {
 
 <body style="margin: 0; height: 100%">
 	{{ .body }}
+
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		var $toTop = $('#back-to-top');
+		$toTop.click(() => {
+			$('html').animate({ scrollTop: 0 });
+		});
+
+		$(window).scroll(() => {
+			if ($('html').scrollTop() > 10) {
+				$toTop.show(400);
+			} else {
+				$toTop.hide(400);
+			}
+		});
+	</script>
 
 	<script>
 		(function() { // DON'T EDIT BELOW THIS LINE

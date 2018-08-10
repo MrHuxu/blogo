@@ -3,7 +3,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router';
 import routes from '../routes';
 
-import { Container, App as AppContainer, Title, TitleArrow, Footer } from './layout/elements';
+import { Container, App as AppContainer, Title, TitleArrow, BackToTopContainer, BackToTop, Footer } from './layout/elements';
 
 const App = () => (
   <Container>
@@ -19,6 +19,10 @@ const App = () => (
         )) }
       </Switch>
     </AppContainer>
+
+    <BackToTopContainer>
+      <BackToTop id="back-to-top" />
+    </BackToTopContainer>
 
     <Footer>
       <p>
