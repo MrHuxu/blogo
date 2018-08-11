@@ -25,7 +25,7 @@ export const TagsInDivider = styled.span`
 
 export const Content = styled.div`
   letter-spacing: .2px;
-  font-size: 13px;
+  font-size: 15px;
   color: #555;
 
   & h1, h2, h3, h4, h5, h6 {
@@ -69,7 +69,7 @@ export const Content = styled.div`
   & code {
     display: inline;
     word-wrap: break-word;
-    font-size: 10.6px;
+    font-size: 14px;
     color: rgb(85, 85, 85);
     background: rgb(255, 255, 255);
     border-width: 1px;
@@ -83,7 +83,7 @@ export const Content = styled.div`
 
   & pre code {
     display: block;
-    font-size: 10.8px;
+    font-size: 11.8px;
     line-height: 18px;
     font-weight: 12px;
     letter-spacing: .5px;
