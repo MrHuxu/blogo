@@ -53,7 +53,7 @@ export const PrevNext = styled.div`
   border: 1px solid #DADADA;
   background: #FFF;
   padding: 7px 8px 7px 10px;
-  margin: 30px 20px 30px 0;
+  margin: 30px 20px 50px 0;
 
   &:hover {
     background: #EEE;
