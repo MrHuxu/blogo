@@ -32,13 +32,13 @@ const Home = ({ data, match }) => {
 
       { page > 0 ? (
         <a href={ `/page/${page - 1}` }>
-          <PrevNext > Prev </PrevNext>
+          <PrevNext> <i className="angle left icon link" />NEWER </PrevNext>
         </a>
       ) : null }
 
       { page < maxPage - 1 ? (
         <a href={ `/page/${page + 1}` }>
-          <PrevNext> Next </PrevNext>
+          <PrevNext> OLDER<i className="angle right icon link" /> </PrevNext>
         </a>
       ) : null }
 

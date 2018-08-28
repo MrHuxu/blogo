@@ -46,14 +46,14 @@ export const ItemLink = styled.a`
 export const PrevNext = styled.div`
   display: inline-block;
   text-align: center;
-  width: 100px;
+  width: 110px;
   font-size: 14px;
   letter-spacing: 2px;
   color: #666;
   border: 1px solid #DADADA;
   background: #FFF;
-  padding: 5px;
-  margin: 20px 20px 30px 0;
+  padding: 7px 8px 7px 10px;
+  margin: 30px 20px 30px 0;
 
   &:hover {
     background: #EEE;
