@@ -12,7 +12,7 @@ import (
 var jsRender func(goja.FunctionCall) goja.Value
 
 func initRenderer() {
-	file, err := os.Open("client/public/built/bundle.js")
+	file, err := os.Open("client/public/bundle.js")
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -1,3 +1,5 @@
+import 'core-js/stable';
+
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 
