@@ -12,13 +12,14 @@ RUN ./node_modules/webpack/bin/webpack.js --config config/webpack.config.js
 FROM golang:latest AS go-builder
 
 ENV GO111MODULE on
+ENV GOPROXY https://goproxy.io
 ENV CGO_ENABLED 0
 
-WORKDIR /go/src/github.com/MrHuxu/homepage
-COPY ./main.go /go/src/github.com/MrHuxu/homepage/
-COPY ./server /go/src/github.com/MrHuxu/homepage/server
-COPY ./go.mod /go/src/github.com/MrHuxu/homepage/
-COPY ./go.sum /go/src/github.com/MrHuxu/homepage/
+WORKDIR /work
+COPY ./main.go /work/
+COPY ./server /work/server
+COPY ./go.mod /work/
+COPY ./go.sum /work/
 
 RUN go mod download
 RUN go build main.go
@@ -33,7 +34,7 @@ COPY ./config/server.json /output/config/
 COPY ./server/templates /output/server/templates
 COPY ./archives /output/archives
 COPY --from=node-builder /work/client/public/bundle.js /output/client/public/
-COPY --from=go-builder /go/src/github.com/MrHuxu/homepage/main /output/
+COPY --from=go-builder /work/main /output/
 
 EXPOSE 11011
 ENTRYPOINT [ "./main" ]
