@@ -106,13 +106,13 @@
 
 我们可以简单的画个流程图来看看目前这个blog的工作形式:
 
-![client_render](https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog/client_render.jpg)
+![client_render](https://img.xhu.me/blog/client_render.jpg)
 
 这个可以说是简单SPA的基本流程了, 很大一部分工作都交给浏览器来完成, 这样一来, 当使用curl这样的工具来爬取网站时, 得到的只有一个类似`<div id="container"></div>`的东西而没有具体内容, 这样如果搜索引擎如果没有智能到执行js代码的话, 是获取不到内容的, 同理, 如果在移动端禁用了js代码, 也看不到内容了, sigh.
 
 刚开始知道服务端渲染, 我以为流程是这样的:
 
-![server_render_imagine](https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog/server_render_imagine.jpg)
+![server_render_imagine](https://img.xhu.me/blog/server_render_imagine.jpg)
 
 也就是说, 我以为所谓的后端渲染能把前端相关的代码使用`script`标签这种形式放进HTML代码里并返回, 这样返回的代码不需要任何操作就可以支持React的行为了, [这里](https://github.com/MrHuxu/server-rendering-demo/tree/e5cf0c5b62cb619a9ef9ad5bb6e4b91d9d6e0936)是我一开始写的代码.
 
@@ -120,7 +120,7 @@
 
 这是现实中的服务端渲染流程:
 
-![server_render_real](https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog/server_render_real.jpg)
+![server_render_real](https://img.xhu.me/blog/server_render_real.jpg)
 
 正因为存在后面的需要在客户端重新渲染的流程, 所以即使进行过服务端渲染, 客户端还是需要拿到完整的js代码, 所以对于减小流量, 帮助不大, 所以还是只能通过`uglify`和`gzip`这样的方法来压缩js文件体积.
 

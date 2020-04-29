@@ -4,7 +4,7 @@
 
 在编写这个blog的前端代码的时候，我遇到了一个很棘手的问题，也就是在显示单篇文章的时候，我需要在文章内容加载完成后，使用`highlightjs`来给代码着色，并且使用一段js代码来生成行号，最后把`Nprogress`的进度条走到100%，如果按照同步编程的思路，这个过程其实很简单：
 
-![](https://raw.githubusercontent.com/MrHuxu/img-repo/master/blog/angular%20vs.%20react.jpg)
+![](https://img.xhu.me/blog/angular%20vs.%20react.jpg)
 
 所以一开始，我的code是这样的:
 
