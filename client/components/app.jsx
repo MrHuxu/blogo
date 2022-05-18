@@ -9,14 +9,14 @@ const App = () => (
   <Container>
     <AppContainer>
       <Title>
-          Life of xhu
-        <TitleArrow href="/"><i className="angle double right icon link" /></TitleArrow>
+        Life of xhu
+        <TitleArrow href="/"><i className="icon-double-right-arrow" style={{ fontSize: 14, color: 'gray' }} /></TitleArrow>
       </Title>
 
       <Switch>
-        { routes.map(route => (
-          <Route { ...route } />
-        )) }
+        {routes.map(route => (
+          <Route {...route} />
+        ))}
       </Switch>
     </AppContainer>
 
@@ -26,13 +26,12 @@ const App = () => (
 
     <Footer>
       <p>
-          Copyright © 2018 -&nbsp;
+        Copyright © 2022 -&nbsp;
         <a href="mailto:hxtheone@gmail.com">xhu</a>
-          &nbsp;- Powered by&nbsp;
-        <a target="_blank" href="https://github.com/gin-gonic/gin">Gin</a>,
-        <a target="_blank" href="http://jquery.com/">jQuery</a>,
-        <a target="_blank" href="https://daneden.github.io/animate.css/">Animate.css</a>,
-        <a target="_blank" href="http://semantic-ui.com/">Semantic UI</a>
+        &nbsp;- Powered by&nbsp;
+        <a target="_blank" href="https://github.com/gin-gonic/gin">Gin</a>,&nbsp;
+        <a target="_blank" href="http://jquery.com/">jQuery</a>,&nbsp;
+        <a target="_blank" href="https://daneden.github.io/animate.css/">Animate.css</a>
       </p>
     </Footer>
   </Container>

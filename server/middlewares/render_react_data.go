@@ -16,7 +16,7 @@ func RenderReactData() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		ctx.Next()
 
-		if strings.HasPrefix(ctx.Request.URL.String(), "/api") {
+		if strings.HasPrefix(ctx.Request.URL.String(), "/api") || strings.HasPrefix(ctx.Request.URL.String(), "/assets") {
 			return
 		}
 

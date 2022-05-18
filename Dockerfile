@@ -9,7 +9,7 @@ COPY ./config/webpack.config.js /work/config/
 RUN npm install
 RUN ./node_modules/webpack/bin/webpack.js --config config/webpack.config.js
 
-FROM golang:latest AS go-builder
+FROM golang:alpine AS go-builder
 
 ENV GO111MODULE on
 ENV GOPROXY https://goproxy.io
@@ -31,6 +31,7 @@ ENV INSIDE_DOCKER true
 
 WORKDIR /output
 COPY ./config/server.json /output/config/
+COPY ./server/assets /output/server/assets
 COPY ./server/templates /output/server/templates
 COPY ./archives /output/archives
 COPY --from=node-builder /work/client/public/bundle.js /output/client/public/

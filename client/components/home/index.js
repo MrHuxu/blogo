@@ -12,10 +12,10 @@ const Home = ({ data, match }) => {
 
   return (
     <Container>
-      { titles.reduce((pre, title) => {
+      {titles.reduce((pre, title) => {
         if (infos[title].time.slice(0, 4) !== pre.year) {
           pre.year = infos[title].time.slice(0, 4);
-          pre.eles.push(<Year> /* { pre.year } */ </Year>);
+          pre.eles.push(<Year> /* {pre.year} */ </Year>);
         }
 
         pre.eles.push(
@@ -23,36 +23,36 @@ const Home = ({ data, match }) => {
             <ItemDate> {
               `${monthNames[parseInt(infos[title].time.slice(5, 7)) - 1].slice(0, 3)} ${infos[title].time.slice(8, 10)}`
             } </ItemDate>
-            <ItemLink href={ `/post/${title}` }>{ title }</ItemLink>
+            <ItemLink href={`/post/${title}`}>{title}</ItemLink>
           </Item>
         );
 
         return pre;
-      }, { year: null, eles: [] }).eles }
+      }, { year: null, eles: [] }).eles}
 
-      { page > 0 ? (
-        <a href={ `/page/${page - 1}` }>
-          <PrevNext> <i className="angle left icon link" />NEWER </PrevNext>
+      {page > 0 ? (
+        <a href={`/page/${page - 1}`}>
+          <PrevNext> <i className="icon-left-arrow link" />NEWER </PrevNext>
         </a>
-      ) : null }
+      ) : null}
 
-      { page < maxPage - 1 ? (
-        <a href={ `/page/${page + 1}` }>
-          <PrevNext> OLDER<i className="angle right icon link" /> </PrevNext>
+      {page < maxPage - 1 ? (
+        <a href={`/page/${page + 1}`}>
+          <PrevNext> OLDER<i className="icon-right-arrow link" /> </PrevNext>
         </a>
-      ) : null }
+      ) : null}
 
     </Container>
   );
 };
 
 Home.propTypes = {
-  data : shape({
-    list    : arrayOf(string),
-    infos   : objectOf(number),
-    maxPage : number
+  data: shape({
+    list: arrayOf(string),
+    infos: objectOf(number),
+    maxPage: number
   }),
-  match : object
+  match: object
 };
 
 const mapStateToProps = ({ page }) => ({ data: page });

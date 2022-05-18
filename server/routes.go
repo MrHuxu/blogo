@@ -1,9 +1,10 @@
 package server
 
 import (
+	"net/http"
+
 	"github.com/MrHuxu/blogo/server/handlers"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 func (s *server) registerRoutes() {
@@ -15,4 +16,6 @@ func (s *server) registerRoutes() {
 	s.GET("/post/:title", handlers.DefaultPostHandler.SinglePost)
 
 	s.GET("/tags", handlers.DefaultTagHandler.AllTags)
+
+	s.Static("/assets", "./server/assets")
 }
