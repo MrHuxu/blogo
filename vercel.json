@@ -1,0 +1,22 @@
+{
+    "redirects": [
+        {
+            "source": "/",
+            "destination": "/page/0"
+        }
+    ],
+    "rewrites": [
+        {
+            "source": "/page/:page",
+            "destination": "/api/page.go"
+        },
+        {
+            "source": "/post/:title",
+            "destination": "/api/post.go"
+        },
+        {
+            "source": "/tags",
+            "destination": "/api/tags.go"
+        }
+    ]
+}

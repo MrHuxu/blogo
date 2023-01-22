@@ -31,7 +31,7 @@ ENV INSIDE_DOCKER true
 
 WORKDIR /output
 COPY ./config/server.json /output/config/
-COPY ./server/assets /output/server/assets
+COPY ./assets /output/assets
 COPY ./server/templates /output/server/templates
 COPY ./archives /output/archives
 COPY --from=node-builder /work/client/public/bundle.js /output/client/public/

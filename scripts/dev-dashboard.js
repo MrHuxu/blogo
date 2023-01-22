@@ -14,14 +14,14 @@ const PORT = 8283;
 const URL = `http://localhost:${PORT}`;
 
 switch (process.platform) {
-case 'darwin':
-  exec(`open ${URL}`);
-  break;
+  case 'darwin':
+    exec(`open ${URL}`);
+    break;
 
-case 'win32':
-  exec(`start ${URL}`);
-  break;
+  case 'win32':
+    exec(`start ${URL}`);
+    break;
 
-default:
-  exec(`xdg-open ${URL}`);
+  default:
+    exec(`xdg-open ${URL}`);
 }

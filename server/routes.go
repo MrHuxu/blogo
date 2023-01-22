@@ -17,5 +17,5 @@ func (s *server) registerRoutes() {
 
 	s.GET("/tags", handlers.DefaultTagHandler.AllTags)
 
-	s.Static("/assets", "./server/assets")
+	s.Static("/assets", "./assets")
 }
