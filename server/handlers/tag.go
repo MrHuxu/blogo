@@ -2,8 +2,8 @@ package handlers
 
 import (
 	"fmt"
+	"log"
 	"os"
-	"path/filepath"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -18,35 +18,37 @@ type TagHandler interface {
 }
 
 func initTagHandler() {
-	handler := &tagHandler{[]tag{}, make(map[tag]int)}
+	handler := &tagHandler{[]string{}, make(map[string]int)}
 	handler.cacheTags()
 
 	DefaultTagHandler = handler
 }
 
 type tagHandler struct {
-	tags  []tag
-	times map[tag]int
+	tags  []string
+	times map[string]int
 }
 
-type tag string
-
 func (h *tagHandler) cacheTags() {
-	filepath.Walk(conf.Conf.Post.PostsPath, func(path string, _ os.FileInfo, _ error) error {
-		tmp := strings.Split(path, "/")
-		if len(tmp) > 1 && !strings.HasPrefix(tmp[1], "WIP") {
-			for _, str := range strings.Split(strings.Split(strings.Split(tmp[1], "*")[3], ".")[0], "-") {
-				t := tag(str)
-				if _, ok := h.times[t]; ok {
-					h.times[t]++
-				} else {
-					h.tags = append(h.tags, t)
-					h.times[t] = 1
-				}
+	entries, err := os.ReadDir(conf.Conf.Post.PostsPath)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, entry := range entries {
+		if !strings.HasSuffix(entry.Name(), ".md") || strings.HasPrefix(entry.Name(), "WIP") {
+			continue
+		}
+
+		for _, str := range strings.Split(strings.Split(strings.Split(entry.Name(), "#")[3], ".")[0], "-") {
+			t := string(str)
+			if _, ok := h.times[t]; ok {
+				h.times[t]++
+			} else {
+				h.tags = append(h.tags, t)
+				h.times[t] = 1
 			}
 		}
-		return nil
-	})
+	}
 }
 
 func (h *tagHandler) AllTags(ctx *gin.Context) {
