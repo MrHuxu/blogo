@@ -32,7 +32,7 @@ type tagHandler struct {
 type tag string
 
 func (h *tagHandler) cacheTags() {
-	filepath.Walk(conf.Conf.Post.ArchivesPath, func(path string, _ os.FileInfo, _ error) error {
+	filepath.Walk(conf.Conf.Post.PostsPath, func(path string, _ os.FileInfo, _ error) error {
 		tmp := strings.Split(path, "/")
 		if len(tmp) > 1 && !strings.HasPrefix(tmp[1], "WIP") {
 			for _, str := range strings.Split(strings.Split(strings.Split(tmp[1], "*")[3], ".")[0], "-") {

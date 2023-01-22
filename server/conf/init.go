@@ -17,7 +17,7 @@ type conf struct {
 		PerPage       int    `json:"per_page,omitempty"`
 	} `json:"web,omitempty"`
 	Post struct {
-		ArchivesPath string `json:"archives_path,omitempty"`
+		PostsPath string `json:"posts_path,omitempty"`
 	} `json:"post,omitempty"`
 }
 

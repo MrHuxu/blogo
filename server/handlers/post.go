@@ -39,7 +39,7 @@ type postHandler struct {
 }
 
 func (h *postHandler) cachePosts() {
-	filepath.Walk(conf.Conf.Post.ArchivesPath, func(path string, _ os.FileInfo, _ error) error {
+	filepath.Walk(conf.Conf.Post.PostsPath, func(path string, _ os.FileInfo, _ error) error {
 		tmp := strings.Split(path, "/")
 		if len(tmp) > 1 && !strings.HasPrefix(tmp[1], "WIP") {
 			p := convFilenameToPost(tmp[1])
@@ -115,7 +115,7 @@ type post struct {
 
 func (p *post) getContent() {
 	filename := p.Filename
-	file, err := os.Open(fmt.Sprintf("%s/%s", conf.Conf.Post.ArchivesPath, filename))
+	file, err := os.Open(fmt.Sprintf("%s/%s", conf.Conf.Post.PostsPath, filename))
 	if err != nil {
 		log.Fatal(err)
 	}

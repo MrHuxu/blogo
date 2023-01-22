@@ -20,7 +20,7 @@ Node的第三方Redis库主要有
 1. [node_redis](https://github.com/NodeRedis/node_redis), 曾经的官方Redis库，但是作者已经基本不更新了，而且对Redis的特性也支持的不是很完善，操作基本上都是基于回调，需要借助bluebird等来实现Promise。
 2. [ioredis](https://github.com/luin/ioredis), 当前的官方推荐Redis库，对`Sentinel`和`Cluster`等功能支持良好，更新速度快，并且原生支持Promise。
 
-支持Promise还有一个好处，就是需要执行多个查询操作的时候，回调的方式很容易陷入回调地狱，但是用Promise的话，就可以避免这个问题(参考[这篇文章](http://blog.xhu.me/#/archives/67*ES6: 回调将死, Promise永生*20151018*JavaScript-Promise.md?_k=mhw2ck))。
+支持Promise还有一个好处，就是需要执行多个查询操作的时候，回调的方式很容易陷入回调地狱，但是用Promise的话，就可以避免这个问题(参考[这篇文章](http://blog.xhu.me/#/posts/67*ES6: 回调将死, Promise永生*20151018*JavaScript-Promise.md?_k=mhw2ck))。
 
 所以我在这里就毫不犹豫选择ioredis了:)
 

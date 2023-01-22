@@ -33,7 +33,7 @@ WORKDIR /output
 COPY ./config/server.json /output/config/
 COPY ./assets /output/assets
 COPY ./server/templates /output/server/templates
-COPY ./archives /output/archives
+COPY ./posts /output/posts
 COPY --from=node-builder /work/client/public/bundle.js /output/client/public/
 COPY --from=go-builder /work/main /output/
 
