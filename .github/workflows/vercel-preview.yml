@@ -9,11 +9,11 @@ on:
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [11.*]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 11
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
       - name: Pull Vercel Environment Information
