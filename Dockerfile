@@ -18,6 +18,8 @@ ENV CGO_ENABLED 0
 WORKDIR /work
 COPY ./main.go /work/
 COPY ./server /work/server
+COPY ./posts/*.go /work/posts/
+COPY ./config/embed.go /work/config/
 COPY ./go.mod /work/
 COPY ./go.sum /work/
 
@@ -31,9 +33,9 @@ ENV INSIDE_DOCKER true
 
 WORKDIR /output
 COPY ./config/server.json /output/config/
-COPY ./server/assets /output/server/assets
+COPY ./assets /output/assets
 COPY ./server/templates /output/server/templates
-COPY ./archives /output/archives
+COPY ./posts /output/posts
 COPY --from=node-builder /work/client/public/bundle.js /output/client/public/
 COPY --from=go-builder /work/main /output/
 

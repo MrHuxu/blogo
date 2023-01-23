@@ -7,14 +7,12 @@ import (
 	"math"
 	"net/http"
 	"os"
-	"path/filepath"
 	"sort"
 	"strconv"
-	"strings"
-	"time"
 
 	"github.com/gin-gonic/gin"
 
+	"github.com/MrHuxu/blogo/posts"
 	"github.com/MrHuxu/blogo/server/conf"
 )
 
@@ -26,7 +24,7 @@ type PostHanler interface {
 }
 
 func initPostHandler() {
-	handler := &postHandler{0, []string{}, make(map[string]*post)}
+	handler := &postHandler{0, []string{}, make(map[string]*posts.Post)}
 	handler.cachePosts()
 
 	DefaultPostHandler = handler
@@ -35,20 +33,26 @@ func initPostHandler() {
 type postHandler struct {
 	maxPage int
 	titles  []string
-	infos   map[string]*post
+	infos   map[string]*posts.Post
 }
 
 func (h *postHandler) cachePosts() {
-	filepath.Walk(conf.Conf.Post.ArchivesPath, func(path string, _ os.FileInfo, _ error) error {
-		tmp := strings.Split(path, "/")
-		if len(tmp) > 1 && !strings.HasPrefix(tmp[1], "WIP") {
-			p := convFilenameToPost(tmp[1])
-			h.titles = append(h.titles, p.Title)
-			h.infos[p.Title] = p
+	entries, err := os.ReadDir(conf.Conf.Post.PostsPath)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for _, entry := range entries {
+		if !posts.ValidatePostFilename(entry.Name()) {
+			continue
 		}
+
+		p := posts.ConvFilenameToPost(entry.Name())
+		h.titles = append(h.titles, p.Title)
+		h.infos[p.Title] = p
 		h.maxPage = int(math.Ceil(float64(len(h.titles)) / float64(conf.Conf.Web.PerPage)))
-		return nil
-	})
+	}
+
 	sort.Slice(h.titles, func(i, j int) bool { return h.infos[h.titles[i]].Seq > h.infos[h.titles[j]].Seq })
 }
 
@@ -96,7 +100,7 @@ func (h *postHandler) SinglePost(ctx *gin.Context) {
 		return
 	}
 
-	post.getContent()
+	getContent(post)
 	ctx.Set("res", map[string]interface{}{
 		"meta":  fmt.Sprintf("Life of xhu - %s", post.Title),
 		"title": fmt.Sprintf("Life of xhu - %s", post.Title),
@@ -104,18 +108,9 @@ func (h *postHandler) SinglePost(ctx *gin.Context) {
 	})
 }
 
-type post struct {
-	Filename string    `json:"filename,omitempty"`
-	Seq      int       `json:"seq,omitempty"`
-	Title    string    `json:"title,omitempty"`
-	Time     time.Time `json:"time,omitempty"`
-	Tags     []tag     `json:"tags,omitempty"`
-	Content  string    `json:"content,omitempty"`
-}
-
-func (p *post) getContent() {
+func getContent(p *posts.Post) {
 	filename := p.Filename
-	file, err := os.Open(fmt.Sprintf("%s/%s", conf.Conf.Post.ArchivesPath, filename))
+	file, err := os.Open(fmt.Sprintf("%s/%s", conf.Conf.Post.PostsPath, filename))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -124,22 +119,4 @@ func (p *post) getContent() {
 		log.Fatal(err)
 	}
 	p.Content = string(bytes)
-}
-
-func convFilenameToPost(filename string) *post {
-	p := &post{Filename: filename, Tags: []tag{}}
-
-	arr := strings.Split(filename, "*")
-	if i, err := strconv.Atoi(strings.TrimLeft(arr[0], "0")); err == nil {
-		p.Seq = i
-	}
-	p.Title = arr[1]
-	if t, err := time.Parse("20060102", arr[2]); err == nil {
-		p.Time = t
-	}
-	for _, str := range strings.Split(strings.Split(arr[3], ".")[0], "-") {
-		p.Tags = append(p.Tags, tag(str))
-	}
-
-	return p
 }

@@ -1,5 +1,6 @@
 .DS_Store
 .vscode/
+.vercel
 
 main
 debug
@@ -14,3 +15,4 @@ yarn-error.log
 node_modules/
 
 dump.rdb
+bundle.js

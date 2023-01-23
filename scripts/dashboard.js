@@ -4,47 +4,47 @@ const XTerm = require('blessed-xterm');
 const { floor, max } = Math;
 
 const dashboard = screen({
-  smartCSR : true,
-  title    : 'Blogo Dashboard'
+  smartCSR: true,
+  title: 'Blogo Dashboard'
 });
 
 const commands = [{
-  label   : 'Webpack Dev Server',
-  command : ['npm', ['run', 'webpack']],
-  style   : {
-    width  : floor(dashboard.width / 2),
-    height : floor(dashboard.height / 2)
+  label: 'Webpack Dev Server',
+  command: ['npm', ['run', 'webpack']],
+  style: {
+    width: floor(dashboard.width / 2),
+    height: floor(dashboard.height / 2)
   }
 }, {
-  label   : 'ESLint',
-  command : ['npm', ['run', 'lint']],
-  style   : {
-    top    : floor(dashboard.height / 2),
-    width  : floor(dashboard.width / 2),
-    height : floor(dashboard.height / 2)
+  label: 'ESLint',
+  command: ['npm', ['run', 'lint']],
+  style: {
+    top: floor(dashboard.height / 2),
+    width: floor(dashboard.width / 2),
+    height: floor(dashboard.height / 2)
   }
 }, {
-  label   : 'Go Server',
-  command : ['npm', ['run', 'dev-server']],
-  style   : {
-    left   : floor(dashboard.width / 2),
-    width  : floor(dashboard.width / 2),
-    height : floor(dashboard.height / 2) * 2
+  label: 'Go Server',
+  command: ['npm', ['run', 'server']],
+  style: {
+    left: floor(dashboard.width / 2),
+    width: floor(dashboard.width / 2),
+    height: floor(dashboard.height / 2) * 2
   }
 }];
 
 const XTermOpts = {
-  cursorType : 'block',
-  border     : 'line',
-  scrollable : true,
-  scrollback : 100000,
-  style      : {
-    fg        : 'default',
-    bg        : 'default',
-    border    : { fg: '#EA4C89' },
-    hover     : { border: { fg: 'green' } },
-    focus     : { border: { fg: 'blue' } },
-    scrolling : { border: { fg: 'blue' } }
+  cursorType: 'block',
+  border: 'line',
+  scrollable: true,
+  scrollback: 100000,
+  style: {
+    fg: 'default',
+    bg: 'default',
+    border: { fg: '#EA4C89' },
+    hover: { border: { fg: 'green' } },
+    focus: { border: { fg: 'blue' } },
+    scrolling: { border: { fg: 'blue' } }
   }
 };
 

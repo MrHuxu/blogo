@@ -4,8 +4,7 @@
     "templates_path": "server/templates/*",
     "per_page": 10
   },
-
   "post": {
-    "archives_path": "archives"
+    "posts_path": "posts"
   }
 }

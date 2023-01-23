@@ -20,7 +20,7 @@
 
 `Javascript`里打开一个地址的语句是：  
 
-    location.href = '/archives'  
+    location.href = '/posts'  
     
 其他的都是修饰修饰边角的小过程了，目前来看，效果还是很不错的，其实我一开始是准备把整个页面左侧的内容变换都用`Javascript`来实现的，不过太麻烦了，还是做成地址跳转了，嗯，以后有时间再弄吧。  
 

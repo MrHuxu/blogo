@@ -6,7 +6,7 @@ import { Container, Year, Item, ItemDate, ItemLink, PrevNext } from './elements'
 
 import { monthNames } from '../layout/constants';
 
-const Home = ({ data, match }) => {
+const Home = ({ data, match, tag }) => {
   const { titles, infos, maxPage } = data;
   const page = parseInt(match.params.page);
 
@@ -31,13 +31,13 @@ const Home = ({ data, match }) => {
       }, { year: null, eles: [] }).eles}
 
       {page > 0 ? (
-        <a href={`/page/${page - 1}`}>
+        <a href={`/page/${page - 1}${tag && tag !== '' ? `?tag=${tag}` : ''}`}>
           <PrevNext> <i className="icon-left-arrow link" />NEWER </PrevNext>
         </a>
       ) : null}
 
       {page < maxPage - 1 ? (
-        <a href={`/page/${page + 1}`}>
+        <a href={`/page/${page + 1}${tag && tag !== '' ? `?tag=${tag}` : ''}`}>
           <PrevNext> OLDER<i className="icon-right-arrow link" /> </PrevNext>
         </a>
       ) : null}
@@ -52,7 +52,8 @@ Home.propTypes = {
     infos: objectOf(number),
     maxPage: number
   }),
-  match: object
+  match: object,
+  tag: string
 };
 
 const mapStateToProps = ({ page }) => ({ data: page });

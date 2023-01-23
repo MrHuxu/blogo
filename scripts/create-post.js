@@ -9,7 +9,7 @@ const rl = createInterface({
 });
 
 const getSequence = post => new Promise(resolve => {
-  const nextSeq = readdirSync(resolvePath(__dirname, '../archives')).filter(
+  const nextSeq = readdirSync(resolvePath(__dirname, '../posts')).filter(
     file => file.endsWith('.md')
   ).map(file => parseInt(/\d+/.exec(file.split('*')[0])[0])).sort(
     (a, b) => a > b ? -1 : 1
@@ -63,7 +63,7 @@ const touchFile = post => {
   const fileName = 'WIP: ' + [
     seq, title, date, tags.join('-')
   ].join('*') + '.md';
-  open(resolvePath(__dirname, '../archives/', fileName), 'w', (_, file) => close(file, () => {
+  open(resolvePath(__dirname, '../posts/', fileName), 'w', (_, file) => close(file, () => {
     info(`\n[ ${fileName} ] successfully created!`);
   }));
 };
