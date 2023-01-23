@@ -19,6 +19,7 @@ WORKDIR /work
 COPY ./main.go /work/
 COPY ./server /work/server
 COPY ./posts/*.go /work/posts/
+COPY ./config/embed.go /work/config/
 COPY ./go.mod /work/
 COPY ./go.sum /work/
 
