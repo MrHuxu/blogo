@@ -14,12 +14,15 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 11
+      - name: Front-end build
+        run: npm install && ./node_modules/webpack/bin/webpack.js --config config/webpack.config.js
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Front-end build
-        run: npm install && ./node_modules/webpack/bin/webpack.js --config config/webpack.config.js
       - name: Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
