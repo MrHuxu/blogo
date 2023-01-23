@@ -6,7 +6,7 @@
 
 也就是说, get方法可以把对象的一个属性绑定到一个函数上, 然后在获取这个属性的时候自动调用这个函数.
 
-![js getter 1](https://img.xhu.me/blog/js%20getter%201.png)
+![js getter 1](https://blog.xhu.me/assets/images/js%20getter%201.png)
 
 通过Chrome里的终端我们可以看到, 当我们用getter声明一个属性 `test` 的时候, 其实是声明了一个名为 `test` 的占位属性, 以及名为 `get test` 的一个隐藏函数, 获取test属性的时候, 其实就是执行这个函数来获得结果.
 
