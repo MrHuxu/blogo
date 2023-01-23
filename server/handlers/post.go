@@ -9,7 +9,6 @@ import (
 	"os"
 	"sort"
 	"strconv"
-	"strings"
 
 	"github.com/gin-gonic/gin"
 
@@ -44,7 +43,7 @@ func (h *postHandler) cachePosts() {
 	}
 
 	for _, entry := range entries {
-		if !strings.HasSuffix(entry.Name(), ".md") || strings.HasPrefix(entry.Name(), "WIP") {
+		if !posts.ValidatePostFilename(entry.Name()) {
 			continue
 		}
 

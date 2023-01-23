@@ -36,10 +36,11 @@ func getPageInfo(ctx *gin.Context) map[string]interface{} {
 	}
 
 	res, _ := ctx.Get("res")
-	return getPageInfoFromRes(ctx.Request.URL.String(), res)
+	return GetPageInfoFromRes(ctx.Request.URL.String(), res)
 }
 
-func getPageInfoFromRes(url string, res interface{}) map[string]interface{} {
+// GetPageInfoFromRes ...
+func GetPageInfoFromRes(url string, res interface{}) map[string]interface{} {
 	var resMap map[string]interface{}
 	if m, ok := res.(map[string]interface{}); ok {
 		resMap = m

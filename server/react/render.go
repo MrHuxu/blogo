@@ -1,24 +1,23 @@
 package react
 
 import (
+	"embed"
 	"encoding/json"
-	"io/ioutil"
 	"log"
-	"os"
 
 	"github.com/dop251/goja"
 )
 
+//go:embed bundle.js
+var bundleJsFS embed.FS
+
 var jsRender func(goja.FunctionCall) goja.Value
 
 func initRenderer() {
-	file, err := os.Open("client/public/bundle.js")
+	bytes, err := bundleJsFS.ReadFile("bundle.js")
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer file.Close()
-
-	bytes, _ := ioutil.ReadAll(file)
 
 	v, err := VM.RunString(string(bytes))
 	if err != nil {

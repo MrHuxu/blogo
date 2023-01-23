@@ -46,3 +46,8 @@ func fixTitle(original string) string {
 		"~", ":", -1,
 	)
 }
+
+// ValidatePostFilename ...
+func ValidatePostFilename(filename string) bool {
+	return strings.HasSuffix(filename, ".md") && !strings.HasPrefix(filename, "WIP")
+}
