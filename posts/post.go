@@ -1,18 +1,20 @@
 package posts
 
 import (
+	"html/template"
 	"strconv"
 	"strings"
 	"time"
 )
 
 type Post struct {
-	Filename string    `json:"filename,omitempty"`
-	Seq      int       `json:"seq,omitempty"`
-	Title    string    `json:"title,omitempty"`
-	Time     time.Time `json:"time,omitempty"`
-	Tags     []string  `json:"tags,omitempty"`
-	Content  string    `json:"content,omitempty"`
+	Filename    string        `json:"filename,omitempty"`
+	ID          int           `json:"id,omitempty"`
+	Title       string        `json:"title,omitempty"`
+	Time        time.Time     `json:"time,omitempty"`
+	Tags        []string      `json:"tags,omitempty"`
+	Content     string        `json:"content,omitempty"`
+	ContentHTML template.HTML `json:"content_html,omitempty"`
 }
 
 // ConvFilenameToPost ...
@@ -21,7 +23,7 @@ func ConvFilenameToPost(filename string) *Post {
 
 	arr := strings.Split(filename, "#")
 	if i, err := strconv.Atoi(strings.TrimLeft(arr[0], "0")); err == nil {
-		p.Seq = i
+		p.ID = i
 	}
 	p.Title = fixTitle(arr[1])
 	if t, err := time.Parse("20060102", arr[2]); err == nil {

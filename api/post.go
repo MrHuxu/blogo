@@ -1,39 +1,44 @@
 package api
 
 import (
-	"fmt"
+	"bytes"
+	"html/template"
 	"log"
 	"net/http"
+	"strconv"
 
 	"github.com/MrHuxu/blogo/posts"
-	"github.com/MrHuxu/blogo/server/middlewares"
-	"github.com/MrHuxu/blogo/server/templates"
+	"github.com/MrHuxu/blogo/templates"
+	"github.com/yuin/goldmark"
 )
 
 // Post ...
 func Post(w http.ResponseWriter, r *http.Request) {
-	// template
-	tmpl, err := templates.GetIndexTemplage()
+	tmpl, err := templates.GetTemplate()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	_, mapTitleToPosts, err := posts.GetPosts()
+	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	post := mapTitleToPosts[r.URL.Query().Get("title")]
-	if err = post.LoadContent(); err != nil {
+	_, mapIDToPosts, err := posts.GetPosts()
+	if err != nil {
 		log.Fatal(err)
 	}
+	post := mapIDToPosts[id]
 
-	// render
-	res := map[string]any{
-		"meta":  fmt.Sprintf("Life of xhu - %s", post.Title),
-		"title": fmt.Sprintf("Life of xhu - %s", post.Title),
-		"data":  map[string]any{"post": post},
+	post.LoadContent()
+	var buf bytes.Buffer
+	if err := goldmark.Convert([]byte(post.Content), &buf); err != nil {
+		panic(err)
 	}
-	pageInfo := middlewares.GetPageInfoFromRes(r.URL.String(), res)
-	tmpl.Execute(w, pageInfo)
+	post.ContentHTML = template.HTML(buf.String())
+
+	tmpl.Execute(w, map[string]any{
+		"page": "post",
+		"post": post,
+	})
 }

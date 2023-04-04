@@ -1,17 +1,11 @@
 {
-    "redirects": [
-        {
-            "source": "/",
-            "destination": "/page/0"
-        }
-    ],
     "rewrites": [
         {
-            "source": "/page/:page",
-            "destination": "/api/page.go"
+            "source": "/",
+            "destination": "/api/index.go"
         },
         {
-            "source": "/post/:title",
+            "source": "/post/:id",
             "destination": "/api/post.go"
         },
         {

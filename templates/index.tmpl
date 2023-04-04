@@ -1,0 +1,20 @@
+{{ define "index" }}
+
+{{ $year := "" }}
+{{ range $post := .posts }}
+    {{ $currYear := getYearOfTime $post.Time }}
+    {{ if ne $currYear $year }}
+        <p class="text-gray-300 py-5">
+            /* {{ $currYear }} */
+        </p>
+        {{ $year = $currYear }}
+    {{ end }}
+    <div class="py-6 hover:bg-gray-100 hover:ml-2">
+        <p class="inline-block text-gray-400">{{ formatTime $post.Time }}</p>
+        <a class="underline ml-2 text-lg text-gray-600" href="/post/{{ $post.ID }}">
+            {{ $post.Title }}
+        </a>
+    </div>
+{{ end }}
+
+{{ end }}
