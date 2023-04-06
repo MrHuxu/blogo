@@ -11,17 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '2.7.18' 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 11.15.0
-      - name: Front-end build
-        run: npm install && ./node_modules/webpack/bin/webpack.js --config config/webpack.config.js
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
+      - name: Build Tailwind
+        run: npx tailwindcss -o ./assets/built.css --minify
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
       - name: Pull Vercel Environment Information

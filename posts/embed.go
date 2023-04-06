@@ -8,14 +8,14 @@ import (
 var postsFS embed.FS
 
 // GetPosts ...
-func GetPosts() ([]*Post, map[string]*Post, error) {
+func GetPosts() ([]*Post, map[int]*Post, error) {
 	entries, err := postsFS.ReadDir(".")
 	if err != nil {
 		return nil, nil, err
 	}
 
 	var posts []*Post
-	mapTitleToPosts := make(map[string]*Post)
+	mapIDToPosts := make(map[int]*Post)
 	for _, entry := range entries {
 		if !ValidatePostFilename(entry.Name()) {
 			continue
@@ -23,10 +23,10 @@ func GetPosts() ([]*Post, map[string]*Post, error) {
 
 		post := ConvFilenameToPost(entry.Name())
 		posts = append(posts, post)
-		mapTitleToPosts[post.Title] = post
+		mapIDToPosts[post.ID] = post
 	}
 
-	return posts, mapTitleToPosts, nil
+	return posts, mapIDToPosts, nil
 }
 
 // LoadContent ...

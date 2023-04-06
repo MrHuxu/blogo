@@ -1,39 +1,65 @@
 package api
 
 import (
+	"bytes"
 	"fmt"
-	"log"
+	"html/template"
 	"net/http"
+	"strconv"
 
 	"github.com/MrHuxu/blogo/posts"
-	"github.com/MrHuxu/blogo/server/middlewares"
-	"github.com/MrHuxu/blogo/server/templates"
+	"github.com/MrHuxu/blogo/templates"
+
+	"github.com/yuin/goldmark"
 )
 
 // Post ...
 func Post(w http.ResponseWriter, r *http.Request) {
-	// template
-	tmpl, err := templates.GetIndexTemplage()
+	tmpl, err := templates.GetTemplate()
 	if err != nil {
-		log.Fatal(err)
+		w.WriteHeader(http.StatusInternalServerError)
+		w.Write([]byte(err.Error()))
+		return
 	}
 
-	_, mapTitleToPosts, err := posts.GetPosts()
+	var data *posts.Post
+	defer func() {
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			tmpl.Execute(w, map[string]any{
+				"page":    "error",
+				"title":   "Error",
+				"message": err.Error(),
+			})
+			return
+		}
+
+		tmpl.Execute(w, map[string]any{
+			"page":  "post",
+			"title": fmt.Sprintf("Life of xhu - %s", data.Title),
+			"post":  data,
+		})
+	}()
+	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil {
-		log.Fatal(err)
+		return
 	}
 
-	post := mapTitleToPosts[r.URL.Query().Get("title")]
-	if err = post.LoadContent(); err != nil {
-		log.Fatal(err)
+	_, mapIDToPosts, err := posts.GetPosts()
+	if err != nil {
+		return
+	}
+	if data = mapIDToPosts[id]; data == nil {
+		err = fmt.Errorf("Post[id=%d] not found", id)
+		return
 	}
 
-	// render
-	res := map[string]any{
-		"meta":  fmt.Sprintf("Life of xhu - %s", post.Title),
-		"title": fmt.Sprintf("Life of xhu - %s", post.Title),
-		"data":  map[string]any{"post": post},
+	if err = data.LoadContent(); err != nil {
+		return
 	}
-	pageInfo := middlewares.GetPageInfoFromRes(r.URL.String(), res)
-	tmpl.Execute(w, pageInfo)
+	var buf bytes.Buffer
+	if err := goldmark.Convert([]byte(data.Content), &buf); err != nil {
+		panic(err)
+	}
+	data.ContentHTML = template.HTML(buf.String())
 }

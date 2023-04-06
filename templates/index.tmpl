@@ -1,0 +1,33 @@
+{{ define "index" }}
+
+{{ if ne .selectedTag "" }}
+    <div class="inline-block align-bottom">
+        <div class="inline-block text-cyan-700 bg-cyan-50 px-2 rounded-lg">
+            #{{ .selectedTag }}
+        </div>
+        <a class="inline-block font-sans text-xs text-gray-300 bg-red-50 hover:bg-red-100 px-2 py-[2px] rounded-md" href="/">
+            X
+        </a>
+    </div>
+{{ end }}
+
+{{ $year := "" }}
+{{ range $post := .posts }}
+    {{ $currYear := getYearOfTime $post.Time }}
+    {{ if ne $currYear $year }}
+        <p class="text-gray-300 py-5">
+            /* {{ $currYear }} */
+        </p>
+        {{ $year = $currYear }}
+    {{ end }}
+    <a href="/post/{{ $post.ID }}">
+        <div class="py-6 pl-2 transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-105 hover:bg-gray-100 duration-300">
+            <p class="inline-block text-gray-400">{{ formatTime $post.Time }}</p>
+            <p class="inline underline ml-2 text-lg text-gray-600">
+                {{ $post.Title }}
+            </p>
+        </div>
+    </a>
+{{ end }}
+
+{{ end }}
