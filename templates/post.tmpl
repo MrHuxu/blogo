@@ -102,11 +102,11 @@
 </p>
 
 
-<div class="pt-6 pb-8 flex justify-center">
-    <p class="inline">{{ formatFullTime .post.Time }}</p>
+<div class="pt-6 pb-8 text-center">
+    <p class="inline-block min-w-min">{{ formatFullTime .post.Time }}</p>
     {{ range $tag := .post.Tags }}
         &nbsp;&nbsp;|&nbsp;&nbsp;
-        <a class="text-cyan-700 bg-cyan-50 px-2 rounded-lg" href="/?tag={{ $tag }}">
+        <a class="inline-block text-cyan-700 bg-cyan-50 my-2 px-2 rounded-lg" href="/?tag={{ $tag }}">
             #{{ $tag }}
         </a>
     {{ end }}
