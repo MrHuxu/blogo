@@ -15,7 +15,7 @@ func GetTemplate() (*template.Template, error) {
 		"getYearOfTime":  getYearOfTime,
 		"formatTime":     formatTime,
 		"formatFullTime": formatFullTime,
-	}).ParseFS(templatesFS, "base.tmpl", "index.tmpl", "post.tmpl", "tags.tmpl", "error.tmpl")
+	}).ParseFS(templatesFS, "base.tmpl", "index.tmpl", "post.tmpl", "error.tmpl")
 	if err != nil {
 		return nil, err
 	}
