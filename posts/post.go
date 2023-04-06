@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// Post ...
 type Post struct {
 	Filename    string        `json:"filename,omitempty"`
 	ID          int           `json:"id,omitempty"`

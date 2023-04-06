@@ -21,7 +21,6 @@
                     </a>
                 </div>
                 <div>
-                    <a class="underline" href="/tags">Tags</a>
                     <a class="underline ml-3" href="https://xhu.me" target="_blank">About</a>
                 </div>
             </div>
@@ -30,8 +29,6 @@
                 {{ template "index" . }}
             {{ else if eq .page "post" }}
                 {{ template "post" . }}
-            {{ else if eq .page "tags" }}
-                {{ template "tags" . }}
             {{ else }}
                 {{ template "error" . }}
             {{ end }}

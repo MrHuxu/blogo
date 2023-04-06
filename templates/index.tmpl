@@ -1,5 +1,16 @@
 {{ define "index" }}
 
+{{ if ne .selectedTag "" }}
+    <div class="inline-block align-bottom">
+        <div class="inline-block text-cyan-700 bg-cyan-50 px-2 rounded-lg">
+            #{{ .selectedTag }}
+        </div>
+        <a class="inline-block font-sans text-xs text-gray-300 bg-red-50 hover:bg-red-100 px-2 py-[2px] rounded-md" href="/">
+            X
+        </a>
+    </div>
+{{ end }}
+
 {{ $year := "" }}
 {{ range $post := .posts }}
     {{ $currYear := getYearOfTime $post.Time }}
