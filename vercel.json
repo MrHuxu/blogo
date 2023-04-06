@@ -7,10 +7,6 @@
         {
             "source": "/post/:id",
             "destination": "/api/post.go"
-        },
-        {
-            "source": "/tags",
-            "destination": "/api/tags.go"
         }
     ]
 }

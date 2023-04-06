@@ -25,6 +25,7 @@ func Post(w http.ResponseWriter, r *http.Request) {
 	var data *posts.Post
 	defer func() {
 		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
 			tmpl.Execute(w, map[string]any{
 				"page":    "error",
 				"title":   "Error",
